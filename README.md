@@ -61,7 +61,7 @@ machine so it can use the host GPU; it is not started inside the container.
   ```
 
   For the ECG image branch, also download `qwen2.5vl:7b`.
-  
+
 3. Download the public datasets from the [dataset sources](#dataset-sources) and place them in the project
   with these paths:
 
