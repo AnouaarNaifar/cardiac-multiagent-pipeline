@@ -18,6 +18,8 @@ physionet/
 genecg_downloaded/
 RTLP/
 delivery/
+archive/
+results/
 
 # Model weights and large generated artefacts
 *.pt
