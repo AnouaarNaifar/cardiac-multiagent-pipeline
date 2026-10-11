@@ -19,7 +19,9 @@ genecg_downloaded/
 RTLP/
 delivery/
 archive/
-results/
+results/*
+!results/
+!results/synthetic_test_cases.md
 
 # Model weights and large generated artefacts
 *.pt
