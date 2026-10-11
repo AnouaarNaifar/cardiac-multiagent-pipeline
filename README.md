@@ -29,6 +29,10 @@ streamlit run Home.py        # → http://localhost:8501
 Optional: a free **Groq** cloud backend (stronger text model) is available in the UI if you set
 `GROQ_API_KEY` - the prompt then leaves the machine (fine for this public data).
 
+## Demo video
+
+[Watch the demonstration on Google Drive](https://drive.google.com/drive/folders/1fAKs6oEQSrwpqugkgb95aIiW7SnMmt6Z)
+
 ## Docker deployment
 
 The Docker image packages the application and its Python environment. Ollama runs natively on the host
