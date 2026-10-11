@@ -1,13 +1,13 @@
 # Cardiac Multi-Agent Clinical Pipeline
 
-Internship project (*stage 25-26*) — a multi-agent decision-**support** system for cardiac signal/image
+Internship project (*stage 25-26*) - a multi-agent decision-**support** system for cardiac signal/image
 analysis, on the public **PTB-XL** (ECG), **ACDC** (cardiac MRI) and **UCI Cleveland** (tabular) datasets.
 
 Each modality is handled by its own agent that produces **structured findings** (never a final diagnosis);
 a **Sep Agent** aggregates them into one traceable clinical impression. Every statement links back to a real,
 computed finding.
 
-> ⚠️ **Research / demo on public data — not a medical device and not a diagnosis.** Cross-modality cases are
+> ⚠️ **Research / demo on public data - not a medical device and not a diagnosis.** Cross-modality cases are
 > *synthetic pairings* (the three datasets share no real patients), used for architecture validation.
 
 ---
