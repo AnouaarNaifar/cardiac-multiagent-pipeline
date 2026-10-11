@@ -128,9 +128,9 @@ Form B values**, all verified by running the agents - the fastest way to see cro
 
 ## Scope note (detection / diagnosis / prognosis)
 
-- **Detection** — solid (validated deterministic flags per modality).
-- **Diagnosis** — decision *support* only, by design (structured findings + convergence, never a verdict).
-- **Prognosis**  — **out of scope**, and documented as such: PTB-XL/ACDC/UCI are cross-sectional (no
+- **Detection** - solid (validated deterministic flags per modality).
+- **Diagnosis** - decision *support* only, by design (structured findings + convergence, never a verdict).
+- **Prognosis**  - **out of scope**, and documented as such: PTB-XL/ACDC/UCI are cross-sectional (no
   follow-up/outcome data), so no prognostic model can be trained or validated here. See the project notes
   and local results write-ups for the detailed rationale.
 
