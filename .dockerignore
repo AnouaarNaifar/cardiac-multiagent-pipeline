@@ -1,0 +1,28 @@
+# Data mounted as volumes, never in the image
+kaggle/
+ACDC/
+RTLP/
+physionet/
+rag_sources/
+
+# Caches & regenerable artifacts
+**/__pycache__/
+*.pyc
+.git/
+.ipynb_checkpoints/
+results/ui_sessions/
+results/_backups/
+archive/
+
+# Training datasets & redundant checkpoints — NOT needed at runtime (the app runs
+# the trained models on live data; only the best.pt checkpoints + logs are kept)
+results/mri_unet_dataset/
+results/mri_classifier_dataset/
+results/mri_yolo_dataset/
+results/**/latest.pt
+results/**/*.latest.pt
+
+# Local environments & secrets
+.venv/
+venv/
+.env

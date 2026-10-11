@@ -1,0 +1,105 @@
+{
+  "agent_id": "ecg",
+  "record_id": "14601_lr",
+  "findings": [
+    {
+      "feature": "duration_s",
+      "value": 10.0,
+      "rationale": "The analyzed ECG trace duration is 10 seconds.",
+      "confidence": 1.0,
+      "evidence_ref": "duration_s",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "qrs_count",
+      "value": 17,
+      "rationale": "The number of detected QRS complexes is 17.",
+      "confidence": 1.0,
+      "evidence_ref": "qrs_count",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "heart_rate_mean_bpm",
+      "value": 102.7,
+      "rationale": "The estimated mean heart rate is 102.7 bpm.",
+      "confidence": 1.0,
+      "evidence_ref": "heart_rate_mean_bpm",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "heart_rate_std_bpm",
+      "value": 10.8,
+      "rationale": "The standard deviation of the heart rate is 10.8 bpm.",
+      "confidence": 1.0,
+      "evidence_ref": "heart_rate_std_bpm",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "rr_mean_ms",
+      "value": 590.6,
+      "rationale": "The mean RR interval is 590.6 ms.",
+      "confidence": 1.0,
+      "evidence_ref": "rr_mean_ms",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "rr_std_ms",
+      "value": 61.9,
+      "rationale": "The standard deviation of the RR interval is 61.9 ms.",
+      "confidence": 1.0,
+      "evidence_ref": "rr_std_ms",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "qrs_duration_mean_ms",
+      "value": 87.6,
+      "rationale": "The mean QRS duration is 87.6 ms.",
+      "confidence": 1.0,
+      "evidence_ref": "qrs_duration_mean_ms",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "qrs_duration_std_ms",
+      "value": 39.9,
+      "rationale": "The standard deviation of the QRS duration is 39.9 ms.",
+      "confidence": 1.0,
+      "evidence_ref": "qrs_duration_std_ms",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "rhythm_irregularity_flag",
+      "value": "false",
+      "rationale": "No significant rhythm irregularity detected.",
+      "confidence": 1.0,
+      "evidence_ref": "rhythm_irregularity_flag",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "rhythm_cv",
+      "value": "normal",
+      "rationale": "The rhythm is normal based on the provided data.",
+      "confidence": 1.0,
+      "evidence_ref": "rhythm_cv",
+      "evidence_type": "numeric_feature"
+    }
+  ],
+  "flags_for_review": [
+    "tachycardia_suspected"
+  ],
+  "trace": {
+    "features_used": {
+      "duration_s": 10.0,
+      "qrs_count": 17,
+      "heart_rate_mean_bpm": 102.70828755467852,
+      "heart_rate_std_bpm": 10.810450542234125,
+      "rr_mean_ms": 590.625,
+      "rr_std_ms": 61.89393649623523,
+      "qrs_duration_mean_ms": 87.6470588235294,
+      "qrs_duration_std_ms": 39.93073587876974,
+      "rhythm_irregularity_flag": false,
+      "rhythm_cv": 0.10479396655447236
+    },
+    "model": "ollama:medgemma:4b",
+    "attempts": 1
+  }
+}

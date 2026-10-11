@@ -1,0 +1,61 @@
+# Cardiac Multi-Agent Clinical Pipeline — dependencies
+# Versions are those validated in the internship environment (Python 3.x, Windows,
+# 16 GB RAM, RTX 4050). Grouped by what needs them so a minimal install is possible.
+#
+# Install everything:   pip install -r requirements.txt
+# NOTE on torch: the validated build is 2.5.1+cu121 (CUDA 12.1). The line below is
+# unpinned for CUDA so CPU-only machines resolve the right wheel; for GPU, install
+# the matching CUDA build from https://pytorch.org first, then the rest of this file.
+
+# --- Core signal / data (every module) -------------------------------------
+numpy==2.4.2
+scipy==1.17.1
+pywavelets==1.9.0
+matplotlib==3.10.8
+wfdb==4.3.1
+pandas==2.3.3
+
+# --- LLM backends -----------------------------------------------------------
+requests==2.33.1        # local Ollama (MedGemma, default) AND the free Groq cloud backend
+anthropic==0.120.0      # optional, non-default Claude backend (unused unless wired in)
+
+# --- Learned ECG embedding (ecg_agent wires it in) --------------------------
+torch                   # validated: 2.5.1+cu121 — see the CUDA note above
+
+# --- MRI modality (preprocessing + raw-image pipeline) ----------------------
+nibabel==5.4.0
+Pillow==12.3.0
+ultralytics==8.4.115                 # YOLO26n heart localization
+segmentation-models-pytorch==0.5.0   # U-Net (ResNet18 encoder) segmentation
+# scipy (above) also provides ndimage, used by the MRI slice-validity check
+
+# --- ECG IMAGE branch (adaptive preprocessing + VLM + GenECG classifier) -----
+opencv-python==5.0.0.93   # cv2 adaptive image preprocessing (adaptive_ecg_pipeline);
+                          #   Docker uses opencv-python-headless instead (no GUI libs)
+torchvision               # GenECG image classifier (ResNet18); validated 0.20.1+cu121 —
+                          #   leave unpinned like torch so it matches your CUDA/CPU build
+huggingface_hub==1.26.0   # fetch GenECG images on demand (genecg_fixtures)
+json-repair==0.63.4       # repair the small VLM's malformed JSON (ecg_image_agent)
+# Pillow (MRI section above) is also used by the image classifier
+# LLM backend for the image branch is a local Ollama vision model (qwen2.5vl:7b or
+#   MedGemma) — pulled via Ollama, not pip; see setup_medgemma_ecginstruct_ollama.sh
+
+# --- PDF case report --------------------------------------------------------
+reportlab==4.5.0
+
+# --- ECG text evaluation (report_evaluation.py) -----------------------------
+langdetect==1.0.9
+sacrebleu==2.6.0
+rouge-score==0.1.2
+bert-score==0.3.13      # distilbert-base-uncased backbone (lighter than roberta-large)
+
+# --- Sep Agent knowledge layers ---------------------------------------------
+sentence-transformers==5.6.1   # RAG embedder (all-MiniLM-L6-v2)
+pdfplumber==0.11.10            # RAG PDF ingestion
+networkx==3.6.1                # clinical knowledge graph
+
+# --- Patient-data source (fetched once, then read locally) ------------------
+ucimlrepo==0.0.7        # UCI Heart Disease / Cleveland
+
+# --- Streamlit UI -----------------------------------------------------------
+streamlit==1.56.0

@@ -1,0 +1,39 @@
+{
+  "A_norag": {
+    "use_rag": false,
+    "integrate": false,
+    "attempts": 1,
+    "summary": "The patient, a 63-year-old male, presents with typical angina chest pain and a reduced left ventricular ejection fraction of 23.7%. The patient's resting blood pressure is 145 mmHg, and the resting ECG shows probable left ventricular hypertrophy. The patient's heart rate is 63.9 bpm with a standard deviation of 1.4 bpm, and the MRI findings suggest a reduced left ventricular ejection fraction, which is consistent with the flag for low left ventricular ejection fraction suspected.",
+    "prose_weaves_criterion": true,
+    "n_knowledge_cites": 0,
+    "knowledge_citations": []
+  },
+  "B_rag": {
+    "use_rag": true,
+    "integrate": false,
+    "attempts": 1,
+    "summary": "The patient, a 63-year-old male, presents with a reduced left ventricular ejection fraction of 23.7%, which is suspected to be low. The patient's resting blood pressure is 145 mmHg, which is suspected to be high. The patient's ST segment slope is downsloping and the ST depression is 2.3 mm, which is suspected to be significant. The patient's thallium stress test result is a fixed defect, which is suspected to be abnormal.",
+    "prose_weaves_criterion": false,
+    "n_knowledge_cites": 1,
+    "knowledge_citations": [
+      {
+        "feature": "knowledge_0",
+        "statement": "low left ventricular ejection fraction"
+      }
+    ]
+  },
+  "C_rag_integrate": {
+    "use_rag": true,
+    "integrate": true,
+    "attempts": 1,
+    "summary": "The patient, a 63-year-old male, has a reduced left ventricular ejection fraction (LVEF) of 23.7%, below the 40% HFrEF threshold, indicating heart failure with reduced ejection fraction. The patient's resting blood pressure is 145 mmHg, which is suspected to be high. The patient also has a fasting blood sugar greater than 120 mg/dl and a serum cholesterol of 233 mg/dl. The patient's thallium stress test result shows a fixed defect, which is suspected to be abnormal.",
+    "prose_weaves_criterion": true,
+    "n_knowledge_cites": 1,
+    "knowledge_citations": [
+      {
+        "feature": "knowledge_0",
+        "statement": " below the 40% HFrEF threshold"
+      }
+    ]
+  }
+}

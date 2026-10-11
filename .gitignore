@@ -1,0 +1,52 @@
+# Local environments and editor state
+.env
+.env.*
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.claude/settings.local.json
+
+# Local datasets and external clones
+ACDC/database/
+kaggle/
+physionet/
+genecg_downloaded/
+RTLP/
+delivery/
+
+# Model weights and large generated artefacts
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.safetensors
+*.bin
+*.npz
+results/**/cache/
+results/**/labels.cache
+results/**/predicted_masks/
+results/**/weights/
+results/mri_yolo_dataset/
+results/mri_unet_dataset/
+results/mri_classifier_dataset/
+results/**/*.npy
+results/**/*cache*.csv
+results/ecg_embedding/
+results/ecg_image_pipeline/genecg_classifier.pt
+results/mri_unet_training/
+results/mri_classifier_training/
+
+# Generated logs and temporary files
+*.log
+*.tmp
+*.bak
+debug_*.json
+
+# OS files
+Thumbs.db
+.DS_Store

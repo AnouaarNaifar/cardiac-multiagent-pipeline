@@ -1,0 +1,135 @@
+{
+  "agent_id": "ecg",
+  "record_id": "03276_lr",
+  "findings": [
+    {
+      "feature": "duration_s",
+      "value": 10.0,
+      "rationale": "The analyzed ECG trace duration is 10 seconds.",
+      "confidence": 1.0,
+      "evidence_ref": "duration_s",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "qrs_count",
+      "value": 10,
+      "rationale": "A total of 10 QRS complexes were detected.",
+      "confidence": 1.0,
+      "evidence_ref": "qrs_count",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "heart_rate_mean_bpm",
+      "value": 63.7,
+      "rationale": "The estimated mean heart rate is 63.7 bpm.",
+      "confidence": 1.0,
+      "evidence_ref": "heart_rate_mean_bpm",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "heart_rate_std_bpm",
+      "value": 0.9,
+      "rationale": "The standard deviation of the heart rate is 0.9 bpm.",
+      "confidence": 1.0,
+      "evidence_ref": "heart_rate_std_bpm",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "rr_mean_ms",
+      "value": 942.2,
+      "rationale": "The mean RR interval is 942.2 ms.",
+      "confidence": 1.0,
+      "evidence_ref": "rr_mean_ms",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "rr_std_ms",
+      "value": 14.0,
+      "rationale": "The standard deviation of the RR interval is 14.0 ms.",
+      "confidence": 1.0,
+      "evidence_ref": "rr_std_ms",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "qrs_duration_mean_ms",
+      "value": 84.0,
+      "rationale": "The mean QRS duration is 84.0 ms.",
+      "confidence": 1.0,
+      "evidence_ref": "qrs_duration_mean_ms",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "qrs_duration_std_ms",
+      "value": 41.3,
+      "rationale": "The standard deviation of the QRS duration is 41.3 ms.",
+      "confidence": 1.0,
+      "evidence_ref": "qrs_duration_std_ms",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "embedding_CD_probability",
+      "value": 1.0,
+      "rationale": "The diagnostic-superclass embedding model predicts a high probability of Conduction Disturbance (CD).",
+      "confidence": 1.0,
+      "evidence_ref": "embedding_CD_probability",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "embedding_HYP_probability",
+      "value": 0.11,
+      "rationale": "The diagnostic-superclass embedding model predicts a low probability of Hypertrophy (HYP).",
+      "confidence": 1.0,
+      "evidence_ref": "embedding_HYP_probability",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "embedding_MI_probability",
+      "value": 0.15,
+      "rationale": "The diagnostic-superclass embedding model predicts a low probability of Myocardial Infarction (MI).",
+      "confidence": 1.0,
+      "evidence_ref": "embedding_MI_probability",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "embedding_NORM_probability",
+      "value": 0.01,
+      "rationale": "The diagnostic-superclass embedding model predicts a very low probability of Normal (NORM).",
+      "confidence": 1.0,
+      "evidence_ref": "embedding_NORM_probability",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "embedding_STTC_probability",
+      "value": 0.14,
+      "rationale": "The diagnostic-superclass embedding model predicts a low probability of ST/T change (STTC).",
+      "confidence": 1.0,
+      "evidence_ref": "embedding_STTC_probability",
+      "evidence_type": "numeric_feature"
+    }
+  ],
+  "flags_for_review": [
+    "CD",
+    "embedding_CD_pattern_suspected"
+  ],
+  "trace": {
+    "features_used": {
+      "duration_s": 10.0,
+      "qrs_count": 10,
+      "heart_rate_mean_bpm": 63.69312517887905,
+      "heart_rate_std_bpm": 0.93653581521025,
+      "rr_mean_ms": 942.2222222222223,
+      "rr_std_ms": 13.966450099973912,
+      "qrs_duration_mean_ms": 84.0,
+      "qrs_duration_std_ms": 41.27953488110059,
+      "rhythm_irregularity_flag": false,
+      "rhythm_cv": 0.014822883360821366,
+      "embedding_CD_probability": 0.9959393739700317,
+      "embedding_HYP_probability": 0.1057400181889534,
+      "embedding_MI_probability": 0.15218853950500488,
+      "embedding_NORM_probability": 0.005275632720440626,
+      "embedding_STTC_probability": 0.1441444456577301
+    },
+    "model": "ollama:medgemma:4b",
+    "attempts": 1
+  }
+}

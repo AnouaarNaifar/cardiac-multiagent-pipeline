@@ -1,0 +1,153 @@
+=== PROMPT ===
+You are the Sep Agent, an aggregating component that combines structured
+findings from independent modality-specific agents (ECG, MRI, ...) into one
+integrated clinical impression. Each agent already analyzed its own modality
+in isolation and reported findings with a rationale and confidence - you do
+NOT re-derive anything from raw signals or images, you only combine and
+contextualize what has already been reported.
+
+Findings from each contributing agent for this case:
+
+=== ECG agent (record '00001_hr') ===
+- feature="duration_s": 10.0 (confidence 1.00) - The analyzed ECG trace duration is 10 seconds.
+- feature="qrs_count": 11 (confidence 1.00) - The number of detected QRS complexes is 11.
+- feature="heart_rate_mean_bpm": 63.9 (confidence 1.00) - The estimated mean heart rate is 63.9 bpm.
+- feature="heart_rate_std_bpm": 1.4 (confidence 1.00) - The standard deviation of the heart rate is 1.4 bpm.
+- feature="rr_mean_ms": 938.8 (confidence 1.00) - The mean RR interval is 938.8 ms.
+- feature="rr_std_ms": 21.5 (confidence 1.00) - The standard deviation of the RR interval is 21.5 ms.
+- feature="qrs_duration_mean_ms": 59.3 (confidence 1.00) - The mean QRS duration is 59.3 ms.
+- feature="qrs_duration_std_ms": 46.2 (confidence 1.00) - The standard deviation of the QRS duration is 46.2 ms.
+
+=== MRI agent (record 'patient103') ===
+- feature="lv_volume_ed_ml": 178.2 (confidence 0.95) - End-diastolic left ventricular volume.
+- feature="lv_volume_es_ml": 131.8 (confidence 0.95) - End-systolic left ventricular volume.
+- feature="rv_volume_ed_ml": 88.9 (confidence 0.95) - End-diastolic right ventricular volume.
+- feature="rv_volume_es_ml": 34.1 (confidence 0.95) - End-systolic right ventricular volume.
+- feature="myocardium_volume_ed_ml": 173.8 (confidence 0.95) - End-diastolic myocardium volume.
+- feature="myocardium_volume_es_ml": 174.4 (confidence 0.95) - End-systolic myocardium volume.
+- feature="lv_ejection_fraction_pct": 26.0 (confidence 0.95) - Left ventricular ejection fraction.
+- feature="rv_ejection_fraction_pct": 61.6 (confidence 0.95) - Right ventricular ejection fraction.
+- feature="pathology_DCM_probability": 1.6 (confidence 0.95) - Probability of dilated cardiomyopathy.
+- feature="pathology_HCM_probability": 50.7 (confidence 0.95) - Probability of hypertrophic cardiomyopathy.
+- feature="pathology_MINF_probability": 47.7 (confidence 0.95) - Probability of prior myocardial infarction with reduced function.
+- feature="pathology_NOR_probability": 0.0 (confidence 0.95) - Probability of normal.
+- feature="pathology_RV_probability": 0.0 (confidence 0.95) - Probability of abnormal right ventricle.
+- feature="short_axis_mid_ed": short_axis_mid_ed (confidence 1.00) - Short axis view of the heart at mid-esophageal level in end-diastole.
+Flags raised by this agent: ['DCM', 'HCM', 'MINF', 'low_lv_ejection_fraction_suspected', 'pathology_HCM_pattern_suspected']
+
+=== Retrieved clinical knowledge (cite as agent_id="knowledge") ===
+- knowledge_0 (source: bernard2018_acdc.pdf): Section: (document start)
+segmental LV and RV myocardial contraction is normal. surface area (BSA), the weight and height of each patient
+• MINF: Patients with a systolic heart failure with infarc- are included in the dataset. For instance, the BSA can be
+tion. Subjects have an ejection fraction below 40% and calculated from the formula of Dubois and Dubois [40], i.e.
+abnormal myocardial contractions. Some subjects have a BSA=0.007184·(weight0.425·height0.725) and normal-
+high diastolic LV volume due to a remodeling of the LV ized parameters can be computed by simply dividing their
+to compensate for the myocardial infarction. values with the corresponding BSA. The training database is
+• DCM: Patients with dilated cardiomyopathy have an composed of 100 patients, i.e. 20 patients for each group.
+ejection fraction below 40%, a LV volume greater than For all these data, the corresponding manual references as
+100mL/m2 andawallthicknessindiastolesmallerthan well as the patient group are provided. The testing dataset
+12 mm. As a consequence of dilated LV, some patients is composed of 50 patients, i.e. 10 patients per group. The
+- knowledge_1 (source: bernard2018_acdc.pdf): Section: (document start)
+ofthiscategoryhaveadilatedRVand/orahighLVmass. manual references and group labels of the testing data are
+• HCM: Patients with hypertrophic cardiomyopathy, i.e. a kept private.
+normal cardiac function (ejection fraction greater than
+55%) but with myocardial segments thicker than 15 mm B. Reference segmentation and contouring protocol
+indiastole.Inthiscategory,patientscanpresentabnormal The expert references are manually-drawn 3D volumes of
+cardiac mass indices with values above 110 g/m2. the LV and RV cavities as well as the myocardium, both at
+• ARV: Patients with abnormal right ventricle have a RV theEDandESgates.TheepicardialborderoftheRVwasnot
+volume greater than 110 mL/m2 for men, and greater considered because its accurate position next to the septum is
+than 100 mL/m2 for women [38], or/and a RV ejection difficulttoestablish,andthemyocardialthicknessoftheRVis
+DRAFTVERSIONFORIEEETMIJOURNAL 5
+ofthesameorderofmagnitudethanthespatialresolution.The to the surface containing the lowest number of vertices. As
+contours were drawn and double-checked by two independent opposed to several MRI cardiac segmentation papers which
+- knowledge_2 (source: summer_internship_notes.pdf): Section: 2.2 LGE (Late Gadolinium Enhancement)
+A contrast agent (Gadolinium) is injected. Dead/scarred tissue holds the agent longer → appears
+bright white. The gold standard for detecting old heart attacks.
+= Scar tissue map (une carte des cicatrices du cœur)
+- knowledge_3 (source: summer_internship_notes.pdf): Section: 4.2 Structural abnormalities (from Cine MRI + short axis stack)
+This is about the heart's shape and size, which you get by combining the moving Cine images
+with the full 3D stack (base-to-apex slices).
+● Dilated (dilatée) cardiomyopathy (DCM): The ventricle chamber is enlarged/stretched out,
+and the walls are thin. Think of it like a balloon that's been overstretched: it holds more
+volume but pumps less effectively. Usually goes along with low EF (Elle s’accompagne
+généralement d’une fraction d’éjection basse).
+● Hypertrophic cardiomyopathy (HCM): The opposite shape problem: walls are abnormally
+thick, chamber can be normal or small. Often genetic. Dangerous because thick muscle can
+obstruct blood flow and is linked to sudden cardiac events, especially in young athletes.
+- knowledge_4 (source: bernard2018_acdc.pdf): Section: (document start)
+TABLEVI methods which obtained an accuracy of 92%.
+RESULTSONTHECLASSIFICATIONCHALLENGE. Let us mention that although MINF and DCM are visually
+similar, MINF implies a local lack of myocardial contraction
+Methods Accuracy
+asopposedtoDCM.Moreover,forDCM,theLVmustexceeds
+Authors Architectures
+100mL/m2.Thisiswhymachinelearningmethodshavebeen
+Khenedetal.[46] RandomForest 0.96
+able to successfully differentiate these pathologies.
+Cetinetal.[53] SVM 0.92
+Isenseeetal.[44] RandomForest 0.92
+Wolterinketal.[50] RandomForest 0.86 C. Discussion
+1)HowfararewefromsolvingtheCMRIanalysisproblem?
+Asforthesegmentationpart,redvaluescorrespondtothebest Automatic classification results (healthy subjects and patients
+scoresforeachmetric.Bluevaluescorrespondtothemethods with 4 different pathologies), showed that the best methods
+with a p-value larger than 5% compared to the best method are very close to each other with an accuracy above 92%.
+(we used an unequal variances two-sample t-test). Although these observations have to be validated on more
+For the clinical indices, Khened et al. [46] globally outper- patients,itappearsfromthisstudythatwelldesignedmachine
+
+Task: write a short (3-5 sentence) integrated clinical impression that
+synthesizes across all agents' findings. Do not introduce any clinical fact
+that is not present in the findings above. If agents disagree or an
+individual finding has low confidence, reflect that uncertainty rather than
+asserting certainty.
+
+Before writing the summary, think step by step and write out that reasoning
+in the "reasoning" field:
+1. What does each contributing agent's findings suggest INDEPENDENTLY, on their own?
+2. Do the agents agree, or does one modality's evidence conflict with or fail to
+   confirm another's? State this explicitly, even if they simply agree.
+3. If knowledge chunks were retrieved, which ones actually apply to this case's
+   findings, and what do they establish?
+4. Only after that reasoning, decide what the integrated summary should say.
+
+Respond with ONLY a single JSON object (no markdown fences, no extra text)
+with this exact shape:
+{
+  "reasoning": "<step-by-step reasoning per the 4 points above>",
+  "summary": "<3-5 sentence integrated clinical impression>",
+  "traceability": [
+    {"statement": "<short phrase from the summary>", "agent_id": "<agent_id or 'knowledge'>", "feature": "<exact feature name or knowledge_<i>>"}
+  ]
+}
+
+Rules:
+- Every entry in "traceability" must reference one of these exact (agent_id, feature) pairs: (ecg, "duration_s"), (ecg, "qrs_count"), (ecg, "heart_rate_mean_bpm"), (ecg, "heart_rate_std_bpm"), (ecg, "rr_mean_ms"), (ecg, "rr_std_ms"), (ecg, "qrs_duration_mean_ms"), (ecg, "qrs_duration_std_ms"), (mri, "lv_volume_ed_ml"), (mri, "lv_volume_es_ml"), (mri, "rv_volume_ed_ml"), (mri, "rv_volume_es_ml"), (mri, "myocardium_volume_ed_ml"), (mri, "myocardium_volume_es_ml"), (mri, "lv_ejection_fraction_pct"), (mri, "rv_ejection_fraction_pct"), (mri, "pathology_DCM_probability"), (mri, "pathology_HCM_probability"), (mri, "pathology_MINF_probability"), (mri, "pathology_NOR_probability"), (mri, "pathology_RV_probability"), (mri, "short_axis_mid_ed"), (knowledge, "knowledge_0"), (knowledge, "knowledge_1"), (knowledge, "knowledge_2"), (knowledge, "knowledge_3"), (knowledge, "knowledge_4")
+- Every part of the summary that states a specific fact must have a corresponding traceability entry.
+- The flags listed above (e.g. "high_..._suspected" vs "low_..._suspected") already indicate the correct
+  direction for that measurement - describe it consistently with the flag, do not independently judge from
+  the raw number whether it counts as high or low.
+- Every qualitative claim in the summary (e.g. "low", "high", "elevated", "reduced", "suspected") must be grounded in a cited knowledge_<i> chunk that actually defines the relevant threshold or criterion - not just the raw numeric finding alone. If no retrieved chunk supports a qualitative claim you would otherwise make, state the number without the qualitative label rather than asserting it ungrounded.
+- The "reasoning" field is required and must be filled in BEFORE "summary" conceptually (it comes first in the JSON) - it is an audit trail, not shown to the end user, so it can be longer and more exploratory than the summary itself.
+- Do not include any field or text outside this JSON object.
+
+
+Your previous response could not be parsed: Directional/citation consistency check failed: flag "low_lv_ejection_fraction_suspected" implies the opposite of ['normal'] in: "left ventricular volume greater than 100 mL/m2; hypertrophic cardiomyopathy (HCM) has a normal cardiac function (ejection fraction >55%)" (sentence: "The retrieved knowledge indicates that dilated cardiomyopathy is defined as an ejection fraction below 40%, and left ventricular volume greater than 100 mL/m2; hypertrophic cardiomyopathy (HCM) has a normal cardiac function (ejection fraction >55%) but with myocardial segments thicker than 15 mm; MINF: Patients have an ejection fraction below 40% and abnormal myocardial contractions."). Return ONLY the corrected JSON object, nothing else.
+
+=== RAW RESPONSE ===
+```json
+{
+  "reasoning": "The ECG agent reports a mean heart rate of 63.9 bpm with a standard deviation of 1.4 bpm, suggesting normal sinus rhythm. The QRS duration is 59.3 ms with a standard deviation of 46.2 ms, also indicating normal conduction. The MRI agent shows LV and RV volumes, ejection fractions, and probabilities for several pathologies (DCM, HCM, MINF). The retrieved knowledge chunks provide definitions for DCM, HCM, and MINF based on ejection fraction and volume criteria. Thus the integrated clinical impression should summarize these findings.",
+  "summary": "The patient presents with a heart rate of 63.9 bpm, indicating normal sinus rhythm. Left ventricular volumes are within normal limits (LV: ED=178.2 mL, ES=131.8 mL; RV: ED=88.9 mL, ES=34.1 mL). The patient shows a low LV ejection fraction of 26% and high probability for dilated cardiomyopathy (DCM), hypertrophic cardiomyopathy (HCM) and prior myocardial infarction with reduced function (MINF).",
+  "traceability": [
+    {"statement": "heart rate", "agent_id": "ecg", "feature": "heart_rate_mean_bpm"},
+    {"statement": "heart rate standard deviation", "agent_id": "ecg", "feature": "heart_rate_std_bpm"},
+    {"statement": "left ventricular volume ED", "agent_id": "mri", "feature": "lv_volume_ed_ml"},
+    {"statement": "left ventricular volume ES", "agent_id": "mri", "feature": "lv_volume_es_ml"},
+    {"statement": "right ventricular volume ED", "agent_id": "mri", "feature": "rv_volume_ed_ml"},
+    {"statement": "right ventricular volume ES", "agent_id": "mri", "feature": "rv_volume_es_ml"},
+    {"statement": "left ventricular ejection fraction", "agent_id": "mri", "feature": "lv_ejection_fraction_pct"},
+    {"statement": "dilated cardiomyopathy probability", "agent_id": "mri", "feature": "pathology_DCM_probability"},
+    {"statement": "hypertrophic cardiomyopathy probability", "agent_id": "mri", "feature": "pathology_HCM_probability"},
+    {"statement": "prior myocardial infarction with reduced function probability", "agent_id": "mri", "feature": "pathology_MINF_probability"}
+  ]
+}
+```

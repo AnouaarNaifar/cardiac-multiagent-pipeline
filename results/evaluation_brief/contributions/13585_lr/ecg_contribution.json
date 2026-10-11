@@ -1,0 +1,153 @@
+{
+  "agent_id": "ecg",
+  "record_id": "13585_lr",
+  "findings": [
+    {
+      "feature": "duration_s",
+      "value": 10.0,
+      "rationale": "The analyzed ECG trace duration is 10 seconds.",
+      "confidence": 1.0,
+      "evidence_ref": "duration_s",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "qrs_count",
+      "value": 16,
+      "rationale": "The number of detected QRS complexes is 16.",
+      "confidence": 1.0,
+      "evidence_ref": "qrs_count",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "heart_rate_mean_bpm",
+      "value": 100.4,
+      "rationale": "The estimated mean heart rate is 100.4 bpm.",
+      "confidence": 1.0,
+      "evidence_ref": "heart_rate_mean_bpm",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "heart_rate_std_bpm",
+      "value": 15.6,
+      "rationale": "The standard deviation of the estimated heart rate is 15.6 bpm.",
+      "confidence": 1.0,
+      "evidence_ref": "heart_rate_std_bpm",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "rr_mean_ms",
+      "value": 612.0,
+      "rationale": "The mean RR interval is 612.0 ms.",
+      "confidence": 1.0,
+      "evidence_ref": "rr_mean_ms",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "rr_std_ms",
+      "value": 92.3,
+      "rationale": "The standard deviation of the RR interval is 92.3 ms.",
+      "confidence": 1.0,
+      "evidence_ref": "rr_std_ms",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "qrs_duration_mean_ms",
+      "value": 120.6,
+      "rationale": "The mean QRS duration is 120.6 ms.",
+      "confidence": 1.0,
+      "evidence_ref": "qrs_duration_mean_ms",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "qrs_duration_std_ms",
+      "value": 44.8,
+      "rationale": "The standard deviation of the QRS duration is 44.8 ms.",
+      "confidence": 1.0,
+      "evidence_ref": "qrs_duration_std_ms",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "rhythm_irregularity_flag",
+      "value": true,
+      "rationale": "The algorithm suspects rhythm irregularity.",
+      "confidence": 1.0,
+      "evidence_ref": "rhythm_irregularity_flag",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "rhythm_cv",
+      "value": 0.15,
+      "rationale": "The RR interval coefficient of variation (CV) is 0.15.",
+      "confidence": 1.0,
+      "evidence_ref": "rhythm_cv",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "embedding_MI_probability",
+      "value": 0.97,
+      "rationale": "The embedding model predicts a high probability of myocardial infarction (MI).",
+      "confidence": 1.0,
+      "evidence_ref": "embedding_MI_probability",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "embedding_CD_probability",
+      "value": 0.31,
+      "rationale": "The embedding model predicts a moderate probability of conduction disturbance (CD).",
+      "confidence": 1.0,
+      "evidence_ref": "embedding_CD_probability",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "embedding_HYP_probability",
+      "value": 0.02,
+      "rationale": "The embedding model predicts a low probability of hypertrophy (HYP).",
+      "confidence": 1.0,
+      "evidence_ref": "embedding_HYP_probability",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "embedding_NORM_probability",
+      "value": 0.0,
+      "rationale": "The embedding model predicts a very low probability of normal (NORM).",
+      "confidence": 1.0,
+      "evidence_ref": "embedding_NORM_probability",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "embedding_STTC_probability",
+      "value": 0.17,
+      "rationale": "The embedding model predicts a moderate probability of ST/T change (STTC).",
+      "confidence": 1.0,
+      "evidence_ref": "embedding_STTC_probability",
+      "evidence_type": "numeric_feature"
+    }
+  ],
+  "flags_for_review": [
+    "MI",
+    "embedding_MI_pattern_suspected",
+    "irregular_rhythm_suspected",
+    "wide_qrs_suspected"
+  ],
+  "trace": {
+    "features_used": {
+      "duration_s": 10.0,
+      "qrs_count": 16,
+      "heart_rate_mean_bpm": 100.35106933972733,
+      "heart_rate_std_bpm": 15.615194519333583,
+      "rr_mean_ms": 612.0000000000001,
+      "rr_std_ms": 92.31828998994006,
+      "qrs_duration_mean_ms": 120.625,
+      "qrs_duration_std_ms": 44.78682144336658,
+      "rhythm_irregularity_flag": true,
+      "rhythm_cv": 0.15084687906852948,
+      "embedding_CD_probability": 0.30514219403266907,
+      "embedding_HYP_probability": 0.01922917179763317,
+      "embedding_MI_probability": 0.9662848711013794,
+      "embedding_NORM_probability": 4.3962641939288005e-05,
+      "embedding_STTC_probability": 0.16885104775428772
+    },
+    "model": "ollama:medgemma:4b",
+    "attempts": 2
+  }
+}

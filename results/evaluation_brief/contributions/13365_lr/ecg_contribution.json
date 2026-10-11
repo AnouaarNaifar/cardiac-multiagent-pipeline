@@ -1,0 +1,110 @@
+{
+  "agent_id": "ecg",
+  "record_id": "13365_lr",
+  "findings": [
+    {
+      "feature": "duration_s",
+      "value": 10.0,
+      "rationale": "The analyzed ECG trace duration is 10 seconds.",
+      "confidence": 1.0,
+      "evidence_ref": "duration_s",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "qrs_count",
+      "value": 10,
+      "rationale": "A total of 10 QRS complexes were detected.",
+      "confidence": 1.0,
+      "evidence_ref": "qrs_count",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "heart_rate_mean_bpm",
+      "value": 62.4,
+      "rationale": "The estimated mean heart rate is 62.4 bpm.",
+      "confidence": 1.0,
+      "evidence_ref": "heart_rate_mean_bpm",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "heart_rate_std_bpm",
+      "value": 1.6,
+      "rationale": "The standard deviation of the heart rate is 1.6 bpm.",
+      "confidence": 1.0,
+      "evidence_ref": "heart_rate_std_bpm",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "rr_mean_ms",
+      "value": 962.2,
+      "rationale": "The mean RR interval is 962.2 ms.",
+      "confidence": 1.0,
+      "evidence_ref": "rr_mean_ms",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "rr_std_ms",
+      "value": 25.3,
+      "rationale": "The standard deviation of the RR interval is 25.3 ms.",
+      "confidence": 1.0,
+      "evidence_ref": "rr_std_ms",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "qrs_duration_mean_ms",
+      "value": 89.0,
+      "rationale": "The mean QRS duration is 89.0 ms.",
+      "confidence": 1.0,
+      "evidence_ref": "qrs_duration_mean_ms",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "qrs_duration_std_ms",
+      "value": 52.0,
+      "rationale": "The standard deviation of the QRS duration is 52.0 ms.",
+      "confidence": 1.0,
+      "evidence_ref": "qrs_duration_std_ms",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "embedding_NORM_probability",
+      "value": 0.12,
+      "rationale": "The probability assigned to the NORM class by the embedding model is 12%.",
+      "confidence": 1.0,
+      "evidence_ref": "embedding_NORM_probability",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "embedding_STTC_probability",
+      "value": 0.76,
+      "rationale": "The probability assigned to the STTC class by the embedding model is 76%.",
+      "confidence": 1.0,
+      "evidence_ref": "embedding_STTC_probability",
+      "evidence_type": "numeric_feature"
+    }
+  ],
+  "flags_for_review": [
+    "embedding_STTC_pattern_suspected"
+  ],
+  "trace": {
+    "features_used": {
+      "duration_s": 10.0,
+      "qrs_count": 10,
+      "heart_rate_mean_bpm": 62.398787442728235,
+      "heart_rate_std_bpm": 1.6415677024883493,
+      "rr_mean_ms": 962.2222222222222,
+      "rr_std_ms": 25.288459281646762,
+      "qrs_duration_mean_ms": 89.0,
+      "qrs_duration_std_ms": 52.04805471869242,
+      "rhythm_irregularity_flag": false,
+      "rhythm_cv": 0.026281308722265688,
+      "embedding_CD_probability": 0.04792012646794319,
+      "embedding_HYP_probability": 0.060818567872047424,
+      "embedding_MI_probability": 0.03389432281255722,
+      "embedding_NORM_probability": 0.11833200603723526,
+      "embedding_STTC_probability": 0.7584258913993835
+    },
+    "model": "ollama:medgemma:4b",
+    "attempts": 1
+  }
+}

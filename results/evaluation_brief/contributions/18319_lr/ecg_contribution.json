@@ -1,0 +1,112 @@
+{
+  "agent_id": "ecg",
+  "record_id": "18319_lr",
+  "findings": [
+    {
+      "feature": "duration_s",
+      "value": 10.0,
+      "rationale": "The analyzed ECG trace duration is 10 seconds.",
+      "confidence": 1.0,
+      "evidence_ref": "duration_s",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "qrs_count",
+      "value": 13,
+      "rationale": "The number of detected QRS complexes is 13.",
+      "confidence": 1.0,
+      "evidence_ref": "qrs_count",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "heart_rate_mean_bpm",
+      "value": 78.7,
+      "rationale": "The estimated mean heart rate is 78.7 bpm.",
+      "confidence": 1.0,
+      "evidence_ref": "heart_rate_mean_bpm",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "heart_rate_std_bpm",
+      "value": 2.0,
+      "rationale": "The standard deviation of the heart rate is 2 bpm.",
+      "confidence": 1.0,
+      "evidence_ref": "heart_rate_std_bpm",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "rr_mean_ms",
+      "value": 762.5,
+      "rationale": "The mean RR interval is 762.5 ms.",
+      "confidence": 1.0,
+      "evidence_ref": "rr_mean_ms",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "rr_std_ms",
+      "value": 18.8,
+      "rationale": "The standard deviation of the RR interval is 18.8 ms.",
+      "confidence": 1.0,
+      "evidence_ref": "rr_std_ms",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "qrs_duration_mean_ms",
+      "value": 134.6,
+      "rationale": "The mean QRS duration is 134.6 ms.",
+      "confidence": 1.0,
+      "evidence_ref": "qrs_duration_mean_ms",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "qrs_duration_std_ms",
+      "value": 33.2,
+      "rationale": "The standard deviation of the QRS duration is 33.2 ms.",
+      "confidence": 1.0,
+      "evidence_ref": "qrs_duration_std_ms",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "embedding_MI_probability",
+      "value": 0.85,
+      "rationale": "The learned embedding model predicts a high probability of myocardial infarction (85%).",
+      "confidence": 1.0,
+      "evidence_ref": "embedding_MI_probability",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "embedding_NORM_probability",
+      "value": 0.24,
+      "rationale": "The learned embedding model predicts a normal probability (24%).",
+      "confidence": 1.0,
+      "evidence_ref": "embedding_NORM_probability",
+      "evidence_type": "numeric_feature"
+    }
+  ],
+  "flags_for_review": [
+    "MI",
+    "embedding_MI_pattern_suspected",
+    "wide_qrs_suspected"
+  ],
+  "trace": {
+    "features_used": {
+      "duration_s": 10.0,
+      "qrs_count": 13,
+      "heart_rate_mean_bpm": 78.73827679609741,
+      "heart_rate_std_bpm": 2.02277776315545,
+      "rr_mean_ms": 762.5000000000001,
+      "rr_std_ms": 18.763883748662856,
+      "qrs_duration_mean_ms": 134.6153846153846,
+      "qrs_duration_std_ms": 33.19299847752526,
+      "rhythm_irregularity_flag": false,
+      "rhythm_cv": 0.02460837212939391,
+      "embedding_CD_probability": 0.05959952995181084,
+      "embedding_HYP_probability": 0.07768288254737854,
+      "embedding_MI_probability": 0.8510872721672058,
+      "embedding_NORM_probability": 0.2423660010099411,
+      "embedding_STTC_probability": 0.0018811095505952835
+    },
+    "model": "ollama:medgemma:4b",
+    "attempts": 1
+  }
+}

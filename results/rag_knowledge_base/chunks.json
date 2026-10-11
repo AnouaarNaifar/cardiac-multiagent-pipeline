@@ -1,0 +1,583 @@
+[
+  {
+    "text": "Section: 1. General Principles\nECG is used clinically to detect and assess cardiac chamber hypertrophy.\nThe principal ECG changes associated with ventricular hypertrophy include increased QRS amplitude and\nduration, changes in QRS vectors, ST-segment and T-wave abnormalities, and P-wave abnormalities.\nECG criteria for hypertrophy have historically been compared with clinical, autopsy, echocardiographic,\nCT, and magnetic resonance assessments of ventricular mass.\nECG remains clinically useful because it is widely available, convenient, and inexpensive.\nNo ECG criterion should be interpreted as an absolute measurement of anatomic chamber mass.",
+    "header": "1. General Principles",
+    "page_num": 1,
+    "source": "AHA_ACCF_HRS_2009_ECG_Chamber_Hypertrophy_RAG_Source.pdf",
+    "chunk_type": "text"
+  },
+  {
+    "text": "Section: 2. Left Ventricular Hypertrophy — LVH\nMost commonly used ECG criteria for LVH are based on QRS voltage.\nThe Sokolow–Lyon criterion uses the sum of S-wave amplitude in V1 and R-wave amplitude in V5 or V6. A\nvalue of 35 mm is a commonly cited threshold in the source.\nThe Cornell voltage criterion uses the sum of S-wave amplitude in V3 and R-wave amplitude in aVL. The\nsource lists thresholds of 28 mm in men and 20 mm in women.\nOther voltage criteria include R in aVL ≥11 mm, R in aVF ≥20 mm, and S in V1 ≥23 mm.\nQRS duration may be increased in LVH. This can appear as diffuse QRS prolongation or increased time\nfrom QRS onset to the R-wave peak in V5 or V6.\nVoltage-duration products and other composite criteria have also been developed.",
+    "header": "2. Left Ventricular Hypertrophy — LVH",
+    "page_num": 1,
+    "source": "AHA_ACCF_HRS_2009_ECG_Chamber_Hypertrophy_RAG_Source.pdf",
+    "chunk_type": "text"
+  },
+  {
+    "text": "Section: 3. LVH Diagnostic Performance\nDifferent LVH criteria do not identify exactly the same patients.\nSensitivity of individual ECG criteria for LVH is generally low, often below 50%, while specificity is\ngenerally high, often around 85–90%.\nDiagnostic performance varies with the criterion and the patient population.\nInterpretations should specify which criteria were used.\nAutomated ECG systems should consider multiple validated criteria rather than relying on a single\nvoltage measurement.\nAHA/ACCF/HRS 2009 ECG Hypertrophy — RAG Source Page 1\nQRS voltage can be influenced by age, sex, body habitus, and population characteristics.",
+    "header": "3. LVH Diagnostic Performance",
+    "page_num": 1,
+    "source": "AHA_ACCF_HRS_2009_ECG_Chamber_Hypertrophy_RAG_Source.pdf",
+    "chunk_type": "text"
+  },
+  {
+    "text": "Section: 4. Right Ventricular Hypertrophy — RVH\nRVH may produce increased R-wave amplitude in right precordial leads, increased S-wave amplitude in\nleft precordial leads, rightward QRS axis, and other QRS changes.\nThe source lists a commonly cited criterion of R in V1 + S in V5 or V6 ≥10.5 mm.\nAn R-wave peak in V1 with QRS duration ≥0.12 seconds and a QR pattern in V1 are among described\ncriteria or supporting findings.\nSupporting findings can include an RSR pattern in V1 with QRS duration ≥0.12 seconds, rightward axis\npatterns, and T-wave abnormalities in right precordial leads.\nNo single criterion or limited set of criteria should be used exclusively for RVH diagnosis.\nRVH probability should be interpreted in light of clinical diagnoses such as congenital heart disease,\nvalvular disease, or chronic pulmonary disease.\nRVH criteria should be considered in relation to age, sex, body habitus, and other patient characteristics.",
+    "header": "4. Right Ventricular Hypertrophy — RVH",
+    "page_num": 2,
+    "source": "AHA_ACCF_HRS_2009_ECG_Chamber_Hypertrophy_RAG_Source.pdf",
+    "chunk_type": "text"
+  },
+  {
+    "text": "Section: 5. Biventricular Hypertrophy\nECG detection of biventricular hypertrophy has particularly low sensitivity because increased QRS\nvectors from RVH and LVH can partially cancel each other.\nBiventricular hypertrophy should be suggested when accepted criteria for both RVH and LVH are present.\nRight axis deviation in a patient with ECG evidence of LVH, prominent S waves in V5 or V6, tall biphasic\nR/S complexes, and signs of right atrial abnormality can support suspicion of biventricular hypertrophy.\nBecause sensitivity is low, absence of ECG criteria does not exclude biventricular hypertrophy.",
+    "header": "5. Biventricular Hypertrophy",
+    "page_num": 2,
+    "source": "AHA_ACCF_HRS_2009_ECG_Chamber_Hypertrophy_RAG_Source.pdf",
+    "chunk_type": "text"
+  },
+  {
+    "text": "Section: 6. Left Atrial Abnormality\nAbnormal P-wave patterns can be associated with left or right atrial abnormalities.\nA total P-wave duration of 120 ms or more is commonly present in patients with ECG signs considered to\nrepresent left atrial abnormality.\nA purely negative P wave in V1 can be suggestive but is not specific by itself.\nLeft atrial abnormality is associated with changes in the later P-wave forces and may be accompanied by\nP-wave axis changes.",
+    "header": "6. Left Atrial Abnormality",
+    "page_num": 2,
+    "source": "AHA_ACCF_HRS_2009_ECG_Chamber_Hypertrophy_RAG_Source.pdf",
+    "chunk_type": "text"
+  },
+  {
+    "text": "Section: 7. Right Atrial Abnormality\nRight atrial abnormality is typically associated with increased P-wave amplitude and a tendency toward\nrightward P-wave vector shift.\nA tall upright P wave in lead II greater than 2.5 mm is a characteristic finding.\nProminent initial positivity of the P wave in V1 or V2 of 1.5 mm or more also indicates right atrial\nabnormality.\nRightward P-wave axis and a peaked P-wave form can provide supporting evidence.\nTotal P-wave duration is usually normal in right atrial abnormality, although important exceptions occur\nin some patients with repaired congenital heart disease.",
+    "header": "7. Right Atrial Abnormality",
+    "page_num": 2,
+    "source": "AHA_ACCF_HRS_2009_ECG_Chamber_Hypertrophy_RAG_Source.pdf",
+    "chunk_type": "text"
+  },
+  {
+    "text": "Section: 8. Pediatric Considerations\nPediatric ECG voltage criteria for ventricular hypertrophy are age-dependent.\nAHA/ACCF/HRS 2009 ECG Hypertrophy — RAG Source Page 2\nThe source provides separate age-related criteria for pediatric LVH and RVH.\nAdult voltage thresholds should not be automatically applied to children.\nWhen pediatric criteria are used, age and the appropriate pediatric reference values must be retained as\nmetadata.",
+    "header": "8. Pediatric Considerations",
+    "page_num": 2,
+    "source": "AHA_ACCF_HRS_2009_ECG_Chamber_Hypertrophy_RAG_Source.pdf",
+    "chunk_type": "text"
+  },
+  {
+    "text": "Section: 9. Clinical Interpretation Rules\nECG findings associated with chamber hypertrophy should be interpreted together rather than as\nisolated abnormalities.\nA positive voltage criterion does not by itself establish anatomic hypertrophy.\nA negative ECG does not reliably exclude hypertrophy because ECG sensitivity is limited.\nThe clinical context and, when needed, imaging should be considered when confirming chamber\nhypertrophy.\nCriteria may behave differently across patient populations and body habitus.",
+    "header": "9. Clinical Interpretation Rules",
+    "page_num": 3,
+    "source": "AHA_ACCF_HRS_2009_ECG_Chamber_Hypertrophy_RAG_Source.pdf",
+    "chunk_type": "text"
+  },
+  {
+    "text": "Section: 10. RAG Retrieval Rules\nUse one ECG concept per chunk.\nKeep each voltage formula and its threshold in the same chunk.\nNever separate a threshold from the lead configuration to which it applies.\nKeep adult and pediatric criteria in separate chunks.\nKeep LVH, RVH, biventricular hypertrophy, left atrial abnormality, and right atrial abnormality separate.\nPreserve limitations such as low sensitivity and population dependence because they prevent\noverconfident retrieval-based answers.\nDo not ingest the paper's reference list or author/contributor disclosures as clinical knowledge.\nRecommended metadata: source_id=AHA_ECG_HYPERTROPHY_2009; topic; chamber; criterion_type;\nage_group; keywords; original page if available.",
+    "header": "10. RAG Retrieval Rules",
+    "page_num": 3,
+    "source": "AHA_ACCF_HRS_2009_ECG_Chamber_Hypertrophy_RAG_Source.pdf",
+    "chunk_type": "text"
+  },
+  {
+    "text": "Section: 11. Example Retrieval Units\nTopic: Sokolow–Lyon LVH criterion.\nQuestion: What is the Sokolow–Lyon voltage criterion for LVH?\nAnswer: It uses the sum of S-wave amplitude in V1 and R-wave amplitude in V5 or V6; the source lists 35\nmm as a commonly cited threshold.\nSource ID: AHA_ECG_HYPERTROPHY_2009.\nKeywords: LVH, left ventricular hypertrophy, Sokolow-Lyon, V1, V5, V6, QRS voltage.\nTopic: RVH limitation.\nQuestion: Can one ECG criterion diagnose RVH reliably?\nAnswer: No. The source recommends against relying exclusively on a single criterion or limited set of\ncriteria; clinical context and validated criteria should be considered.\nSource ID: AHA_ECG_HYPERTROPHY_2009.\nAHA/ACCF/HRS 2009 ECG Hypertrophy — RAG Source Page 3",
+    "header": "11. Example Retrieval Units",
+    "page_num": 3,
+    "source": "AHA_ACCF_HRS_2009_ECG_Chamber_Hypertrophy_RAG_Source.pdf",
+    "chunk_type": "text"
+  },
+  {
+    "text": "Section: 2021 ESC Heart Failure — RAG Knowledge\nSource\nEnglish • Text only • No tables • Retrieval-oriented condensed source\nSource identity. McDonagh TA, Metra M, Adamo M, et al. 2021 ESC Guidelines for the diagnosis and\ntreatment of acute and chronic heart failure. European Society of Cardiology / European Heart Journal,\n2021.\nPurpose. This document is a clean, condensed representation of clinically useful facts from the ESC\nguideline. It is designed for retrieval and question answering. References, long evidence discussions,\nrepeated prose, and unrelated material are excluded.\nRAG note. Each section below contains short, self-contained facts. Numerical thresholds remain attached\nto their clinical context.",
+    "header": "2021 ESC Heart Failure — RAG Knowledge",
+    "page_num": 1,
+    "source": "ESC_2021_Heart_Failure_RAG_Source.pdf",
+    "chunk_type": "text"
+  },
+  {
+    "text": "Section: 1. Heart Failure Definition\nHeart failure (HF) is a clinical syndrome associated with symptoms and signs caused by a structural\nand/or functional cardiac abnormality.\nSymptoms and signs alone are not sufficient to establish the diagnosis. Objective evidence of cardiac\nstructural or functional abnormality is required.\nCommon symptoms include breathlessness, fatigue, and ankle swelling.\nPossible signs include elevated jugular venous pressure, pulmonary crackles, and peripheral edema.",
+    "header": "1. Heart Failure Definition",
+    "page_num": 1,
+    "source": "ESC_2021_Heart_Failure_RAG_Source.pdf",
+    "chunk_type": "text"
+  },
+  {
+    "text": "Section: 2. Heart Failure Phenotypes\nHFrEF: heart failure with reduced ejection fraction. LVEF is ≤40%.\nHFmrEF: heart failure with mildly reduced ejection fraction. LVEF is 41–49%. Symptoms and/or signs of\nHF are present; raised natriuretic peptides and/or relevant structural abnormalities support the\ndiagnosis.\nHFpEF: heart failure with preserved ejection fraction. LVEF is ≥50%, with symptoms and signs plus\nobjective evidence of relevant structural or functional abnormalities and/or raised natriuretic peptides.\nLVEF means left ventricular ejection fraction and is commonly assessed by echocardiography.",
+    "header": "2. Heart Failure Phenotypes",
+    "page_num": 1,
+    "source": "ESC_2021_Heart_Failure_RAG_Source.pdf",
+    "chunk_type": "text"
+  },
+  {
+    "text": "Section: 3. Chronic Heart Failure Diagnosis\nWhen HF is suspected, assess symptoms and/or signs, risk factors, previous cardiovascular disease, and\nthe ECG.\nAn abnormal ECG increases the likelihood of HF. A normal ECG makes HF less likely.\nIn the non-acute diagnostic pathway, NT-proBNP ≥125 pg/mL or BNP ≥35 pg/mL prompts further\nevaluation.\nEchocardiography is used to assess cardiac structure and function and to measure LVEF.\nAfter objective abnormalities are identified, define the HF phenotype as HFrEF, HFmrEF, or HFpEF.\nThe underlying etiology should then be investigated because it can influence management.",
+    "header": "3. Chronic Heart Failure Diagnosis",
+    "page_num": 1,
+    "source": "ESC_2021_Heart_Failure_RAG_Source.pdf",
+    "chunk_type": "text"
+  },
+  {
+    "text": "Section: 4. NYHA Functional Classification\nNYHA Class I: no limitation of physical activity. Ordinary physical activity does not cause undue\nsymptoms.\nESC 2021 Heart Failure — RAG Source Page 1\nNYHA Class II: slight limitation of physical activity. The patient is comfortable at rest, but ordinary\nphysical activity causes symptoms.\nNYHA Class III: marked limitation of physical activity. The patient is comfortable at rest, but activity less\nthan ordinary causes symptoms.\nNYHA Class IV: unable to carry out physical activity without discomfort. Symptoms may be present at\nrest and increase with activity.",
+    "header": "4. NYHA Functional Classification",
+    "page_num": 1,
+    "source": "ESC_2021_Heart_Failure_RAG_Source.pdf",
+    "chunk_type": "text"
+  },
+  {
+    "text": "Section: 5. Major Heart Failure Etiologies\nImportant causes and etiologies to investigate include:\n• Coronary artery disease and myocardial infarction.\n• Hypertension.\n• Valvular heart disease.\n• Arrhythmias.\n• Dilated, hypertrophic, restrictive, and arrhythmogenic cardiomyopathies.\n• Congenital heart disease.\n• Myocarditis and selected infectious causes.\n• Peripartum cardiomyopathy.\n• Takotsubo syndrome.\n• Relevant toxins or cardiotoxic exposures.",
+    "header": "5. Major Heart Failure Etiologies",
+    "page_num": 2,
+    "source": "ESC_2021_Heart_Failure_RAG_Source.pdf",
+    "chunk_type": "text"
+  },
+  {
+    "text": "Section: 6. Diagnostic Tests\nECG: identifies electrical and structural clues. A normal ECG makes HF less likely.\nBNP / NT-proBNP: natriuretic peptides used in the HF diagnostic pathway.\nEchocardiography: assesses cardiac structure and function and measures LVEF.\nCoronary assessment: coronary angiography, CT coronary angiography, or stress imaging may be used\nwhen CAD is suspected.\nAmbulatory ECG: may be used when an arrhythmia is suspected.\nCardiac magnetic resonance: can characterize cardiomyopathies, myocarditis, and other structural\nabnormalities.\nLaboratory tests: selected tests help identify contributing conditions and complications.",
+    "header": "6. Diagnostic Tests",
+    "page_num": 2,
+    "source": "ESC_2021_Heart_Failure_RAG_Source.pdf",
+    "chunk_type": "text"
+  },
+  {
+    "text": "Section: 7. Acute Heart Failure\nAcute heart failure (AHF) is a separate diagnostic and management pathway from chronic/non-acute HF.\nFor suspected AHF, rule-out thresholds are BNP <100 pg/mL, NT-proBNP <300 pg/mL, or MR-proANP\n<120 pg/mL.\nFor NT-proBNP, age-specific rule-in values include >450 pg/mL for age <55 years, >900 pg/mL for age\n55–75 years, and >1800 pg/mL for age >75 years.\nInitial laboratory assessment may include troponin, serum creatinine, electrolytes, blood urea nitrogen or\nurea, TSH, and liver function tests.\nD-dimer is considered when acute pulmonary embolism is suspected. Procalcitonin may be considered\nwhen infection or pneumonia is suspected. Arterial blood gas analysis is used when respiratory distress\nrequires precise oxygen and carbon dioxide assessment. Lactate and pH are relevant when cardiogenic\nshock or hypoperfusion is suspected.\nESC 2021 Heart Failure — RAG Source Page 2\nComprehensive echocardiography is part of the evaluation after AHF is confirmed or strongly suspected.",
+    "header": "7. Acute Heart Failure",
+    "page_num": 2,
+    "source": "ESC_2021_Heart_Failure_RAG_Source.pdf",
+    "chunk_type": "text"
+  },
+  {
+    "text": "Section: 8. Acute Pulmonary Edema\nAcute pulmonary edema is related to lung congestion.\nClinical features can include dyspnea with orthopnea, respiratory failure with hypoxaemia or\nhypercapnia, tachypnea above 25 breaths/min, and increased work of breathing.\nWhen indicated, treatment may include oxygen or non-invasive respiratory support, intravenous\ndiuretics, and intravenous vasodilators when systolic blood pressure is sufficiently high.\nIf acute pulmonary edema is associated with low cardiac output in advanced HF, inotropes, vasopressors,\nand/or mechanical circulatory support may be required.",
+    "header": "8. Acute Pulmonary Edema",
+    "page_num": 3,
+    "source": "ESC_2021_Heart_Failure_RAG_Source.pdf",
+    "chunk_type": "text"
+  },
+  {
+    "text": "Section: 9. Treatment — Core Retrieval Facts\nHFrEF: major guideline-directed drug classes include ACE inhibitors or ARNI, beta-blockers,\nmineralocorticoid receptor antagonists, and SGLT2 inhibitors. Diuretics are used to relieve congestion\nwhen fluid retention is present.\nHFmrEF: diuretics are recommended when congestion is present. Other treatments may be considered\naccording to the clinical context.\nHFpEF: management focuses on identifying and treating underlying causes, cardiovascular risk factors,\nand comorbidities, with treatment of congestion when present.\nTreatment choices depend on the individual clinical situation, contraindications, renal function, blood\npressure, and comorbidities. Detailed dosing is intentionally omitted from this RAG source.",
+    "header": "9. Treatment — Core Retrieval Facts",
+    "page_num": 3,
+    "source": "ESC_2021_Heart_Failure_RAG_Source.pdf",
+    "chunk_type": "text"
+  },
+  {
+    "text": "Section: 10. Advanced Heart Failure\nAdvanced HF requires all specified criteria to be present despite optimal medical treatment.\nSevere and persistent symptoms are defined as NYHA class III or IV.\nSevere cardiac dysfunction may include LVEF ≤30%, isolated right ventricular failure, non-operable\nsevere valve abnormalities, non-operable severe congenital abnormalities, or persistently\nhigh/increasing BNP or NT-proBNP together with severe LV diastolic dysfunction or structural\nabnormalities consistent with HFpEF.\nSevere recurrent events include pulmonary or systemic congestion requiring high-dose intravenous\ndiuretics, low-output episodes requiring inotropes or vasoactive drugs, or malignant arrhythmias causing\nmore than one unplanned visit or hospitalization in the previous 12 months.\nSeverely impaired exercise capacity includes inability to exercise, a 6-minute walk test distance <300 m,\npeak VO₂ <12 mL/kg/min, or peak VO₂ <50% of predicted when the limitation is considered cardiac in\norigin.",
+    "header": "10. Advanced Heart Failure",
+    "page_num": 3,
+    "source": "ESC_2021_Heart_Failure_RAG_Source.pdf",
+    "chunk_type": "text"
+  },
+  {
+    "text": "Section: 11. RAG Retrieval Rules\nUse one main clinical idea per chunk.\nKeep numerical thresholds together with the condition they describe, especially when acute and\nnon-acute thresholds differ.\nKeep abbreviations explicit: HF, HFrEF, HFmrEF, HFpEF, LVEF, BNP, NT-proBNP, NYHA, AHF.\nSeparate diagnosis, phenotype classification, etiology, treatment, acute HF, and advanced HF into\ndifferent chunks.\nDo not ingest reference lists, author lists, page headers, URLs, or repeated guideline boilerplate as\nclinical knowledge.\nESC 2021 Heart Failure — RAG Source Page 3\nRecommended metadata: source_id=ESC_HF_2021; topic; section; keywords; original page if available.",
+    "header": "11. RAG Retrieval Rules",
+    "page_num": 3,
+    "source": "ESC_2021_Heart_Failure_RAG_Source.pdf",
+    "chunk_type": "text"
+  },
+  {
+    "text": "Section: 12. Example Retrieval Unit\nTopic: Chronic HF diagnosis.\nQuestion: What is the basic diagnostic principle for chronic heart failure?\nAnswer: Diagnosis requires compatible symptoms and/or signs together with objective evidence of\ncardiac structural or functional abnormality.\nSource ID: ESC_HF_2021.\nKeywords: heart failure, diagnosis, symptoms, signs, cardiac dysfunction, LVEF, echocardiography.\nESC 2021 Heart Failure — RAG Source Page 4",
+    "header": "12. Example Retrieval Unit",
+    "page_num": 4,
+    "source": "ESC_2021_Heart_Failure_RAG_Source.pdf",
+    "chunk_type": "text"
+  },
+  {
+    "text": "Section: 1. What is an ECG?\nAn ECG (electrocardiogram) records the electrical activity of the heart\nover time. Each heartbeat produces a repeating pattern of waves. The\nECG captures and traces this activity as a continuous curve.",
+    "header": "1. What is an ECG?",
+    "page_num": 1,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "text"
+  },
+  {
+    "text": "Section: 1.1 How Are Signals Recorded?\nElectrodes are placed on the skin (arms, legs, chest). Each pair of\nelectrodes forms a lead that captures the signal from a different angle.\n• A standard ECG has 12 leads.\n• 12 points of view on the same heart, at the same time.",
+    "header": "1.1 How Are Signals Recorded?",
+    "page_num": 1,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "text"
+  },
+  {
+    "text": "Section: 1.2 Sampling Frequency\nSampling frequency is the number of measurements of the electrical\nsignal taken per second.\n• Higher frequency → more temporal detail.\n• Higher frequency → heavier data (larger file size).\nECG at 500 Hz: 500 measurements per second. Each of the 12 leads\nindependently records the heart's electrical voltage 500 times in 1\nsecond, all at the same time points.",
+    "header": "1.2 Sampling Frequency",
+    "page_num": 1,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "text"
+  },
+  {
+    "text": "Section: 1.3 Data Dimensions (Standard ECG)\nItem Value\nSampling frequency 500 Hz\nTypical recording duration 10 seconds\nPoints per lead 500 × 10 = 5,000 points\nNumber of leads 12\nTotal values per patient 5,000 × 12 = 60,000 values",
+    "header": "1.3 Data Dimensions (Standard ECG)",
+    "page_num": 2,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "text"
+  },
+  {
+    "text": "Section: 2. How to Read an ECG\nEvery heartbeat follows a consistent sequence of electrical waves:\nP → QRS → T\n• In a healthy person, this cycle lasts about 0.6–1.0 seconds.\n• The order and timing of these waves are identical across all 12\nECG leads.\n• What changes from lead to lead is the appearance, shape, size,\nand direction.\n• Each lead captures the same electrical event from a different\nangle.",
+    "header": "2. How to Read an ECG",
+    "page_num": 2,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "text"
+  },
+  {
+    "text": "Section: 2.1 The Waves\nP Wave\n• Represents: Atrial contraction (upper chambers push blood into\nventricles).\n• Normal duration: ~80–120 ms\n• Abnormal if: Absent → atrial problem (e.g., atrial fibrillation)\nQRS Complex\n• Represents: Ventricular contraction, the actual heartbeat. Most\nvisible peak.\n• Normal duration: ~80–100 ms\n• Abnormal if: Wide and deformed → bundle branch block or\nventricular arrhythmia\nT Wave\n• Represents: Ventricular repolarization (ventricles recharge\nelectrically).\n• Abnormal if: Inverted or flattened → sign of ischemia (lack of\noxygen to the heart)",
+    "header": "2.1 The Waves",
+    "page_num": 2,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "text"
+  },
+  {
+    "text": "Section: 2.2 The Intervals\nRR Interval\n• Definition: Distance between two consecutive R peaks\n• Gives: Heart rate\n• Abnormal if: Irregular → arrhythmia\nPR Interval\n• Definition: From the start of P to the start of QRS\n• Measures: Atrial → ventricular conduction time\n• Abnormal if: Too long → AV block\nST Segment\n• Definition: The line between the end of QRS and the start of T\n• Should be: On the baseline (isoelectric)\n• Abnormal if: Elevated or depressed → possible myocardial\ninfarction (heart attack)\nQT Interval\n• Definition: From the start of QRS to the end of T\n• Abnormal if: Too long → risk of serious arrhythmia (e.g., Torsade\nde Pointes)",
+    "header": "2.2 The Intervals",
+    "page_num": 3,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "text"
+  },
+  {
+    "text": "Section: 2.3 Reference Table: Waves & Intervals\nWave / What It Shows Normal Abnormal =\nInterval\nP wave Atrial contraction ~80–120 Absent → AFib\nms\nQRS Ventricular contraction ~80–100 Wide → block/\ncomplex ms arrhythmia\nT wave Ventricular recharge Upright Inverted →\nischemia\nRR interval Heart rate Regular Irregular →\narrhythmia\nPR interval AV conduction ~120– Too long → AV\n200 ms block\nST Between Flat Elevated/\nsegment depolarization & depressed → MI\nrepolarization\nQT interval Total ventricular <440– Too long →\nactivity 460 ms Torsade de\nPointes",
+    "header": "2.3 Reference Table: Waves & Intervals",
+    "page_num": 4,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "text"
+  },
+  {
+    "text": "Section: 3.1 Atrial Fibrillation (AF)\nA heart rhythm disorder where the atria no longer contract in an\norganized way: irregularity detection in beat sequences.\n• ECG pattern: Absent P waves + irregularly irregular RR intervals\n• Clinical note: Most common arrhythmia",
+    "header": "3.1 Atrial Fibrillation (AF)",
+    "page_num": 4,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "text"
+  },
+  {
+    "text": "Section: 3.2 ST-Elevation Myocardial Infarction (STEMI)\nA myocardial infarction (heart attack) with ST segment elevation.\n• ECG pattern: ST elevation ≥1 mm in ≥2 contiguous leads +\nreciprocal depression\nNote: Elevation = the signal goes ABOVE the line. Depression = the\nsignal goes BELOW the line. When both are seen simultaneously,\nelevation in some leads and depression in others, this confirms a real MI\nfrom two angles. The location of elevation and depression follows a\nprecise anatomical logic.\nThe heart has 4 walls. Each wall is \"watched\" by specific leads:\nWall Leads watching Reciprocal leads\nit (opposite)\nInferior (bottom) II, III, aVF I, aVL\nAnterior (front) V1, V2, V3, V4 None direct\nLateral (left I, aVL, V5, V6 II, III, aVF\nside)\nPosterior (back) V7, V8, V9 V1, V2, V3\n• Clinical note: Time-critical emergency",
+    "header": "3.2 ST-Elevation Myocardial Infarction (STEMI)",
+    "page_num": 5,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "text"
+  },
+  {
+    "text": "Section: 3.3 Bundle Branch Blocks (LBBB / RBBB)\nA bundle branch block is a delay or interruption in the electrical\nconduction through the ventricles. The electrical impulse originates in\nthe atria, passes through the AV node, then propagates rapidly into the\nventricles via two branches (right and left).\n• ECG pattern: Wide QRS >120 ms + specific lead patterns:\nRBBB (Right Bundle Branch Block) → typical RSR' pattern\n○\nin lead V1 (two peaks)\nLBBB (Left Bundle Branch Block) → typical wide QS\n○\npattern in lead V1\n• Classification type: Morphology classification",
+    "header": "3.3 Bundle Branch Blocks (LBBB / RBBB)",
+    "page_num": 5,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "text"
+  },
+  {
+    "text": "Section: 3.4 Left Ventricular Hypertrophy (LVH)\nIncrease in the muscle mass of the left ventricle. The left ventricle must\nsometimes work harder (e.g., in hypertension or valvular stenosis). To\ncompensate, its muscle thickens → it becomes more massive.\nResult on ECG: R waves are much taller (greater amplitude), as a larger\nmuscle generates a stronger electrical signal.\n• ECG pattern: High-voltage R waves\n• Sokolow-Lyon criterion: SV1 + RV5 ≥ 35 mm → LVH\n• Modified Cornell criterion: R wave in aVL > 1.2 mV → LVH\n• Classification type: Voltage measurement task\nMRI Analysis",
+    "header": "3.4 Left Ventricular Hypertrophy (LVH)",
+    "page_num": 6,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "text"
+  },
+  {
+    "text": "Section: 1. What is an MRI?\nMagnetic Resonance Imaging (MRI) is a non-invasive medical imaging\ntechnique that uses strong magnetic fields and radio waves to create\ndetailed images of the organs and tissues inside the body.",
+    "header": "1. What is an MRI?",
+    "page_num": 6,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "text"
+  },
+  {
+    "text": "Section: 1.1 How Are MRIs Recorded?\nThe body is mostly water. Water contains hydrogen atoms. MRI uses a\nstrong magnet to align those atoms, then fires radio waves to disturb\nthem. As the atoms \"snap back\" to alignment, they emit a signal. A\ncomputer turns that signal into an image.",
+    "header": "1.1 How Are MRIs Recorded?",
+    "page_num": 6,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "text"
+  },
+  {
+    "text": "Section: 1.2 Why MRI for the heart specifically?\nMRI is the gold standard for cardiac imaging because it can show:\n• Heart movement: MRI films the heart beating in real time →\nFunction\n• Scar tissue (fibrosis): Dead heart muscle from a past heart\nattack shows up as a bright white patch → Tissue damage\n• Chamber size & wall thickness: Precise measurements of the\nventricles → Structure\n• Blood flow (perfusion): Contrast agent injected → shows which\nareas receive enough blood → Blood supply",
+    "header": "1.2 Why MRI for the heart specifically?",
+    "page_num": 6,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "text"
+  },
+  {
+    "text": "Section: 2. Cardiac MRI Sequences\nA \"sequence\" is a different type of MRI scan. Unlike ECG which always\nrecords the same signal, MRI has multiple \"modes\" called sequences.\nEach sequence highlights different tissue properties.",
+    "header": "2. Cardiac MRI Sequences",
+    "page_num": 7,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "text"
+  },
+  {
+    "text": "Section: 2.1 Cine MRI\nA video of the beating heart, typically 20–30 frames per cardiac cycle.\nShows how well the walls move and contract. Used to measure ejection\nfraction (EF).\nNormal values Pathological values Interpretation\nEjection Fraction EF <55% (moderate), EF Global cardiac\n(EF): 55–70% <40% (severe) function\n(contractility)\nWall motion: Hypokinetic (reduced), Regional wall\nnormal akinetic (absent), function\ndyskinetic (paradoxical)\nSynchrony: Dyssynchrony (delayed Mechanical\nsimultaneous contraction between coordination\ncontraction walls)",
+    "header": "2.1 Cine MRI",
+    "page_num": 7,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "text"
+  },
+  {
+    "text": "Section: 2.2 LGE (Late Gadolinium Enhancement)\nA contrast agent (Gadolinium) is injected. Dead/scarred tissue holds the\nagent longer → appears bright white. The gold standard for detecting old\nheart attacks.",
+    "header": "2.2 LGE (Late Gadolinium Enhancement)",
+    "page_num": 7,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "text"
+  },
+  {
+    "text": "Section: 2.3 T1 / T2 Mapping\nMeasures how fast hydrogen atoms relax. Different values for normal vs\ninflamed vs fibrotic tissue. Detects myocarditis (inflammation) and\nedema (swelling).\nParameter Normal If High If Low Interpretation\nvalues\nT1 native ~950– Fibrosis, Fat infiltration, iron Reflects\n1050 ms infiltration overload tissue\n(1.5T/3T) (e.g., (hemochromatosis) composition\namyloidosis), changes\ninflammation\nT2 ~45–55 Edema, Iron overload Detects acute\nms myocarditis, (shortened inflammation\nacute relaxation), vs iron\ninfarction reduced water deposition\ncontent\nECV ~25% Diffuse Fat infiltration, iron Quantifies\n(Extracellular fibrosis, overload (reduced extracellular\nVolume) infiltration, extracellular space\nextracellular space) abnormalities\nmatrix\nexpansion",
+    "header": "2.3 T1 / T2 Mapping",
+    "page_num": 8,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "text"
+  },
+  {
+    "text": "Section: 2.4 Short Axis Stack\nA series of 2D slices from base to apex of the heart. Stacked together →\n3D volume of the heart.",
+    "header": "2.4 Short Axis Stack",
+    "page_num": 8,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "text"
+  },
+  {
+    "text": "Section: 1. Ejection Fraction (EF): What % of blood the heart pumps per\nbeat. Normal ≥55%. Below 35% = severe heart failure.",
+    "header": "1. Ejection Fraction (EF): What % of blood the heart pumps per",
+    "page_num": 9,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "text"
+  },
+  {
+    "text": "Section: 2. End-diastolic volume (EDV): How much blood fills the ventricle\nat rest. Enlarged → cardiomyopathy.",
+    "header": "2. End-diastolic volume (EDV): How much blood fills the ventricle",
+    "page_num": 9,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "text"
+  },
+  {
+    "text": "Section: 3. Wall motion score: Which wall segments move normally vs.\npoorly vs. not at all.",
+    "header": "3. Wall motion score: Which wall segments move normally vs.",
+    "page_num": 9,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "text"
+  },
+  {
+    "text": "Section: 4. LGE extent (%): What percentage of the heart muscle is scarred.\nPredicts risk of sudden death.",
+    "header": "4. LGE extent (%): What percentage of the heart muscle is scarred.",
+    "page_num": 9,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "text"
+  },
+  {
+    "text": "Section: 4.1 Functional Abnormalities (from Cine MRI)\n• Heart failure (reduced EF): The ventricle isn't pumping out\nenough blood per beat. HFrEF (reduced ejection fraction) directly\ndetectable via EF; HFpEF (preserved EF) needs volumes/filling\npattern.\n• Wall motion abnormalities: Segments can be hypokinetic\n(weakly), akinetic (not at all), or dyskinetic (wrong direction). Sign\nof localized damage.\n• Dyssynchrony: One wall contracts late relative to others →\nmechanically inefficient pump.",
+    "header": "4.1 Functional Abnormalities (from Cine MRI)",
+    "page_num": 9,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "text"
+  },
+  {
+    "text": "Section: 4.2 Structural Abnormalities (from Cine MRI + Short Axis Stack)\n• Dilated cardiomyopathy (DCM): Ventricle chamber enlarged/\nstretched out, walls thin. Usually accompanied by low EF.\n• Hypertrophic cardiomyopathy (HCM): Walls abnormally thick,\nchamber normal or small. Often genetic. Dangerous due to\nobstruction and sudden cardiac events.",
+    "header": "4.2 Structural Abnormalities (from Cine MRI + Short Axis Stack)",
+    "page_num": 9,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "text"
+  },
+  {
+    "text": "Section: 4.3 Tissue/Scar Abnormalities (from LGE)\n• Prior myocardial infarction: LGE shows subendocardial (inner\nlayer only) vs transmural (full wall thickness) patterns. Location\nmatches coronary artery blocked.\n• Sudden death risk (via LGE extent %): More scar tissue (% of\ntotal heart muscle) → higher risk of dangerous arrhythmias and\nsudden cardiac death.",
+    "header": "4.3 Tissue/Scar Abnormalities (from LGE)",
+    "page_num": 9,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "text"
+  },
+  {
+    "text": "Section: 4.4 Inflammatory / Infiltrative Disease (from T1/T2 Mapping)\n• Myocarditis (acute inflammation): Elevated T2 (edema/\ninflammation) and sometimes elevated T1.\n• Edema: Excess fluid in tissue. Marker of acute injury or\ninflammation. Elevated T2 is the key signal.\n• Amyloidosis / infiltrative disease\n• Iron overload (hemochromatosis)\n• Diffuse fibrosis (via ECV)",
+    "header": "4.4 Inflammatory / Infiltrative Disease (from T1/T2 Mapping)",
+    "page_num": 10,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "text"
+  },
+  {
+    "text": "Section: 1.3 Data Dimensions (Standard ECG)\nTable:\nItem | Value\nSampling frequency | 500 Hz\nTypical recording duration | 10 seconds\nPoints per lead | 500 × 10 = 5,000 points\nNumber of leads | 12\nTotal values per patient | 5,000 × 12 = 60,000 values",
+    "header": "1.3 Data Dimensions (Standard ECG)",
+    "page_num": 2,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "table"
+  },
+  {
+    "text": "Section: 1.3 Data Dimensions (Standard ECG)\nTable:\nTypical |  | recording |  | duration",
+    "header": "1.3 Data Dimensions (Standard ECG)",
+    "page_num": 2,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "table"
+  },
+  {
+    "text": "Section: 1.3 Data Dimensions (Standard ECG)\nTable:\n10 |  | seconds",
+    "header": "1.3 Data Dimensions (Standard ECG)",
+    "page_num": 2,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "table"
+  },
+  {
+    "text": "Section: 1.3 Data Dimensions (Standard ECG)\nTable:\nNumber |  | of |  | leads",
+    "header": "1.3 Data Dimensions (Standard ECG)",
+    "page_num": 2,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "table"
+  },
+  {
+    "text": "Section: 2.3 Reference Table: Waves & Intervals\nTable:\nWave /\nInterval | What It Shows | Normal | Abnormal =\nP wave | Atrial contraction | ~80–120\nms | Absent → AFib\nQRS\ncomplex | Ventricular contraction | ~80–100\nms | Wide → block/\narrhythmia\nT wave | Ventricular recharge | Upright | Inverted →\nischemia\nRR interval | Heart rate | Regular | Irregular →\narrhythmia\nPR interval | AV conduction | ~120–\n200 ms | Too long → AV\nblock\nST\nsegment | Between\ndepolarization &\nrepolarization | Flat | Elevated/\ndepressed → MI\nQT interval | Total ventricular\nactivity | <440–\n460 ms | Too long →\nTorsade de\nPointes",
+    "header": "2.3 Reference Table: Waves & Intervals",
+    "page_num": 4,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "table"
+  },
+  {
+    "text": "Section: 2.3 Reference Table: Waves & Intervals\nTable:\nQRS\ncomplex",
+    "header": "2.3 Reference Table: Waves & Intervals",
+    "page_num": 4,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "table"
+  },
+  {
+    "text": "Section: 2.3 Reference Table: Waves & Intervals\nTable:\nVentricular |  | contraction",
+    "header": "2.3 Reference Table: Waves & Intervals",
+    "page_num": 4,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "table"
+  },
+  {
+    "text": "Section: 2.3 Reference Table: Waves & Intervals\nTable:\n~80– | 100\nms | ",
+    "header": "2.3 Reference Table: Waves & Intervals",
+    "page_num": 4,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "table"
+  },
+  {
+    "text": "Section: 2.3 Reference Table: Waves & Intervals\nTable:\nWide |  | → | block\narrhythmia |  |  | ",
+    "header": "2.3 Reference Table: Waves & Intervals",
+    "page_num": 4,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "table"
+  },
+  {
+    "text": "Section: 2.3 Reference Table: Waves & Intervals\nTable:\nRR |  | interval",
+    "header": "2.3 Reference Table: Waves & Intervals",
+    "page_num": 4,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "table"
+  },
+  {
+    "text": "Section: 2.3 Reference Table: Waves & Intervals\nTable:\nHeart |  | rate",
+    "header": "2.3 Reference Table: Waves & Intervals",
+    "page_num": 4,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "table"
+  },
+  {
+    "text": "Section: 2.3 Reference Table: Waves & Intervals\nTable:\nIrregular | →\narrhythmia | ",
+    "header": "2.3 Reference Table: Waves & Intervals",
+    "page_num": 4,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "table"
+  },
+  {
+    "text": "Section: 2.3 Reference Table: Waves & Intervals\nTable:\nST\nsegment",
+    "header": "2.3 Reference Table: Waves & Intervals",
+    "page_num": 4,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "table"
+  },
+  {
+    "text": "Section: 2.3 Reference Table: Waves & Intervals\nTable:\nBetween |  | \ndepolarization |  | &\nrepolarization |  | ",
+    "header": "2.3 Reference Table: Waves & Intervals",
+    "page_num": 4,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "table"
+  },
+  {
+    "text": "Section: 2.3 Reference Table: Waves & Intervals\nTable:\nElevated |  |  | \ndepressed | → |  | MI",
+    "header": "2.3 Reference Table: Waves & Intervals",
+    "page_num": 4,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "table"
+  },
+  {
+    "text": "Section: 3.2 ST-Elevation Myocardial Infarction (STEMI)\nTable:\nWall | Leads watching\nit | Reciprocal leads\n(opposite)\nInferior (bottom) | II, III, aVF | I, aVL\nAnterior (front) | V1, V2, V3, V4 | None direct\nLateral (left\nside) | I, aVL, V5, V6 | II, III, aVF\nPosterior (back) | V7, V8, V9 | V1, V2, V3",
+    "header": "3.2 ST-Elevation Myocardial Infarction (STEMI)",
+    "page_num": 5,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "table"
+  },
+  {
+    "text": "Section: 3.2 ST-Elevation Myocardial Infarction (STEMI)\nTable:\nAnterior |  | (front)",
+    "header": "3.2 ST-Elevation Myocardial Infarction (STEMI)",
+    "page_num": 5,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "table"
+  },
+  {
+    "text": "Section: 3.2 ST-Elevation Myocardial Infarction (STEMI)\nTable:\nV1, |  | V2, |  | V3, |  | V4",
+    "header": "3.2 ST-Elevation Myocardial Infarction (STEMI)",
+    "page_num": 5,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "table"
+  },
+  {
+    "text": "Section: 3.2 ST-Elevation Myocardial Infarction (STEMI)\nTable:\nNone |  | direct",
+    "header": "3.2 ST-Elevation Myocardial Infarction (STEMI)",
+    "page_num": 5,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "table"
+  },
+  {
+    "text": "Section: 3.2 ST-Elevation Myocardial Infarction (STEMI)\nTable:\nPosterior |  | (back)",
+    "header": "3.2 ST-Elevation Myocardial Infarction (STEMI)",
+    "page_num": 5,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "table"
+  },
+  {
+    "text": "Section: 3.2 ST-Elevation Myocardial Infarction (STEMI)\nTable:\nV7, |  | V8, |  | V9",
+    "header": "3.2 ST-Elevation Myocardial Infarction (STEMI)",
+    "page_num": 5,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "table"
+  },
+  {
+    "text": "Section: 3.2 ST-Elevation Myocardial Infarction (STEMI)\nTable:\nV1, |  | V2, |  | V3",
+    "header": "3.2 ST-Elevation Myocardial Infarction (STEMI)",
+    "page_num": 5,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "table"
+  },
+  {
+    "text": "Section: 2. Cardiac MRI Sequences\nTable:\nNormal values | Pathological values | Interpretation\nEjection Fraction\n(EF): 55–70% | EF <55% (moderate), EF\n<40% (severe) | Global cardiac\nfunction\n(contractility)\nWall motion:\nnormal | Hypokinetic (reduced),\nakinetic (absent),\ndyskinetic (paradoxical) | Regional wall\nfunction\nSynchrony:\nsimultaneous\ncontraction | Dyssynchrony (delayed\ncontraction between\nwalls) | Mechanical\ncoordination",
+    "header": "2. Cardiac MRI Sequences",
+    "page_num": 7,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "table"
+  },
+  {
+    "text": "Section: 2. Cardiac MRI Sequences\nTable:\nWall |  | motion:\nnormal |  | ",
+    "header": "2. Cardiac MRI Sequences",
+    "page_num": 7,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "table"
+  },
+  {
+    "text": "Section: 2. Cardiac MRI Sequences\nTable:\nHypokinetic |  |  |  |  |  | (reduced),\nakinetic |  | (absent), |  |  |  | \ndyskinetic |  |  |  | (paradoxical) |  | ",
+    "header": "2. Cardiac MRI Sequences",
+    "page_num": 7,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "table"
+  },
+  {
+    "text": "Section: 2. Cardiac MRI Sequences\nTable:\nRegional |  | wall\nfunction |  | ",
+    "header": "2. Cardiac MRI Sequences",
+    "page_num": 7,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "table"
+  },
+  {
+    "text": "Section: 2.3 T1 / T2 Mapping\nTable:\nParameter | Normal\nvalues | If High | If Low | Interpretation\nT1 native | ~950–\n1050 ms\n(1.5T/3T) | Fibrosis,\ninfiltration\n(e.g.,\namyloidosis),\ninflammation | Fat infiltration, iron\noverload\n(hemochromatosis) | Reflects\ntissue\ncomposition\nchanges\nT2 | ~45–55\nms | Edema,\nmyocarditis,\nacute\ninfarction | Iron overload\n(shortened\nrelaxation),\nreduced water\ncontent | Detects acute\ninflammation\nvs iron\ndeposition\nECV\n(Extracellular\nVolume) | ~25% | Diffuse\nfibrosis,\ninfiltration,\nextracellular\nmatrix\nexpansion | Fat infiltration, iron\noverload (reduced\nextracellular\nspace) | Quantifies\nextracellular\nspace\nabnormalities",
+    "header": "2.3 T1 / T2 Mapping",
+    "page_num": 8,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "table"
+  },
+  {
+    "text": "Section: 2.3 T1 / T2 Mapping\nTable:\n~45– | 55\nms | ",
+    "header": "2.3 T1 / T2 Mapping",
+    "page_num": 8,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "table"
+  },
+  {
+    "text": "Section: 2.3 T1 / T2 Mapping\nTable:\nEdema,\nmyocarditis,\nacute\ninfarction",
+    "header": "2.3 T1 / T2 Mapping",
+    "page_num": 8,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "table"
+  },
+  {
+    "text": "Section: 2.3 T1 / T2 Mapping\nTable:\nIron |  | overload |  | \n(shortened |  |  |  | \nrelaxation), |  |  |  | \nreduced |  |  |  | water\ncontent |  |  |  | ",
+    "header": "2.3 T1 / T2 Mapping",
+    "page_num": 8,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "table"
+  },
+  {
+    "text": "Section: 2.3 T1 / T2 Mapping\nTable:\nDetects |  |  |  | acute\ninflammation |  |  |  | \nvs |  | iron |  | \ndeposition |  |  |  | ",
+    "header": "2.3 T1 / T2 Mapping",
+    "page_num": 8,
+    "source": "cardiac_ai_internship.pdf",
+    "chunk_type": "table"
+  }
+]

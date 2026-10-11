@@ -1,0 +1,109 @@
+{
+  "agent_id": "ecg_image",
+  "record_id": "09823_lr",
+  "findings": [
+    {
+      "feature": "sinus_rhythm",
+      "value": "present",
+      "rationale": "Regular P waves with a consistent PR interval across leads",
+      "confidence": 0.9,
+      "evidence_ref": "ecg_image_overall",
+      "evidence_type": "image_region"
+    },
+    {
+      "feature": "ST_segment",
+      "value": "within normal limits",
+      "rationale": "ST segments are not elevated or depressed in any lead",
+      "confidence": 0.9,
+      "evidence_ref": "ecg_image_overall",
+      "evidence_type": "image_region"
+    },
+    {
+      "feature": "T_wave",
+      "value": "within normal limits",
+      "rationale": "T waves are upright and symmetrical in all leads",
+      "confidence": 0.9,
+      "evidence_ref": "ecg_image_overall",
+      "evidence_type": "image_region"
+    },
+    {
+      "feature": "QRS_complex",
+      "value": "within normal limits",
+      "rationale": "QRS duration is within normal range in all leads",
+      "confidence": 0.9,
+      "evidence_ref": "ecg_image_overall",
+      "evidence_type": "image_region"
+    },
+    {
+      "feature": "P_wave",
+      "value": "within normal limits",
+      "rationale": "P waves are present and have a normal morphology in all leads",
+      "confidence": 0.9,
+      "evidence_ref": "ecg_image_overall",
+      "evidence_type": "image_region"
+    }
+  ],
+  "flags_for_review": [
+    "image_findings_not_lead_localized",
+    "pathology_CD_pattern_suspected",
+    "pathology_HYP_pattern_suspected",
+    "pathology_MI_pattern_suspected",
+    "pathology_STTC_pattern_suspected"
+  ],
+  "trace": {
+    "features_used": {
+      "image_width_px": 1397,
+      "image_height_px": 1029,
+      "blur_score_before": 8080.86,
+      "blur_score_after": 8080.86,
+      "contrast_before": 35.96,
+      "contrast_after": 35.96,
+      "brightness_before": 198.24,
+      "brightness_after": 198.24,
+      "sharpen_amount_applied": 0.0,
+      "clahe_clip_limit_applied": 0.0,
+      "gamma_applied": 1.0,
+      "deskew_angle_deg": 0.0,
+      "resize_action": "unchanged",
+      "residual_issue_count": 0,
+      "source_quality_level": "corrected"
+    },
+    "pathology_features": {
+      "pathology_CD_probability": 0.5645485520362854,
+      "pathology_HYP_probability": 0.8634817600250244,
+      "pathology_MI_probability": 0.6934337019920349,
+      "pathology_NORM_probability": 0.024115296080708504,
+      "pathology_STTC_probability": 0.5798485279083252
+    },
+    "quality_report": {
+      "source_path": "C:\\Users\\neifa\\Documents\\ENETCOM\\3IDSD\\stage_25-26\\cardiac-multiagent-pipeline\\genecg_downloaded\\Dataset_A_ECGs_without_imperfections\\09000\\09823_hr_1R.png",
+      "corrections_applied": {
+        "exif_rotation_deg": 0,
+        "rgb_conversion": true,
+        "deskew_angle_deg": 0.0,
+        "sharpen_amount": 0.0,
+        "clahe_clip_limit": 0.0,
+        "gamma_applied": 1.0,
+        "resize_action": "unchanged"
+      },
+      "quality_before": {
+        "width": 1397,
+        "height": 1029,
+        "blur_score": 8080.86,
+        "brightness": 198.24,
+        "contrast": 35.96
+      },
+      "quality_after": {
+        "width": 1397,
+        "height": 1029,
+        "blur_score": 8080.86,
+        "brightness": 198.24,
+        "contrast": 35.96
+      },
+      "residual_issues": [],
+      "source_quality_level": "corrected"
+    },
+    "model": "ollama:qwen2.5vl:7b",
+    "attempts": 1
+  }
+}

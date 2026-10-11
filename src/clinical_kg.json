@@ -1,0 +1,95 @@
+{
+  "_doc": "Clinical knowledge graph source for the Sep Agent (loaded into networkx by knowledge_graph.py). Human-editable/auditable. Node ids for findings match the agents' actual flag names so the graph connects to real AgentContribution output. Scope: the conditions our real/synthetic cases exercise (HF/LVEF, LV hypertrophy, inferior MI). This file is the SINGLE SOURCE for both (a) cross-modality convergence (via the graph edges) and (b) the Sep Agent's directional-consistency check + prompt anchor (via the `directional` block on finding nodes - read with plain json, no networkx). A finding node may carry a `directional` block even with no diagnosis edges (e.g. bradycardia).",
+  "nodes": [
+    {"id": "low_lv_ejection_fraction_suspected", "type": "finding", "agent": "mri", "label": "reduced left ventricular ejection fraction", "directional": {"ventricle_key": "lv", "measure_terms": ["ejection fraction", " ef "], "forbidden_words": ["elevated", "increased", "high", "normal"], "anchor_description": "the LEFT ventricular ejection fraction is REDUCED"}},
+    {"id": "high_lv_ejection_fraction_suspected", "type": "finding", "agent": "mri", "label": "elevated left ventricular ejection fraction", "directional": {"ventricle_key": "lv", "measure_terms": ["ejection fraction", " ef "], "forbidden_words": ["reduced", "decreased", "diminished", "depressed", "low"], "anchor_description": "the LEFT ventricular ejection fraction is ELEVATED or preserved (NOT reduced)"}},
+    {"id": "low_rv_ejection_fraction_suspected", "type": "finding", "agent": "mri", "label": "reduced right ventricular ejection fraction", "directional": {"ventricle_key": "rv", "measure_terms": ["ejection fraction", " ef "], "forbidden_words": ["elevated", "increased", "high", "normal"], "anchor_description": "the RIGHT ventricular ejection fraction is REDUCED"}},
+    {"id": "tachycardia_suspected", "type": "finding", "agent": "ecg", "label": "tachycardia", "directional": {"ventricle_key": null, "measure_terms": ["heart rate"], "forbidden_words": ["low", "slow", "reduced", "bradycardic"], "anchor_description": "the heart rate is ELEVATED (tachycardic)"}},
+    {"id": "bradycardia_suspected", "type": "finding", "agent": "ecg", "label": "bradycardia", "directional": {"ventricle_key": null, "measure_terms": ["heart rate"], "forbidden_words": ["elevated", "fast", "increased", "tachycardic", "high"], "anchor_description": "the heart rate is REDUCED (bradycardic)"}},
+
+    {"id": "pathology_HCM_pattern_suspected", "type": "finding", "agent": "mri", "label": "hypertrophic cardiomyopathy pattern on MRI"},
+    {"id": "lvh_sokolow_lyon_suspected", "type": "finding", "agent": "ecg", "label": "left ventricular hypertrophy by Sokolow-Lyon voltage"},
+    {"id": "pathological_q_inferior_suspected", "type": "finding", "agent": "ecg", "label": "pathological Q waves in the inferior leads"},
+    {"id": "high_resting_bp_suspected", "type": "finding", "agent": "patient", "label": "elevated resting blood pressure"},
+    {"id": "abnormal_thallium_result_suspected", "type": "finding", "agent": "patient", "label": "abnormal thallium perfusion on stress test"},
+    {"id": "multiple_vessels_involved_suspected", "type": "finding", "agent": "patient", "label": "multiple major coronary vessels involved"},
+    {"id": "significant_st_depression_suspected", "type": "finding", "agent": "patient", "label": "significant exercise-induced ST depression"},
+    {"id": "exercise_induced_angina_present", "type": "finding", "agent": "patient", "label": "exercise-induced angina"},
+
+    {"id": "lvef_le_40", "type": "criterion", "label": "LVEF <= 40% (HFrEF threshold)"},
+    {"id": "lvef_ge_65", "type": "criterion", "label": "LVEF >= 65% (hyperdynamic)"},
+    {"id": "sokolow_ge_35", "type": "criterion", "label": "Sokolow-Lyon index >= 3.5 mV"},
+    {"id": "q_inferior_2leads", "type": "criterion", "label": "pathological Q in >= 2 inferior leads (II/III/aVF)"},
+
+    {"id": "hfref", "type": "diagnosis", "label": "heart failure with reduced ejection fraction (HFrEF)"},
+    {"id": "lv_hypertrophy", "type": "diagnosis", "label": "left ventricular hypertrophy"},
+    {"id": "hypertensive_heart_disease", "type": "diagnosis", "label": "hypertensive heart disease"},
+    {"id": "old_inferior_mi", "type": "diagnosis", "label": "old inferior myocardial infarction"},
+    {"id": "hcm", "type": "diagnosis", "label": "hypertrophic cardiomyopathy"},
+    {"id": "coronary_artery_disease", "type": "diagnosis", "label": "coronary artery disease / myocardial ischemia"},
+
+    {"id": "nyha_class", "type": "severity", "label": "NYHA functional class (needs symptom assessment)"},
+
+    {"id": "cat_MI", "type": "category", "label": "myocardial infarction (MI superclass)"},
+    {"id": "cat_HYP", "type": "category", "label": "hypertrophy (HYP superclass)"},
+    {"id": "cat_CD", "type": "category", "label": "conduction disturbance (CD superclass)"},
+    {"id": "cat_STTC", "type": "category", "label": "ST/T change (STTC superclass)"},
+    {"id": "cat_NORM", "type": "category", "label": "normal ECG (NORM superclass)"},
+    {"id": "cat_heart_failure", "type": "category", "label": "heart failure"},
+
+    {"id": "embedding_MI_pattern_suspected", "type": "finding", "agent": "ecg", "label": "MI-superclass pattern (learned ECG embedding)"},
+    {"id": "embedding_HYP_pattern_suspected", "type": "finding", "agent": "ecg", "label": "HYP-superclass pattern (learned ECG embedding)"},
+    {"id": "embedding_CD_pattern_suspected", "type": "finding", "agent": "ecg", "label": "CD-superclass pattern (learned ECG embedding)"},
+    {"id": "embedding_STTC_pattern_suspected", "type": "finding", "agent": "ecg", "label": "STTC-superclass pattern (learned ECG embedding)"},
+    {"id": "embedding_NORM_pattern_suspected", "type": "finding", "agent": "ecg", "label": "NORM-superclass pattern (learned ECG embedding)"},
+    {"id": "pathology_DCM_pattern_suspected", "type": "finding", "agent": "mri", "label": "dilated cardiomyopathy pattern on MRI"},
+
+    {"id": "pathology_MI_pattern_suspected", "type": "finding", "agent": "ecg_image", "label": "MI-superclass pattern (GenECG image classifier)"},
+    {"id": "pathology_HYP_pattern_suspected", "type": "finding", "agent": "ecg_image", "label": "HYP-superclass pattern (GenECG image classifier)"},
+    {"id": "pathology_CD_pattern_suspected", "type": "finding", "agent": "ecg_image", "label": "CD-superclass pattern (GenECG image classifier)"},
+    {"id": "pathology_STTC_pattern_suspected", "type": "finding", "agent": "ecg_image", "label": "STTC-superclass pattern (GenECG image classifier)"},
+    {"id": "pathology_NORM_pattern_suspected", "type": "finding", "agent": "ecg_image", "label": "NORM-superclass pattern (GenECG image classifier)"}
+  ],
+  "edges": [
+    {"source": "low_lv_ejection_fraction_suspected", "target": "lvef_le_40", "relation": "meets"},
+    {"source": "lvef_le_40", "target": "hfref", "relation": "indicates"},
+    {"source": "hfref", "target": "nyha_class", "relation": "has_severity"},
+
+    {"source": "lvh_sokolow_lyon_suspected", "target": "sokolow_ge_35", "relation": "meets"},
+    {"source": "sokolow_ge_35", "target": "lv_hypertrophy", "relation": "indicates"},
+    {"source": "high_lv_ejection_fraction_suspected", "target": "lvef_ge_65", "relation": "meets"},
+    {"source": "lvef_ge_65", "target": "hcm", "relation": "indicates"},
+    {"source": "pathology_HCM_pattern_suspected", "target": "hcm", "relation": "supports"},
+    {"source": "hcm", "target": "lv_hypertrophy", "relation": "supports"},
+
+    {"source": "lv_hypertrophy", "target": "hypertensive_heart_disease", "relation": "supports"},
+    {"source": "high_resting_bp_suspected", "target": "hypertensive_heart_disease", "relation": "supports"},
+
+    {"source": "pathological_q_inferior_suspected", "target": "q_inferior_2leads", "relation": "meets"},
+    {"source": "q_inferior_2leads", "target": "old_inferior_mi", "relation": "indicates"},
+
+    {"source": "old_inferior_mi", "target": "cat_MI", "relation": "is_a"},
+    {"source": "lv_hypertrophy", "target": "cat_HYP", "relation": "is_a"},
+    {"source": "hcm", "target": "cat_HYP", "relation": "is_a"},
+    {"source": "hfref", "target": "cat_heart_failure", "relation": "is_a"},
+
+    {"source": "embedding_MI_pattern_suspected", "target": "cat_MI", "relation": "indicates"},
+    {"source": "embedding_HYP_pattern_suspected", "target": "cat_HYP", "relation": "indicates"},
+    {"source": "embedding_CD_pattern_suspected", "target": "cat_CD", "relation": "indicates"},
+    {"source": "embedding_STTC_pattern_suspected", "target": "cat_STTC", "relation": "indicates"},
+    {"source": "embedding_NORM_pattern_suspected", "target": "cat_NORM", "relation": "indicates"},
+    {"source": "pathology_DCM_pattern_suspected", "target": "cat_heart_failure", "relation": "indicates"},
+
+    {"source": "pathology_MI_pattern_suspected", "target": "cat_MI", "relation": "indicates"},
+    {"source": "pathology_HYP_pattern_suspected", "target": "cat_HYP", "relation": "indicates"},
+    {"source": "pathology_CD_pattern_suspected", "target": "cat_CD", "relation": "indicates"},
+    {"source": "pathology_STTC_pattern_suspected", "target": "cat_STTC", "relation": "indicates"},
+    {"source": "pathology_NORM_pattern_suspected", "target": "cat_NORM", "relation": "indicates"},
+
+    {"source": "abnormal_thallium_result_suspected", "target": "coronary_artery_disease", "relation": "indicates"},
+    {"source": "multiple_vessels_involved_suspected", "target": "coronary_artery_disease", "relation": "indicates"},
+    {"source": "significant_st_depression_suspected", "target": "coronary_artery_disease", "relation": "indicates"},
+    {"source": "exercise_induced_angina_present", "target": "coronary_artery_disease", "relation": "indicates"},
+    {"source": "cat_MI", "target": "coronary_artery_disease", "relation": "supports"}
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "agent_id": "ecg",
+  "record_id": "01222_lr",
+  "findings": [
+    {
+      "feature": "duration_s",
+      "value": 10.0,
+      "rationale": "The analyzed ECG trace duration is 10 seconds.",
+      "confidence": 1.0,
+      "evidence_ref": "duration_s",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "qrs_count",
+      "value": 8,
+      "rationale": "The number of detected QRS complexes is 8.",
+      "confidence": 1.0,
+      "evidence_ref": "qrs_count",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "heart_rate_mean_bpm",
+      "value": 48.4,
+      "rationale": "The estimated mean heart rate is 48.4 bpm.",
+      "confidence": 1.0,
+      "evidence_ref": "heart_rate_mean_bpm",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "heart_rate_std_bpm",
+      "value": 11.6,
+      "rationale": "The standard deviation of the heart rate is 11.6 bpm.",
+      "confidence": 1.0,
+      "evidence_ref": "heart_rate_std_bpm",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "rr_mean_ms",
+      "value": 1338.6,
+      "rationale": "The mean RR interval is 1338.6 ms.",
+      "confidence": 1.0,
+      "evidence_ref": "rr_mean_ms",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "rr_std_ms",
+      "value": 415.5,
+      "rationale": "The standard deviation of the RR interval is 415.5 ms.",
+      "confidence": 1.0,
+      "evidence_ref": "rr_std_ms",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "qrs_duration_mean_ms",
+      "value": 71.2,
+      "rationale": "The mean QRS duration is 71.2 ms.",
+      "confidence": 1.0,
+      "evidence_ref": "qrs_duration_mean_ms",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "qrs_duration_std_ms",
+      "value": 18.3,
+      "rationale": "The standard deviation of the QRS duration is 18.3 ms.",
+      "confidence": 1.0,
+      "evidence_ref": "qrs_duration_std_ms",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "rhythm_irregularity_flag",
+      "value": true,
+      "rationale": "The algorithm suspects rhythm irregularity based on the RR coefficient of variation.",
+      "confidence": 1.0,
+      "evidence_ref": "rhythm_irregularity_flag",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "rhythm_cv",
+      "value": 0.31,
+      "rationale": "The RR coefficient of variation is 0.31.",
+      "confidence": 1.0,
+      "evidence_ref": "rhythm_cv",
+      "evidence_type": "numeric_feature"
+    }
+  ],
+  "flags_for_review": [
+    "bradycardia_suspected",
+    "irregular_rhythm_suspected"
+  ],
+  "trace": {
+    "features_used": {
+      "duration_s": 10.0,
+      "qrs_count": 8,
+      "heart_rate_mean_bpm": 48.437815639562174,
+      "heart_rate_std_bpm": 11.649464698724058,
+      "rr_mean_ms": 1338.5714285714284,
+      "rr_std_ms": 415.5350620045221,
+      "qrs_duration_mean_ms": 71.25,
+      "qrs_duration_std_ms": 18.328597873268976,
+      "rhythm_irregularity_flag": true,
+      "rhythm_cv": 0.31043174322643063
+    },
+    "model": "ollama:medgemma:4b",
+    "attempts": 1
+  }
+}

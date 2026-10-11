@@ -1,0 +1,144 @@
+=== CONFIG: temperature=0.2, seed=None ===
+=== PROMPT ===
+You are the Sep Agent, an aggregating component that combines structured
+findings from independent modality-specific agents (ECG, MRI, ...) into one
+integrated clinical impression. Each agent already analyzed its own modality
+in isolation and reported findings with a rationale and confidence - you do
+NOT re-derive anything from raw signals or images, you only combine and
+contextualize what has already been reported.
+
+Findings from each contributing agent for this case:
+
+=== ECG agent (record '00001_hr') ===
+- feature="duration_s": 10.0 (confidence 1.00) - Analyzed ECG trace duration.
+- feature="qrs_count": 11 (confidence 1.00) - Number of QRS complexes detected in the trace.
+- feature="heart_rate_mean_bpm": 63.9 (confidence 1.00) - Estimated mean heart rate from the ECG.
+- feature="heart_rate_std_bpm": 1.4 (confidence 1.00) - Standard deviation of the heart rate.
+- feature="rr_mean_ms": 938.8 (confidence 1.00) - Mean RR interval from the ECG.
+- feature="rr_std_ms": 21.5 (confidence 1.00) - Standard deviation of the RR interval.
+- feature="qrs_duration_mean_ms": 59.3 (confidence 1.00) - Mean QRS duration from the ECG.
+- feature="qrs_duration_std_ms": 46.2 (confidence 1.00) - Standard deviation of the QRS duration.
+
+=== MRI agent (record 'patient103') ===
+- feature="lv_volume_ed_ml": 178.2 (confidence 0.95) - Left ventricular volume at end-diastole.
+- feature="lv_volume_es_ml": 131.8 (confidence 0.95) - Left ventricular volume at end-systole.
+- feature="rv_volume_ed_ml": 88.9 (confidence 0.95) - Right ventricular volume at end-diastole.
+- feature="rv_volume_es_ml": 34.1 (confidence 0.95) - Right ventricular volume at end-systole.
+- feature="myocardium_volume_ed_ml": 173.8 (confidence 0.95) - Myocardial volume at end-diastole.
+- feature="myocardium_volume_es_ml": 174.4 (confidence 0.95) - Myocardial volume at end-systole.
+- feature="lv_ejection_fraction_pct": 26.0 (confidence 0.95) - Left ventricular ejection fraction.
+- feature="rv_ejection_fraction_pct": 61.6 (confidence 0.95) - Right ventricular ejection fraction.
+- feature="pathology_DCM_probability": 1.6 (confidence 0.95) - Probability of dilated cardiomyopathy.
+- feature="pathology_HCM_probability": 50.7 (confidence 0.95) - Probability of hypertrophic cardiomyopathy.
+- feature="pathology_MINF_probability": 47.7 (confidence 0.95) - Probability of myocardial infarction with reduced function.
+- feature="pathology_NOR_probability": 0.0 (confidence 0.95) - Probability of normal.
+- feature="pathology_RV_probability": 0.0 (confidence 0.95) - Probability of abnormal right ventricle.
+- feature="short_axis_mid_ed": None (confidence 1.00) - Short axis mid-esophageal view at end-diastole.
+Flags raised by this agent: ['DCM', 'HCM', 'MINF', 'low_lv_ejection_fraction_suspected', 'pathology_HCM_pattern_suspected']
+
+=== Retrieved clinical knowledge (cite as agent_id="knowledge") ===
+- knowledge_0 (source: cardiac_ai_internship.pdf): Section: 4.2 Structural Abnormalities (from Cine MRI + Short Axis Stack)
+• Dilated cardiomyopathy (DCM): Ventricle chamber enlarged/
+stretched out, walls thin. Usually accompanied by low EF.
+• Hypertrophic cardiomyopathy (HCM): Walls abnormally thick,
+chamber normal or small. Often genetic. Dangerous due to
+obstruction and sudden cardiac events.
+- knowledge_1 (source: ESC_2021_Heart_Failure_RAG_Source.pdf): Section: 2. Heart Failure Phenotypes
+HFrEF: heart failure with reduced ejection fraction. LVEF is ≤40%.
+HFmrEF: heart failure with mildly reduced ejection fraction. LVEF is 41–49%. Symptoms and/or signs of
+HF are present; raised natriuretic peptides and/or relevant structural abnormalities support the
+diagnosis.
+HFpEF: heart failure with preserved ejection fraction. LVEF is ≥50%, with symptoms and signs plus
+objective evidence of relevant structural or functional abnormalities and/or raised natriuretic peptides.
+LVEF means left ventricular ejection fraction and is commonly assessed by echocardiography.
+- knowledge_2 (source: ESC_2021_Heart_Failure_RAG_Source.pdf): Section: 3. Chronic Heart Failure Diagnosis
+When HF is suspected, assess symptoms and/or signs, risk factors, previous cardiovascular disease, and
+the ECG.
+An abnormal ECG increases the likelihood of HF. A normal ECG makes HF less likely.
+In the non-acute diagnostic pathway, NT-proBNP ≥125 pg/mL or BNP ≥35 pg/mL prompts further
+evaluation.
+Echocardiography is used to assess cardiac structure and function and to measure LVEF.
+After objective abnormalities are identified, define the HF phenotype as HFrEF, HFmrEF, or HFpEF.
+The underlying etiology should then be investigated because it can influence management.
+- knowledge_3 (source: ESC_2021_Heart_Failure_RAG_Source.pdf): Section: 10. Advanced Heart Failure
+Advanced HF requires all specified criteria to be present despite optimal medical treatment.
+Severe and persistent symptoms are defined as NYHA class III or IV.
+Severe cardiac dysfunction may include LVEF ≤30%, isolated right ventricular failure, non-operable
+severe valve abnormalities, non-operable severe congenital abnormalities, or persistently
+high/increasing BNP or NT-proBNP together with severe LV diastolic dysfunction or structural
+abnormalities consistent with HFpEF.
+Severe recurrent events include pulmonary or systemic congestion requiring high-dose intravenous
+diuretics, low-output episodes requiring inotropes or vasoactive drugs, or malignant arrhythmias causing
+more than one unplanned visit or hospitalization in the previous 12 months.
+Severely impaired exercise capacity includes inability to exercise, a 6-minute walk test distance <300 m,
+peak VO₂ <12 mL/kg/min, or peak VO₂ <50% of predicted when the limitation is considered cardiac in
+origin.
+- knowledge_4 (source: ESC_2021_Heart_Failure_RAG_Source.pdf): Section: 7. Acute Heart Failure
+Acute heart failure (AHF) is a separate diagnostic and management pathway from chronic/non-acute HF.
+For suspected AHF, rule-out thresholds are BNP <100 pg/mL, NT-proBNP <300 pg/mL, or MR-proANP
+<120 pg/mL.
+For NT-proBNP, age-specific rule-in values include >450 pg/mL for age <55 years, >900 pg/mL for age
+55–75 years, and >1800 pg/mL for age >75 years.
+Initial laboratory assessment may include troponin, serum creatinine, electrolytes, blood urea nitrogen or
+urea, TSH, and liver function tests.
+D-dimer is considered when acute pulmonary embolism is suspected. Procalcitonin may be considered
+when infection or pneumonia is suspected. Arterial blood gas analysis is used when respiratory distress
+requires precise oxygen and carbon dioxide assessment. Lactate and pH are relevant when cardiogenic
+shock or hypoperfusion is suspected.
+ESC 2021 Heart Failure — RAG Source Page 2
+Comprehensive echocardiography is part of the evaluation after AHF is confirmed or strongly suspected.
+
+IMPORTANT - case-specific direction reminders:
+- Flag "low_lv_ejection_fraction_suspected" is present: the LEFT ventricular ejection fraction is REDUCED. Describe it accordingly - never use these words for this specific measurement: "elevated", "increased", "high", "normal".
+
+Task: write a short (3-5 sentence) integrated clinical impression that
+synthesizes across all agents' findings. Do not introduce any clinical fact
+that is not present in the findings above. If agents disagree or an
+individual finding has low confidence, reflect that uncertainty rather than
+asserting certainty.
+
+Before writing the summary, think step by step and write out that reasoning
+in the "reasoning" field:
+1. What does each contributing agent's findings suggest INDEPENDENTLY, on their own?
+2. Do the agents agree, or does one modality's evidence conflict with or fail to
+   confirm another's? State this explicitly, even if they simply agree.
+3. If knowledge chunks were retrieved, which ones actually apply to this case's
+   findings, and what do they establish?
+4. Only after that reasoning, decide what the integrated summary should say.
+
+Respond with ONLY a single JSON object (no markdown fences, no extra text)
+with this exact shape:
+{
+  "reasoning": "<step-by-step reasoning per the 4 points above>",
+  "summary": "<3-5 sentence integrated clinical impression>",
+  "traceability": [
+    {"statement": "<short phrase from the summary>", "agent_id": "<agent_id or 'knowledge'>", "feature": "<exact feature name or knowledge_<i>>"}
+  ]
+}
+
+Rules:
+- Every entry in "traceability" must reference one of these exact (agent_id, feature) pairs: (ecg, "duration_s"), (ecg, "qrs_count"), (ecg, "heart_rate_mean_bpm"), (ecg, "heart_rate_std_bpm"), (ecg, "rr_mean_ms"), (ecg, "rr_std_ms"), (ecg, "qrs_duration_mean_ms"), (ecg, "qrs_duration_std_ms"), (mri, "lv_volume_ed_ml"), (mri, "lv_volume_es_ml"), (mri, "rv_volume_ed_ml"), (mri, "rv_volume_es_ml"), (mri, "myocardium_volume_ed_ml"), (mri, "myocardium_volume_es_ml"), (mri, "lv_ejection_fraction_pct"), (mri, "rv_ejection_fraction_pct"), (mri, "pathology_DCM_probability"), (mri, "pathology_HCM_probability"), (mri, "pathology_MINF_probability"), (mri, "pathology_NOR_probability"), (mri, "pathology_RV_probability"), (mri, "short_axis_mid_ed"), (knowledge, "knowledge_0"), (knowledge, "knowledge_1"), (knowledge, "knowledge_2"), (knowledge, "knowledge_3"), (knowledge, "knowledge_4")
+- Every part of the summary that states a specific fact must have a corresponding traceability entry.
+- The flags listed above (e.g. "high_..._suspected" vs "low_..._suspected") already indicate the correct
+  direction for that measurement - describe it consistently with the flag, do not independently judge from
+  the raw number whether it counts as high or low.
+- Every qualitative claim in the summary (e.g. "low", "high", "elevated", "reduced", "suspected") must be grounded in a cited knowledge_<i> chunk that actually defines the relevant threshold or criterion - not just the raw numeric finding alone. If no retrieved chunk supports a qualitative claim you would otherwise make, state the number without the qualitative label rather than asserting it ungrounded.
+- The "reasoning" field is required and must be filled in BEFORE "summary" conceptually (it comes first in the JSON) - it is an audit trail, not shown to the end user, so it can be longer and more exploratory than the summary itself.
+- Do not include any field or text outside this JSON object.
+
+
+=== RAW RESPONSE ===
+```json
+{
+  "reasoning": "The ECG agent reports a mean heart rate of 63.9 bpm with a standard deviation of 1.4 bpm, indicating relatively stable heart rate. The QRS duration is 59.3 ms with a standard deviation of 46.2 ms. The MRI agent shows left ventricular volume at end-diastole (LVED) of 178.2 ml and end-systole (LVE) of 131.8 ml, right ventricular volumes are also reported. The ejection fraction is low (26%). The pathology reports a high probability for dilated cardiomyopathy (DCM), hypertrophic cardiomyopathy (HCM), and myocardial infarction with reduced function (MINF). There is no evidence of normal or abnormal right ventricle.",
+  "summary": "The patient presents with a heart rate of 63.9 bpm, a relatively stable QRS duration of 59.3 ms, and an ejection fraction of 26%. The MRI findings suggest dilated cardiomyopathy (DCM), hypertrophic cardiomyopathy (HCM) and myocardial infarction with reduced function (MINF).",
+  "traceability": [
+    {"statement": "heart rate of 63.9 bpm", "agent_id": "ecg", "feature": "heart_rate_mean_bpm"},
+    {"statement": "QRS duration is 59.3 ms", "agent_id": "ecg", "feature": "qrs_duration_mean_ms"},
+    {"statement": "ejection fraction of 26%", "agent_id": "mri", "feature": "lv_ejection_fraction_pct"},
+    {"statement": "dilated cardiomyopathy (DCM)", "agent_id": "mri", "feature": "pathology_DCM_probability"},
+    {"statement": "hypertrophic cardiomyopathy (HCM)", "agent_id": "mri", "feature": "pathology_HCM_probability"},
+    {"statement": "myocardial infarction with reduced function (MINF)", "agent_id": "mri", "feature": "pathology_MINF_probability"}
+  ]
+}
+```

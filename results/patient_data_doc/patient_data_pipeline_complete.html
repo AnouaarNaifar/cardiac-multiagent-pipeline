@@ -1,0 +1,1086 @@
+<title>UCI Patient-Data Pipeline</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700&family=Source+Code+Pro:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+
+<style>
+:root {
+  --paper:      #F1F3F6;
+  --surface:    #FFFFFF;
+  --surface-2:  #E7EBF1;
+  --ink:        #131A24;
+  --muted:      #5B6879;
+  --rule:       #CFD7E1;
+  --rule-soft:  #E2E8EF;
+  --accent:     #17457F;
+  --accent-soft:#DEE8F6;
+  --rust:       #8F4118;
+
+  /* chart series — validated set (CVD ΔE 9.2 light / 9.4 dark) */
+  --s1: #2a78d6;   /* precision */
+  --s2: #eb6834;   /* recall    */
+  --s3: #1baf7a;   /* F1        */
+
+  --display: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --body: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --mono: "Source Code Pro", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  --measure: 66ch;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper:      #0E131A;
+    --surface:    #151C26;
+    --surface-2:  #1D2733;
+    --ink:        #DEE6F0;
+    --muted:      #8B9AAC;
+    --rule:       #2B3745;
+    --rule-soft:  #1F2836;
+    --accent:     #7FB2EC;
+    --accent-soft:#17293F;
+    --rust:       #D98B5E;
+    --s1: #3987e5;
+    --s2: #d95926;
+    --s3: #199e70;
+  }
+}
+:root[data-theme="dark"] {
+  --paper:      #0E131A;
+  --surface:    #151C26;
+  --surface-2:  #1D2733;
+  --ink:        #DEE6F0;
+  --muted:      #8B9AAC;
+  --rule:       #2B3745;
+  --rule-soft:  #1F2836;
+  --accent:     #7FB2EC;
+  --accent-soft:#17293F;
+  --rust:       #D98B5E;
+  --s1: #3987e5;
+  --s2: #d95926;
+  --s3: #199e70;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+.wrap { max-width: 78rem; margin: 0 auto; padding: 0 2rem; }
+
+/* ── masthead: a record header ─────────────────────────── */
+.masthead { background: var(--surface); border-bottom: 2px solid var(--ink); }
+.masthead .wrap { padding-top: 3rem; padding-bottom: 1.6rem; }
+.record-line {
+  display: flex; flex-wrap: wrap; gap: 0.4rem 2rem;
+  font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--muted);
+  border-bottom: 1px solid var(--rule-soft); padding-bottom: 0.9rem; margin-bottom: 1.7rem;
+}
+.record-line b { color: var(--accent); font-weight: 600; letter-spacing: 0.06em; }
+h1 {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(2.3rem, 5.6vw, 3.7rem); line-height: 1.04;
+  letter-spacing: -0.02em; margin: 0 0 1rem; max-width: 20ch; text-wrap: balance;
+}
+.standfirst { font-size: 1.14rem; color: var(--muted); max-width: 58ch; margin: 0 0 1.9rem; }
+.facts { display: grid; gap: 0.9rem 2.6rem; grid-template-columns: repeat(auto-fit, minmax(11rem, max-content)); }
+.facts div { border-top: 2px solid var(--rule); padding-top: 0.45rem; }
+.facts dt { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.11em; text-transform: uppercase; color: var(--muted); }
+.facts dd { margin: 0; font-family: var(--display); font-weight: 600; font-size: 1.22rem; font-variant-numeric: tabular-nums; }
+
+/* ── sticky section strip ──────────────────────────────── */
+.strip {
+  position: sticky; top: 0; z-index: 5;
+  background: var(--paper); border-bottom: 1px solid var(--rule);
+}
+.strip .wrap { padding-top: 0; padding-bottom: 0; }
+.strip ol {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; gap: 0; overflow-x: auto; scrollbar-width: thin;
+}
+.strip a {
+  display: flex; align-items: baseline; gap: 0.42rem;
+  padding: 0.72rem 0.95rem; text-decoration: none; color: var(--muted);
+  font-family: var(--mono); font-size: 0.76rem; white-space: nowrap;
+  border-bottom: 2px solid transparent;
+}
+.strip a .n { font-size: 0.68rem; opacity: 0.7; }
+.strip a:hover { color: var(--ink); }
+.strip a.is-current { color: var(--accent); border-bottom-color: var(--accent); }
+.strip a.is-current .n { opacity: 1; }
+
+/* ── stages: a form's numbered fields ──────────────────── */
+.stage { padding: 3rem 0 0.6rem; scroll-margin-top: 3.2rem; }
+.stage + .stage { border-top: 1px solid var(--rule); }
+.stage-grid { display: grid; grid-template-columns: 5.5rem minmax(0, 1fr); gap: 0 1.6rem; }
+.gutter { position: sticky; top: 4rem; align-self: start; }
+.gutter .num {
+  font-family: var(--display); font-weight: 700; font-size: 1.55rem;
+  color: var(--accent); line-height: 1; letter-spacing: -0.02em;
+}
+.gutter .tag {
+  display: block; margin-top: 0.35rem;
+  font-family: var(--mono); font-size: 0.63rem; letter-spacing: 0.11em;
+  text-transform: uppercase; color: var(--muted); line-height: 1.4;
+}
+h2 {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(1.55rem, 3vw, 2.1rem); line-height: 1.12;
+  letter-spacing: -0.015em; margin: -0.35rem 0 1.1rem; text-wrap: balance;
+}
+h3 {
+  font-family: var(--display); font-weight: 600; font-size: 1.13rem;
+  margin: 2.3rem 0 0.6rem; letter-spacing: -0.005em;
+}
+h4 {
+  font-family: var(--mono); font-weight: 600; font-size: 0.8rem;
+  letter-spacing: 0.04em; margin: 1.7rem 0 0.5rem;
+}
+p { max-width: var(--measure); margin: 0 0 1rem; }
+ul, ol.prose { max-width: var(--measure); padding-left: 1.2rem; margin: 0 0 1.1rem; }
+li { margin-bottom: 0.45rem; }
+.lede { font-size: 1.06rem; color: var(--muted); max-width: 60ch; }
+code { font-family: var(--mono); font-size: 0.83em; background: var(--surface-2); padding: 0.08em 0.34em; border-radius: 2px; }
+strong { font-weight: 600; }
+em { font-style: italic; }
+
+/* ── wide track ────────────────────────────────────────── */
+.wide { max-width: none; overflow-x: auto; margin: 1.4rem 0 1.8rem; }
+
+/* ── tables: a form's value columns ────────────────────── */
+table { border-collapse: collapse; width: 100%; min-width: 32rem; font-size: 0.88rem; font-variant-numeric: tabular-nums; }
+thead th {
+  font-family: var(--mono); font-weight: 600; font-size: 0.7rem;
+  letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted);
+  text-align: left; padding: 0 0.9rem 0.5rem 0;
+  border-bottom: 2px solid var(--rule); white-space: nowrap;
+}
+tbody td { padding: 0.55rem 0.9rem 0.55rem 0; border-bottom: 1px solid var(--rule-soft); vertical-align: top; }
+tbody tr:last-child td { border-bottom: 2px solid var(--rule); }
+th.num, td.num { text-align: right; padding-right: 1.4rem; font-family: var(--mono); font-size: 0.82rem; }
+td.key { font-family: var(--mono); font-size: 0.79rem; }
+td.nowrap, th.nowrap { white-space: nowrap; }
+.best { color: var(--accent); font-weight: 600; }
+.flat { color: var(--rust); }
+.dim { color: var(--muted); }
+caption { caption-side: bottom; text-align: left; font-size: 0.8rem; color: var(--muted); padding-top: 0.75rem; max-width: 72ch; line-height: 1.55; }
+tr.chosen td { background: var(--accent-soft); }
+
+/* ── code ──────────────────────────────────────────────── */
+pre {
+  font-family: var(--mono); font-size: 0.79rem; line-height: 1.62;
+  background: var(--surface); border: 1px solid var(--rule-soft);
+  border-left: 3px solid var(--rule);
+  padding: 0.9rem 1.1rem; margin: 1rem 0 1.5rem; overflow-x: auto; white-space: pre;
+}
+pre.formula { border-left-color: var(--accent); background: var(--accent-soft); font-size: 0.84rem; }
+pre .cm { color: var(--muted); }
+
+/* ── notes ─────────────────────────────────────────────── */
+.note { border-left: 3px solid var(--accent); padding: 0.1rem 0 0.1rem 1.15rem; margin: 1.5rem 0; max-width: 68ch; }
+.note.flagged { border-left-color: var(--rust); }
+.note-label {
+  display: block; font-family: var(--mono); font-size: 0.67rem;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem;
+}
+.note.flagged .note-label { color: var(--rust); }
+.note p:last-child { margin-bottom: 0; }
+
+/* ── figures & charts ──────────────────────────────────── */
+figure { margin: 1.6rem 0 2rem; }
+.fig-frame { border: 1px solid var(--rule); background: var(--surface); padding: 1.35rem 1.25rem 1.1rem; overflow-x: auto; }
+figure svg { display: block; width: 100%; min-width: 34rem; max-width: 100%; height: auto; color: var(--ink); }
+/* series colours + marker rings follow the theme tokens, not baked-in hex */
+figure svg .l1 { stroke: var(--s1); }
+figure svg .l2 { stroke: var(--s2); }
+figure svg .l3 { stroke: var(--s3); }
+figure svg .m1 { fill: var(--s1); }
+figure svg .m2 { fill: var(--s2); }
+figure svg .m3 { fill: var(--s3); }
+figure svg .g1 circle { fill: var(--s1); }
+figure svg .g2 circle { fill: var(--s2); }
+figure svg circle { stroke: var(--surface); }
+figure svg .accent-stroke { stroke: var(--s1); }
+figure svg .accent-fill { fill: var(--s1); }
+figcaption { font-size: 0.81rem; color: var(--muted); margin-top: 0.75rem; max-width: 72ch; line-height: 1.55; }
+.legend-row { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; margin: 0 0 0.9rem; font-family: var(--mono); font-size: 0.75rem; color: var(--muted); }
+.legend-row span { display: inline-flex; align-items: center; gap: 0.45rem; }
+.dot { width: 0.62rem; height: 0.62rem; border-radius: 50%; display: inline-block; }
+
+/* ── colophon ──────────────────────────────────────────── */
+.colophon { border-top: 2px solid var(--ink); background: var(--surface); margin-top: 3rem; }
+.colophon .wrap { padding-top: 1.7rem; padding-bottom: 3rem; }
+.colophon p { font-family: var(--mono); font-size: 0.75rem; color: var(--muted); max-width: 80ch; line-height: 1.7; }
+
+@media (max-width: 60rem) {
+  .wrap { padding: 0 1.15rem; }
+  .stage-grid { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .gutter { position: static; display: flex; align-items: baseline; gap: 0.7rem; margin-bottom: 0.7rem; }
+  .gutter .tag { margin-top: 0; }
+  h2 { margin-top: 0; }
+}
+
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+</style>
+
+<header class="masthead">
+  <div class="wrap">
+    <p class="record-line">
+      <span>Cardiac multi-agent pipeline</span>
+      <span>Modality 3 of 3 — <b>structured patient data</b></span>
+      <span>agent_id <b>patient</b></span>
+    </p>
+    <h1>Thirteen fields, seven flags, one balanced target</h1>
+    <p class="standfirst">The third modality has no signal to filter and no image to segment — the clinical
+    record already <em>is</em> its own native representation. What it has instead is the one thing ECG and
+    MRI never had: a roughly balanced ground truth, and therefore a threshold-calibration problem worth
+    taking seriously.</p>
+    <dl class="facts">
+      <div><dt>Cohort</dt><dd>303 patients</dd></div>
+      <div><dt>Input fields</dt><dd>13</dd></div>
+      <div><dt>Deterministic flags</dt><dd>7</dd></div>
+      <div><dt>Target prevalence</dt><dd>0.459</dd></div>
+      <div><dt>Best flag F1</dt><dd>0.737</dd></div>
+    </dl>
+  </div>
+</header>
+
+<nav class="strip" aria-label="Sections">
+  <div class="wrap">
+    <ol>
+      <li><a href="#s1"><span class="n">01</span>What's different</a></li>
+      <li><a href="#s2"><span class="n">02</span>The data</a></li>
+      <li><a href="#s3"><span class="n">03</span>Feature dict</a></li>
+      <li><a href="#s4"><span class="n">04</span>The seven flags</a></li>
+      <li><a href="#s5"><span class="n">05</span>Calibration</a></li>
+      <li><a href="#s6"><span class="n">06</span>The agent</a></li>
+      <li><a href="#s7"><span class="n">07</span>Validation</a></li>
+      <li><a href="#s8"><span class="n">08</span>Downstream</a></li>
+      <li><a href="#s9"><span class="n">09</span>Limitations</a></li>
+    </ol>
+  </div>
+</nav>
+
+<main>
+
+<!-- ═══ 01 ═══════════════════════════════════════════════ -->
+<section class="stage" id="s1"><div class="wrap"><div class="stage-grid">
+  <div class="gutter"><span class="num">01</span><span class="tag">What's<br>different</span></div>
+  <div>
+    <h2>A modality with no preprocessing step</h2>
+
+    <p class="lede">ECG has a five-stage signal pipeline before a single feature exists. MRI has slice
+    selection, cropping, encoding and mask arithmetic. This modality has none of that — and the absence is
+    the design, not a gap.</p>
+
+    <p>One row of the UCI Cleveland file already carries thirteen clinical fields in their clinical units.
+    There is nothing to denoise, no lead to pick, no volume to segment. <code>compute_feature_dict</code>
+    translates UCI's numeric category codes into readable labels and passes the continuous values through
+    untouched. That is the whole "preprocessing".</p>
+
+    <figure>
+      <div class="fig-frame">
+        <svg viewBox="0 0 900 250" role="img" aria-label="The patient-data pipeline: one CSV row goes to a thirteen-key feature dict, which splits into a deterministic flag detector and a text summary; the summary becomes a prompt, MedGemma answers, the parser validates every citation against the feature keys, and the flags are merged into the contribution.">
+          <defs>
+            <marker id="pa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <polygon points="0,1 10,5 0,9" fill="currentColor"></polygon>
+            </marker>
+            <marker id="pab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <polygon class="accent-fill" points="0,1 10,5 0,9"></polygon>
+            </marker>
+          </defs>
+
+          <rect x="4" y="86" width="118" height="58" fill="none" stroke="currentColor" stroke-width="1.2"></rect>
+          <text x="63" y="110" text-anchor="middle" font-family="Source Code Pro, monospace" font-size="11.5" fill="currentColor">one CSV row</text>
+          <text x="63" y="127" text-anchor="middle" font-family="Source Code Pro, monospace" font-size="9.5" fill="currentColor" opacity="0.6">13 raw UCI fields</text>
+
+          <line x1="122" y1="115" x2="160" y2="115" stroke="currentColor" stroke-width="1.2" marker-end="url(#pa)"></line>
+
+          <rect x="164" y="86" width="132" height="58" fill="none" stroke="currentColor" stroke-width="1.6"></rect>
+          <text x="230" y="110" text-anchor="middle" font-family="Source Code Pro, monospace" font-size="11.5" fill="currentColor">feature dict</text>
+          <text x="230" y="127" text-anchor="middle" font-family="Source Code Pro, monospace" font-size="9.5" fill="currentColor" opacity="0.6">13 keys · codes → labels</text>
+          <text x="230" y="72" text-anchor="middle" font-family="Source Code Pro, monospace" font-size="9.5" fill="currentColor" opacity="0.55">no signal or image preprocessing exists here</text>
+
+          <path d="M296 100 H340" fill="none" stroke="currentColor" stroke-width="1.2" marker-end="url(#pa)"></path>
+          <path d="M296 130 H340" fill="none" stroke="currentColor" stroke-width="1.2" marker-end="url(#pa)"></path>
+
+          <rect x="344" y="24" width="150" height="56" fill="none" stroke="currentColor" stroke-width="1.2"></rect>
+          <text x="419" y="47" text-anchor="middle" font-family="Source Code Pro, monospace" font-size="11.5" fill="currentColor">detect_flags_patient</text>
+          <text x="419" y="64" text-anchor="middle" font-family="Source Code Pro, monospace" font-size="9.5" fill="currentColor" opacity="0.6">7 flags · no LLM</text>
+          <path d="M340 100 V52 H342" fill="none" stroke="currentColor" stroke-width="1.2" marker-end="url(#pa)"></path>
+
+          <rect x="344" y="150" width="150" height="56" fill="none" stroke="currentColor" stroke-width="1.2"></rect>
+          <text x="419" y="173" text-anchor="middle" font-family="Source Code Pro, monospace" font-size="11.5" fill="currentColor">clinical summary</text>
+          <text x="419" y="190" text-anchor="middle" font-family="Source Code Pro, monospace" font-size="9.5" fill="currentColor" opacity="0.6">plain text, missing omitted</text>
+          <path d="M340 130 V178 H342" fill="none" stroke="currentColor" stroke-width="1.2" marker-end="url(#pa)"></path>
+
+          <line x1="494" y1="178" x2="532" y2="178" class="accent-stroke" stroke-width="1.4" marker-end="url(#pab)"></line>
+          <rect class="accent-stroke" x="536" y="150" width="128" height="56" fill="none" stroke-width="1.3"></rect>
+          <text x="600" y="173" text-anchor="middle" font-family="Source Code Pro, monospace" font-size="11.5" fill="currentColor">MedGemma 4B</text>
+          <text x="600" y="190" text-anchor="middle" font-family="Source Code Pro, monospace" font-size="9.5" fill="currentColor" opacity="0.6">text-only, no image</text>
+
+          <line x1="664" y1="178" x2="702" y2="178" class="accent-stroke" stroke-width="1.4" marker-end="url(#pab)"></line>
+          <rect x="706" y="150" width="128" height="56" fill="none" stroke="currentColor" stroke-width="1.2"></rect>
+          <text x="770" y="173" text-anchor="middle" font-family="Source Code Pro, monospace" font-size="11.5" fill="currentColor">parser</text>
+          <text x="770" y="190" text-anchor="middle" font-family="Source Code Pro, monospace" font-size="9.5" fill="currentColor" opacity="0.6">every ref ∈ 13 keys</text>
+
+          <path d="M230 144 V222 H700" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3" opacity="0.5"></path>
+          <text x="238" y="238" font-family="Source Code Pro, monospace" font-size="9.5" fill="currentColor" opacity="0.55">the same 13 keys are the only citations the parser will accept</text>
+
+          <path d="M834 178 H864 V126" fill="none" stroke="currentColor" stroke-width="1.2" marker-end="url(#pa)"></path>
+          <path d="M494 52 H864 V116" fill="none" stroke="currentColor" stroke-width="1.2" marker-end="url(#pa)"></path>
+          <rect x="740" y="60" width="150" height="56" fill="none" stroke="currentColor" stroke-width="1.6"></rect>
+          <text x="815" y="83" text-anchor="middle" font-family="Source Code Pro, monospace" font-size="11.5" font-weight="600" fill="currentColor">AgentContribution</text>
+          <text x="815" y="100" text-anchor="middle" font-family="Source Code Pro, monospace" font-size="9.5" fill="currentColor" opacity="0.6">flags = union of both</text>
+        </svg>
+      </div>
+      <figcaption><strong>Figure 1.</strong> The whole modality. The deterministic branch and the LLM branch
+      run off the same feature dict and rejoin at the contribution — the flags are a union, so a raised flag
+      never depends on the model noticing it.</figcaption>
+    </figure>
+
+    <p>Two other things set this modality apart, and both matter for how it is judged:</p>
+    <ul>
+      <li><strong>The ground truth is balanced.</strong> <code>heart_disease_present</code> has a prevalence
+      of <strong>0.459</strong>. On ECG, the target diagnoses are rare, so precision is swamped by false
+      positives and a precision of 0.38 can still be the best flag in the module. Here, precision above
+      roughly 0.46 is <em>genuine signal rather than the base rate</em> — a much more demanding bar, and a
+      much more readable one.</li>
+      <li><strong>Every flag predicts the same outcome.</strong> ECG flags each target a different scp_code
+      set; MRI flags each target a different pathology group. Here all seven are competing predictors of one
+      binary target, which is why the validation table reads like a scoreboard.</li>
+    </ul>
+  </div>
+</div></div></section>
+
+<!-- ═══ 02 ═══════════════════════════════════════════════ -->
+<section class="stage" id="s2"><div class="wrap"><div class="stage-grid">
+  <div class="gutter"><span class="num">02</span><span class="tag">The<br>data</span></div>
+  <div>
+    <h2>UCI Heart Disease, Cleveland subset</h2>
+
+    <p>303 patients, 13 input features and a target, from UCI repository id 45
+    (<code>doi.org/10.24432/C52P4X</code>). Fetched <strong>once</strong> via <code>ucimlrepo</code> — for
+    the authoritative column names, types and descriptions — then saved locally to
+    <code>uci_heart_disease/processed_cleveland.csv</code> and <code>variables_metadata.csv</code>.</p>
+
+    <p>The agent reads that local file and never makes a live network call at runtime. This matches the
+    project's local-first pattern for every reference dataset (PTB-XL, ACDC) and removes a runtime dependency
+    on UCI's servers: <code>ucimlrepo</code> does not cache, confirmed empirically — two consecutive fetches
+    each took the same ~1.7 s.</p>
+
+    <div class="wide">
+      <table>
+        <caption>The raw file, and what each column becomes. Categorical translations are a direct lookup of
+        UCI's own documented encoding — not a clinical judgement this module makes.</caption>
+        <thead><tr><th>Raw</th><th>Type</th><th>Meaning</th><th>Becomes</th></tr></thead>
+        <tbody>
+          <tr><td class="key">age</td><td class="dim">integer</td><td>years</td><td class="key">age_years</td></tr>
+          <tr><td class="key">sex</td><td class="dim">categorical</td><td>1 = male, 0 = female</td><td class="key">sex</td></tr>
+          <tr><td class="key">cp</td><td class="dim">categorical</td><td>1 typical / 2 atypical angina, 3 non-anginal, 4 asymptomatic</td><td class="key">chest_pain_type</td></tr>
+          <tr><td class="key">trestbps</td><td class="dim">integer</td><td>resting BP on admission, mm Hg</td><td class="key">resting_bp_mmHg</td></tr>
+          <tr><td class="key">chol</td><td class="dim">integer</td><td>serum cholesterol, mg/dl</td><td class="key">cholesterol_mgdl</td></tr>
+          <tr><td class="key">fbs</td><td class="dim">categorical</td><td>fasting blood sugar &gt; 120 mg/dl</td><td class="key">fasting_blood_sugar_elevated</td></tr>
+          <tr><td class="key">restecg</td><td class="dim">categorical</td><td>0 normal, 1 ST-T abnormality, 2 probable LVH</td><td class="key">resting_ecg_result</td></tr>
+          <tr><td class="key">thalach</td><td class="dim">integer</td><td>maximum heart rate achieved</td><td class="key">max_heart_rate_achieved_bpm</td></tr>
+          <tr><td class="key">exang</td><td class="dim">categorical</td><td>exercise-induced angina</td><td class="key">exercise_induced_angina</td></tr>
+          <tr><td class="key">oldpeak</td><td class="dim">numeric</td><td>ST depression induced by exercise, relative to rest</td><td class="key">st_depression_oldpeak_mm</td></tr>
+          <tr><td class="key">slope</td><td class="dim">categorical</td><td>1 upsloping, 2 flat, 3 downsloping</td><td class="key">st_segment_slope</td></tr>
+          <tr><td class="key">ca</td><td class="dim">integer <span class="flat">· missing ×4</span></td><td>major vessels (0–3) coloured by fluoroscopy</td><td class="key">n_major_vessels_colored</td></tr>
+          <tr><td class="key">thal</td><td class="dim">categorical <span class="flat">· missing ×2</span></td><td>3 normal, 6 fixed defect, 7 reversible defect</td><td class="key">thalassemia_result</td></tr>
+          <tr><td class="key">num</td><td class="dim">target</td><td>0–4 severity → binarised</td><td class="key">heart_disease_present = (num &gt; 0)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note">
+      <span class="note-label">Why binarise the target</span>
+      <p>Every published benchmark on this dataset uses <code>num &gt; 0</code>, and — more to the point —
+      the raw 5-level severity scale is <em>not what any of these flags claim to predict</em>. A flag that
+      says "elevated resting blood pressure" is a candidate predictor of disease presence, not of its
+      severity grade. Binarising is the honest match between the claim and the measurement.</p>
+    </div>
+  </div>
+</div></div></section>
+
+<!-- ═══ 03 ═══════════════════════════════════════════════ -->
+<section class="stage" id="s3"><div class="wrap"><div class="stage-grid">
+  <div class="gutter"><span class="num">03</span><span class="tag">Feature<br>dict</span></div>
+  <div>
+    <h2>Thirteen keys, and the line they draw</h2>
+
+    <p><code>compute_feature_dict(row)</code> is the single source of truth for
+    <code>evidence_ref</code>: the LLM may only cite keys that exist here. Its internal rule is a clean
+    split between two kinds of field.</p>
+
+    <div class="wide">
+      <table>
+        <caption>Nine fields are reported exactly as they arrive; four are numbers the agent will later
+        interpret <em>only</em> through a deterministic threshold, never through a guess in the summary.</caption>
+        <thead><tr><th>Handling</th><th>Keys</th><th>Rule</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="nowrap"><strong>Direct read</strong></td>
+            <td class="key">age_years · sex · chest_pain_type · fasting_blood_sugar_elevated · resting_ecg_result · exercise_induced_angina · st_segment_slope · n_major_vessels_colored · thalassemia_result</td>
+            <td>Category code → label lookup, or a straight pass-through. No interpretation.</td>
+          </tr>
+          <tr>
+            <td class="nowrap"><strong>Qualitatively<br>interpreted</strong></td>
+            <td class="key">resting_bp_mmHg · cholesterol_mgdl · max_heart_rate_achieved_bpm · st_depression_oldpeak_mm</td>
+            <td>Value passed through untouched. Whether 260 mg/dl counts as "high" is decided <em>only</em> in <code>detect_flags_patient</code>, by a validated threshold.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Missing values are reported, never guessed</h3>
+    <p>Only <code>ca</code> (4 patients) and <code>thal</code> (2 patients) are ever missing — UCI encodes
+    them <code>?</code> in the raw format, <code>NaN</code> once loaded. They become <code>None</code>, and
+    <code>build_patient_clinical_summary</code> omits them from the text entirely rather than printing
+    "None". Every threshold in <code>detect_flags_patient</code> guards for <code>None</code> per field, so
+    the related flag is simply skipped. This is the same "None where not computable" convention the ECG and
+    MRI agents already use.</p>
+
+    <h3>Keys are deliberately not namespaced</h3>
+    <p>No <code>patient.</code> prefix. Confirmed directly in code that neither <code>ecg_agent.py</code> nor
+    <code>mri_agent.py</code> actually namespaces its keys — an earlier docstring note suggesting future
+    agents should was never implemented. It would be redundant anyway: every citation downstream is the pair
+    <code>(agent_id, feature)</code>, never a bare feature name, so a cross-modality clash cannot occur.</p>
+  </div>
+</div></div></section>
+
+<!-- ═══ 04 ═══════════════════════════════════════════════ -->
+<section class="stage" id="s4"><div class="wrap"><div class="stage-grid">
+  <div class="gutter"><span class="num">04</span><span class="tag">The seven<br>flags</span></div>
+  <div>
+    <h2>Deterministic decision logic</h2>
+
+    <p class="lede">Seven flags, computed by pure threshold logic with no LLM anywhere. Three of them have no
+    threshold at all — they pass through an already-binary or categorical field.</p>
+
+    <pre>if resting_bp_mmHg            &gt;  140.0        → "high_resting_bp_suspected"
+if cholesterol_mgdl           &gt;  240.0        → "high_cholesterol_suspected"
+
+predicted_max = 208.0 - 0.7 * age_years       <span class="cm"># Tanaka</span>
+if max_heart_rate_achieved_bpm &lt; 0.91 * predicted_max
+                                              → "reduced_exercise_capacity_suspected"
+
+if st_depression_oldpeak_mm   &gt;= 0.8          → "significant_st_depression_suspected"
+if exercise_induced_angina    is True         → "exercise_induced_angina_present"
+if n_major_vessels_colored    &gt;= 1            → "multiple_vessels_involved_suspected"
+if thalassemia_result         != "normal"     → "abnormal_thallium_result_suspected"</pre>
+
+    <p><code>PatientDecisionPlan.skip_llm_call</code> is <strong>always False</strong> here, and
+    <code>reason</code> always <code>None</code>. Unlike ECG (fewer than two QRS complexes) or MRI (no
+    computable ejection fraction), this dataset has no field whose absence makes a record unanalysable —
+    only <code>ca</code> and <code>thal</code> are ever missing, and every other field is always present. The
+    fields are kept purely for structural consistency with the other two agents' decision plans.</p>
+
+    <div class="wide">
+      <table>
+        <caption>Where each parameter came from. Three flags have no tunable parameter; two were moved by a
+        sweep; two were confirmed unchanged and two were kept <em>despite</em> a weak sweep — see stage 05.</caption>
+        <thead><tr><th>Parameter</th><th class="num">Value</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td class="key">resting_bp_mmHg_threshold</td><td class="num">140.0</td><td><span class="flat">Kept despite a weak sweep</span> — the clinically meaningful cutoff.</td></tr>
+          <tr><td class="key">cholesterol_mgdl_threshold</td><td class="num">240.0</td><td><span class="flat">Kept despite a weak sweep</span> — same reasoning.</td></tr>
+          <tr><td class="key">oldpeak_threshold</td><td class="num">0.8</td><td><strong class="best">Recalibrated</strong> from 1.0 mm.</td></tr>
+          <tr><td class="key">max_hr_formula</td><td class="num">tanaka</td><td><strong class="best">Recalibrated</strong> from <code>220_minus_age</code>.</td></tr>
+          <tr><td class="key">max_hr_pct_threshold</td><td class="num">0.91</td><td><strong class="best">Recalibrated</strong> from 0.85.</td></tr>
+          <tr><td class="key">n_vessels_threshold</td><td class="num">1</td><td>Swept and <strong>confirmed optimal</strong>.</td></tr>
+          <tr><td class="dim">— (exercise angina)</td><td class="num dim">—</td><td>Binary field, no threshold to set.</td></tr>
+          <tr><td class="dim">— (thallium result)</td><td class="num dim">—</td><td>Categorical field, no threshold to set.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div></div></section>
+
+<!-- ═══ 05 ═══════════════════════════════════════════════ -->
+<section class="stage" id="s5"><div class="wrap"><div class="stage-grid">
+  <div class="gutter"><span class="num">05</span><span class="tag">Calib-<br>ration</span></div>
+  <div>
+    <h2>Testing the textbook cutoffs instead of inheriting them</h2>
+
+    <p class="lede">140 mmHg and 240 mg/dl are universally recognised clinical thresholds. They were still
+    swept — because a cutoff that is optimal for making a diagnosis is not necessarily optimal for firing a
+    human-review alert.</p>
+
+    <p><code>src/patient_data_flag_validation.py</code> caches each patient's feature dict once, then tries
+    many candidate thresholds cheaply against <code>heart_disease_present</code>. It never edits the agent:
+    a finding is applied by hand afterwards in <code>patient_data_agent.py</code>, the same discipline that
+    moved ECG's tachycardia threshold from 100 to 120 bpm.</p>
+
+    <h3>ST depression — the clearest recalibration</h3>
+
+    <figure>
+      <div class="legend-row" aria-hidden="true">
+        <span><i class="dot" style="background:var(--s1)"></i>precision</span>
+        <span><i class="dot" style="background:var(--s2)"></i>recall</span>
+        <span><i class="dot" style="background:var(--s3)"></i>F1</span>
+      </div>
+      <div class="fig-frame">
+        <svg viewBox="0 0 720 330" role="img" aria-label="Sweep of the oldpeak ST-depression threshold from 0.5 to 2.0 millimetres. Precision rises steadily with the threshold while recall falls faster, so F1 peaks at 0.8 millimetres and declines from there. The original 1.0 millimetre setting sits on the falling side of the peak.">
+          <!-- gridlines -->
+          <g stroke="currentColor" stroke-width="1" opacity="0.13">
+            <line x1="70" y1="30" x2="640" y2="30"></line>
+            <line x1="70" y1="68.3" x2="640" y2="68.3"></line>
+            <line x1="70" y1="106.7" x2="640" y2="106.7"></line>
+            <line x1="70" y1="145" x2="640" y2="145"></line>
+            <line x1="70" y1="183.3" x2="640" y2="183.3"></line>
+            <line x1="70" y1="221.7" x2="640" y2="221.7"></line>
+          </g>
+          <g font-family="Source Code Pro, monospace" font-size="10.5" fill="currentColor" opacity="0.6" text-anchor="end">
+            <text x="60" y="33.5">0.90</text>
+            <text x="60" y="71.8">0.80</text>
+            <text x="60" y="110.2">0.70</text>
+            <text x="60" y="148.5">0.60</text>
+            <text x="60" y="186.8">0.50</text>
+            <text x="60" y="225.2">0.40</text>
+          </g>
+
+          <!-- axis -->
+          <line x1="70" y1="260" x2="640" y2="260" stroke="currentColor" stroke-width="1.2" opacity="0.5"></line>
+          <g font-family="Source Code Pro, monospace" font-size="10.5" fill="currentColor" opacity="0.6" text-anchor="middle">
+            <text x="70" y="278">0.5</text>
+            <text x="260" y="278">1.0</text>
+            <text x="450" y="278">1.5</text>
+            <text x="640" y="278">2.0</text>
+          </g>
+          <text x="355" y="304" text-anchor="middle" font-family="Source Code Pro, monospace" font-size="11" fill="currentColor" opacity="0.65">oldpeak threshold (mm) — the flag fires at ≥ this value</text>
+
+          <!-- chosen / original markers -->
+          <line x1="184" y1="30" x2="184" y2="260" stroke="currentColor" stroke-width="1.2" stroke-dasharray="4 3" opacity="0.55"></line>
+          <text x="184" y="22" text-anchor="middle" font-family="Source Code Pro, monospace" font-size="10.5" fill="currentColor">0.8 adopted</text>
+          <line x1="260" y1="105" x2="260" y2="260" stroke="currentColor" stroke-width="1" stroke-dasharray="2 3" opacity="0.35"></line>
+          <text x="260" y="294" text-anchor="middle" font-family="Source Code Pro, monospace" font-size="10" fill="currentColor" opacity="0.55">1.0 was here</text>
+
+          <!-- precision -->
+          <polyline class="l1" points="70,142.3 108,137.7 146,126.2 184,124.3 222,117.8 260,117.4 298,119.3 336,115.0 450,98.2 640,50.3"
+                    fill="none" stroke-width="2" stroke-linejoin="round"></polyline>
+          <!-- recall -->
+          <polyline class="l2" points="70,85.6 108,88.3 146,99.4 184,99.4 222,115.8 260,121.3 298,148.9 336,148.9 450,195.6 640,237.0"
+                    fill="none" stroke-width="2" stroke-linejoin="round"></polyline>
+          <!-- F1 -->
+          <polyline class="l3" points="70,117.0 108,115.0 146,113.2 184,112.4 222,116.6 260,119.3 298,135.1 336,133.1 450,157.3 640,181.5"
+                    fill="none" stroke-width="2" stroke-linejoin="round"></polyline>
+
+          <!-- emphasised points at the adopted threshold -->
+          <circle class="m1" cx="184" cy="124.3" r="4.5" stroke-width="2"><title>precision at 0.8 mm: 0.654</title></circle>
+          <circle class="m2" cx="184" cy="99.4" r="4.5" stroke-width="2"><title>recall at 0.8 mm: 0.719</title></circle>
+          <circle class="m3" cx="184" cy="112.4" r="5.5" stroke-width="2"><title>F1 at 0.8 mm: 0.685 — the maximum</title></circle>
+
+          <!-- direct labels -->
+          <g font-family="Source Code Pro, monospace" font-size="11" fill="currentColor">
+            <text x="648" y="54">precision</text>
+            <text x="648" y="241">recall</text>
+            <text x="648" y="185">F1</text>
+          </g>
+        </svg>
+      </div>
+      <figcaption><strong>Figure 2.</strong> Precision climbs monotonically with the threshold and recall
+      falls faster, so F1 peaks at 0.8 mm. The original 1.0 mm setting was already past the peak — moving to
+      0.8 buys 5.7 points of recall for 1.8 points of precision. Values in the table below.</figcaption>
+    </figure>
+
+    <div class="wide">
+      <table>
+        <caption>The <code>oldpeak</code> sweep, evaluated with <code>direction="greater_equal"</code>
+        because the real rule in <code>detect_flags_patient</code> is <code>&gt;=</code>, not <code>&gt;</code>
+        — a detail the sweep helper gained specifically for this flag.</caption>
+        <thead><tr><th class="num">Threshold (mm)</th><th class="num">Precision</th><th class="num">Recall</th><th class="num">F1</th><th></th></tr></thead>
+        <tbody>
+          <tr><td class="num">0.5</td><td class="num">0.607</td><td class="num">0.755</td><td class="num">0.673</td><td></td></tr>
+          <tr><td class="num">0.6</td><td class="num">0.619</td><td class="num">0.748</td><td class="num">0.678</td><td></td></tr>
+          <tr><td class="num">0.7</td><td class="num">0.649</td><td class="num">0.719</td><td class="num">0.683</td><td></td></tr>
+          <tr class="chosen"><td class="num"><strong>0.8</strong></td><td class="num">0.654</td><td class="num">0.719</td><td class="num"><strong>0.685</strong></td><td class="dim">adopted — F1 maximum</td></tr>
+          <tr><td class="num">0.9</td><td class="num">0.671</td><td class="num">0.676</td><td class="num">0.674</td><td></td></tr>
+          <tr><td class="num">1.0</td><td class="num">0.672</td><td class="num">0.662</td><td class="num">0.667</td><td class="dim">the original setting</td></tr>
+          <tr><td class="num">1.2</td><td class="num">0.678</td><td class="num">0.590</td><td class="num">0.631</td><td></td></tr>
+          <tr><td class="num">1.5</td><td class="num">0.722</td><td class="num">0.468</td><td class="num">0.568</td><td></td></tr>
+          <tr><td class="num">2.0</td><td class="num">0.847</td><td class="num">0.360</td><td class="num">0.505</td><td class="dim">precise, but misses two thirds</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Maximum heart rate — a joint sweep, because the two parameters are not independent</h3>
+    <p>The flag fires when <code>max_hr &lt; pct × predicted_max</code>, and <em>which</em> formula predicts
+    the maximum changes what "85 % of predicted" means for the same patient. Sweeping either alone while
+    holding the other fixed could miss the best combination, so
+    <code>sweep_max_hr_formula_and_threshold</code> sweeps both together — two formulas × 26 percentages.</p>
+
+    <div class="wide">
+      <table>
+        <caption>Top of the joint sweep, ranked by F1. Tanaka beats <code>220 − age</code> at essentially
+        every matched percentage — and it is also the more recent, better-validated formula in the
+        exercise-physiology literature, not merely a better fit to this particular sample.</caption>
+        <thead><tr><th>Formula</th><th class="num">pct</th><th class="num">Precision</th><th class="num">Recall</th><th class="num">F1</th></tr></thead>
+        <tbody>
+          <tr class="chosen"><td class="key"><strong>tanaka</strong> · 208 − 0.7×age</td><td class="num"><strong>0.91</strong></td><td class="num">0.636</td><td class="num">0.705</td><td class="num"><strong>0.669</strong></td></tr>
+          <tr><td class="key">tanaka</td><td class="num">0.90</td><td class="num">0.646</td><td class="num">0.683</td><td class="num">0.664</td></tr>
+          <tr><td class="key">tanaka</td><td class="num">0.89</td><td class="num">0.660</td><td class="num">0.669</td><td class="num">0.664</td></tr>
+          <tr><td class="key">tanaka</td><td class="num">0.92</td><td class="num">0.600</td><td class="num">0.712</td><td class="num">0.651</td></tr>
+          <tr><td class="key dim">220 − age</td><td class="num dim">0.93</td><td class="num dim">0.619</td><td class="num dim">0.691</td><td class="num dim">0.653</td></tr>
+          <tr><td class="key dim">220 − age</td><td class="num dim">0.92</td><td class="num dim">0.634</td><td class="num dim">0.662</td><td class="num dim">0.648</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note">
+      <span class="note-label">Why 0.91 and not 0.90</span>
+      <p>Because the flag fires <em>below</em> the predicted maximum, a <strong>higher</strong> percentage
+      fires on more patients. So 0.91 does not trade recall for F1 — it wins both, 0.705 against 0.683
+      recall and 0.669 against 0.664 F1, giving up only a point of precision. 0.92 buys a little more recall
+      still (0.712) but F1 drops to 0.651, so the plateau ends there.</p>
+    </div>
+
+    <h3>Vessel count — swept and confirmed, not assumed</h3>
+    <div class="wide">
+      <table>
+        <caption>The starting choice needed no change. Note these three rows exclude the 4 patients whose
+        <code>ca</code> is missing, which is why the recall here (0.667) differs slightly from the scoreboard
+        in stage 07 (0.662, computed over all 303).</caption>
+        <thead><tr><th class="num">≥ vessels</th><th class="num">Precision</th><th class="num">Recall</th><th class="num">F1</th></tr></thead>
+        <tbody>
+          <tr class="chosen"><td class="num"><strong>1</strong></td><td class="num">0.748</td><td class="num">0.667</td><td class="num"><strong>0.705</strong></td></tr>
+          <tr><td class="num">2</td><td class="num">0.828</td><td class="num">0.348</td><td class="num">0.490</td></tr>
+          <tr><td class="num">3</td><td class="num">0.850</td><td class="num">0.123</td><td class="num">0.215</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>The two that were kept despite their sweep</h3>
+    <p>Resting blood pressure and cholesterol were swept across 110–170 mmHg and 180–300 mg/dl. In both, F1
+    only improves by flagging almost everybody, and precision never meaningfully clears the 0.459 base rate
+    while doing so:</p>
+
+    <div class="wide">
+      <table>
+        <caption>Two weak sweeps, reported rather than exploited. At 110 mmHg the flag reaches F1 0.615 —
+        the best in its sweep — with a precision of 0.470 against a base rate of 0.459: it fires on 89 % of
+        patients and is barely better than a coin weighted by prevalence.</caption>
+        <thead><tr><th class="num">Resting BP &gt;</th><th class="num">P</th><th class="num">R</th><th class="num">F1</th><th class="num">Cholesterol &gt;</th><th class="num">P</th><th class="num">R</th><th class="num">F1</th></tr></thead>
+        <tbody>
+          <tr><td class="num">110</td><td class="num flat">0.470</td><td class="num">0.892</td><td class="num">0.615</td><td class="num">180</td><td class="num flat">0.457</td><td class="num">0.921</td><td class="num">0.611</td></tr>
+          <tr><td class="num">120</td><td class="num flat">0.495</td><td class="num">0.734</td><td class="num">0.591</td><td class="num">200</td><td class="num flat">0.466</td><td class="num">0.849</td><td class="num">0.602</td></tr>
+          <tr><td class="num">130</td><td class="num">0.515</td><td class="num">0.489</td><td class="num">0.502</td><td class="num">220</td><td class="num">0.493</td><td class="num">0.727</td><td class="num">0.587</td></tr>
+          <tr class="chosen"><td class="num"><strong>140</strong></td><td class="num">0.591</td><td class="num">0.281</td><td class="num">0.380</td><td class="num"><strong>240</strong></td><td class="num">0.526</td><td class="num">0.576</td><td class="num">0.550</td></tr>
+          <tr><td class="num">150</td><td class="num">0.629</td><td class="num">0.158</td><td class="num">0.253</td><td class="num">260</td><td class="num">0.533</td><td class="num">0.410</td><td class="num">0.463</td></tr>
+          <tr><td class="num">160</td><td class="num">0.733</td><td class="num">0.079</td><td class="num">0.143</td><td class="num">280</td><td class="num">0.592</td><td class="num">0.302</td><td class="num">0.400</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note flagged">
+      <span class="note-label">The decision, stated plainly</span>
+      <p>Resting blood pressure and cholesterol are simply <strong>weak predictors of coronary disease in
+      this dataset, at any threshold</strong>. So the clinically meaningful cutoff was kept and the weakness
+      reported honestly, rather than chasing a statistically marginal and clinically meaningless gain by
+      flagging nearly every patient. The same pattern is already documented for ECG's
+      <code>irregular_rhythm_suspected</code>, which was likewise kept at CV 0.15.</p>
+    </div>
+
+    <p><strong>Recall-favouring throughout.</strong> These flags feed a human-review alert, not a final
+    classification, so a missed true case is treated as a worse failure than an extra false positive that a
+    reviewer dismisses — the same philosophy applied to ECG's tachycardia threshold.</p>
+  </div>
+</div></div></section>
+
+<!-- ═══ 06 ═══════════════════════════════════════════════ -->
+<section class="stage" id="s6"><div class="wrap"><div class="stage-grid">
+  <div class="gutter"><span class="num">06</span><span class="tag">The<br>agent</span></div>
+  <div>
+    <h2>From feature dict to contribution</h2>
+
+    <p class="lede"><code>src/patient_data_agent.py</code> — 459 lines. One entry point,
+    <code>generate_patient_contribution(row, …)</code>, producing structured findings and never a diagnosis:
+    that remains the Sep Agent's job.</p>
+
+    <h3>The summary</h3>
+    <pre>- Age: 63 years
+- Sex: male
+- Chest pain type: typical_angina
+- Resting blood pressure: 145 mmHg
+- Serum cholesterol: 233 mg/dl
+- Fasting blood sugar &gt; 120 mg/dl: yes
+- Resting ECG result: probable_lvh
+- Maximum heart rate achieved (exercise test): 150 bpm
+- Exercise-induced angina: no
+- ST depression induced by exercise (relative to rest): 2.3 mm
+- Slope of peak exercise ST segment: downsloping
+- Major vessels colored by fluoroscopy: 0
+- Thallium stress test result: fixed_defect</pre>
+    <p>Booleans are rendered as <code>yes</code>/<code>no</code> rather than <code>True</code>/<code>False</code>,
+    and a missing <code>ca</code> or <code>thal</code> is written out as "not available" rather than dropped
+    silently — so the model is told a field is absent instead of being left to infer it.</p>
+
+    <h3>The prompt</h3>
+    <p>A thin wrapper over the shared <code>agent_common.build_generic_findings_prompt</code>, with
+    <code>agent_role="a structured patient data analysis agent"</code> and
+    <code>modality_label="structured patient data"</code>. No <code>image_labels</code> — this agent is
+    text-only. The scaffold carries the same contract every modality agent signs: one of several parallel
+    agents, no diagnosis, no conclusion depending on anything outside its own modality, one exact JSON
+    shape, and <code>evidence_ref</code> restricted to the 13 keys.</p>
+
+    <div class="note">
+      <span class="note-label">A quirk worth naming</span>
+      <p><code>patient_info</code> exists on every function in this module for interface symmetry with ECG
+      and MRI, but no current caller of the library path uses it. Age and sex are <em>this agent's own
+      findings</em>, complete with rationale and <code>evidence_ref</code> — unlike ECG and MRI, where
+      demographics are external background context that has to be injected. The parameter is kept, not
+      exercised.</p>
+    </div>
+
+    <h3>The call, the parse, the retry</h3>
+    <pre>raw_response = llm_call(prompt)                                  <span class="cm"># text-only, no images</span>
+findings, flags = parse_findings_response(raw_response, set(feature_dict.keys()))
+merged_flags    = sorted(set(flags) | set(decision.deterministic_flags))</pre>
+    <p>Default backend is <code>generate_report_medgemma</code> — Ollama, <code>medgemma:4b</code>, free and
+    local, no API key. Because this modality is text-only, the UI can also offer the free Groq cloud backend
+    here, which the MRI page cannot (it is text-only and could not see an image). A parse failure appends the
+    error to the prompt and retries, up to <code>max_retries + 1</code> attempts; the UI passes 2.</p>
+
+    <h3>The contribution</h3>
+    <pre>AgentContribution(
+  agent_id         = "patient",
+  record_id        = "cleveland_0",            <span class="cm"># the source data has no real patient ID</span>
+  findings         = [Finding(feature, value, rationale, confidence, evidence_ref, evidence_type), …],
+  flags_for_review = sorted(set(llm_flags) | set(deterministic_flags)),
+  trace            = {"features_used": …, "model": "ollama:medgemma:4b", "attempts": n},
+)</pre>
+
+    <div class="note">
+      <span class="note-label">Validated end to end</span>
+      <p>A real MedGemma call on patient <code>cleveland_0</code>: <strong>13 findings from 13 fields</strong>,
+      every <code>evidence_ref</code> valid with no fabricated citation, first-attempt parse success, and 3
+      flags correctly raised and merged — <code>abnormal_thallium_result_suspected</code>,
+      <code>high_resting_bp_suspected</code>, <code>significant_st_depression_suspected</code>.</p>
+      <p>That patient's actual ground truth is <code>num = 0</code>, no disease. Given flag precisions in the
+      0.53–0.77 range, this is <strong>a genuine expected false positive, not a bug</strong> — and worth
+      recording as such rather than quietly picking a cleaner example.</p>
+    </div>
+
+    <h3>The form — <code>views/2_Patient_data.py</code></h3>
+    <p>The UI entry point is a 13-field form rather than a file uploader, because the modality's input
+    <em>is</em> tabular. Every field defaults to <strong>unknown</strong>: fill in only what you have, and
+    anything left blank becomes <code>None</code>, with the related flag skipped rather than guessed. If
+    every field is left unknown, no contribution is saved to the case at all.</p>
+
+    <div class="note">
+      <span class="note-label">Two encodings, one label</span>
+      <p>UCI encodes sex as <strong>1 = male, 0 = female</strong> — the exact opposite of PTB-XL, where
+      1 = female. Rather than special-casing per page, each page normalises to the canonical <em>label</em>
+      ("male"/"female") and hands that to <code>build_patient_context_line</code>, which accepts the label
+      form directly. Both datasets' raw encodings converge on the same string, so the conflict cannot
+      surface.</p>
+    </div>
+  </div>
+</div></div></section>
+
+<!-- ═══ 07 ═══════════════════════════════════════════════ -->
+<section class="stage" id="s7"><div class="wrap"><div class="stage-grid">
+  <div class="gutter"><span class="num">07</span><span class="tag">Valid-<br>ation</span></div>
+  <div>
+    <h2>All seven flags, against one balanced target</h2>
+
+    <p class="lede">303 patients, no LLM anywhere, <code>detect_flags_patient</code> called directly rather
+    than reimplemented — so this evaluation can never silently drift from what the agent actually does.</p>
+
+    <figure>
+      <div class="legend-row" aria-hidden="true">
+        <span><i class="dot" style="background:var(--s1)"></i>precision</span>
+        <span><i class="dot" style="background:var(--s2)"></i>recall</span>
+      </div>
+      <div class="fig-frame">
+        <svg viewBox="0 0 760 330" role="img" aria-label="Precision and recall for the seven deterministic flags, ranked by F1. All seven have precision above the 0.459 base rate. The thallium flag is the most balanced; the resting blood pressure flag has the widest gap, with precision 0.591 but recall only 0.281.">
+          <!-- base-rate rule -->
+          <line x1="398.5" y1="26" x2="398.5" y2="278" stroke="currentColor" stroke-width="1.4" stroke-dasharray="5 3" opacity="0.55"></line>
+          <text x="398.5" y="18" text-anchor="middle" font-family="Source Code Pro, monospace" font-size="10.5" fill="currentColor">base rate 0.459</text>
+
+          <!-- legend -->
+          <circle class="m1" cx="222" cy="14" r="4.5"></circle>
+          <text x="232" y="18" font-family="Source Code Pro, monospace" font-size="10.5" fill="currentColor">precision</text>
+          <circle class="m2" cx="300" cy="14" r="4.5"></circle>
+          <text x="310" y="18" font-family="Source Code Pro, monospace" font-size="10.5" fill="currentColor">recall</text>
+          <text x="720" y="18" text-anchor="end" font-family="Source Code Pro, monospace" font-size="10.5" fill="currentColor" opacity="0.65">F1</text>
+
+          <g font-family="Source Code Pro, monospace" font-size="11.5" fill="currentColor" text-anchor="end">
+            <text x="196" y="44">thallium abnormal</text>
+            <text x="196" y="80">vessels ≥ 1</text>
+            <text x="196" y="116">ST depression ≥ 0.8</text>
+            <text x="196" y="152">reduced exercise cap.</text>
+            <text x="196" y="188">exercise angina</text>
+            <text x="196" y="224">cholesterol &gt; 240</text>
+            <text x="196" y="260">resting BP &gt; 140</text>
+          </g>
+
+          <!-- connectors -->
+          <g stroke="currentColor" stroke-width="2" opacity="0.28">
+            <line x1="588.2" y1="40" x2="603.2" y2="40"></line>
+            <line x1="542.3" y1="76" x2="603.2" y2="76"></line>
+            <line x1="536.6" y1="112" x2="582.6" y2="112"></line>
+            <line x1="523.8" y1="148" x2="572.7" y2="148"></line>
+            <line x1="460.8" y1="184" x2="617.3" y2="184"></line>
+            <line x1="445.9" y1="220" x2="481.3" y2="220"></line>
+            <line x1="272.4" y1="256" x2="492.0" y2="256"></line>
+          </g>
+
+          <!-- recall dots -->
+          <g class="g2" stroke-width="2">
+            <circle cx="588.2" cy="40" r="5"><title>thallium abnormal — recall 0.727</title></circle>
+            <circle cx="542.3" cy="76" r="5"><title>vessels ≥ 1 — recall 0.662</title></circle>
+            <circle cx="582.6" cy="112" r="5"><title>ST depression ≥ 0.8 mm — recall 0.719</title></circle>
+            <circle cx="572.7" cy="148" r="5"><title>reduced exercise capacity — recall 0.705</title></circle>
+            <circle cx="460.8" cy="184" r="5"><title>exercise-induced angina — recall 0.547</title></circle>
+            <circle cx="481.3" cy="220" r="5"><title>cholesterol &gt; 240 — recall 0.576</title></circle>
+            <circle cx="272.4" cy="256" r="5"><title>resting BP &gt; 140 — recall 0.281</title></circle>
+          </g>
+          <!-- precision dots -->
+          <g class="g1" stroke-width="2">
+            <circle cx="603.2" cy="40" r="5"><title>thallium abnormal — precision 0.748</title></circle>
+            <circle cx="603.2" cy="76" r="5"><title>vessels ≥ 1 — precision 0.748</title></circle>
+            <circle cx="536.6" cy="112" r="5"><title>ST depression ≥ 0.8 mm — precision 0.654</title></circle>
+            <circle cx="523.8" cy="148" r="5"><title>reduced exercise capacity — precision 0.636</title></circle>
+            <circle cx="617.3" cy="184" r="5"><title>exercise-induced angina — precision 0.768</title></circle>
+            <circle cx="445.9" cy="220" r="5"><title>cholesterol &gt; 240 — precision 0.526</title></circle>
+            <circle cx="492.0" cy="256" r="5"><title>resting BP &gt; 140 — precision 0.591</title></circle>
+          </g>
+
+          <!-- F1 column -->
+          <g font-family="Source Code Pro, monospace" font-size="11.5" fill="currentColor" text-anchor="end">
+            <text x="720" y="44">0.737</text>
+            <text x="720" y="80">0.702</text>
+            <text x="720" y="116">0.685</text>
+            <text x="720" y="152">0.669</text>
+            <text x="720" y="188">0.639</text>
+            <text x="720" y="224">0.550</text>
+            <text x="720" y="260">0.380</text>
+          </g>
+
+          <!-- axis -->
+          <line x1="215" y1="278" x2="640" y2="278" stroke="currentColor" stroke-width="1.2" opacity="0.5"></line>
+          <g font-family="Source Code Pro, monospace" font-size="10.5" fill="currentColor" opacity="0.6" text-anchor="middle">
+            <text x="215" y="296">0.2</text>
+            <text x="285.8" y="296">0.3</text>
+            <text x="356.7" y="296">0.4</text>
+            <text x="427.5" y="296">0.5</text>
+            <text x="498.3" y="296">0.6</text>
+            <text x="569.2" y="296">0.7</text>
+            <text x="640" y="296">0.8</text>
+          </g>
+          <text x="427.5" y="320" text-anchor="middle" font-family="Source Code Pro, monospace" font-size="11" fill="currentColor" opacity="0.65">score against heart_disease_present · rows ranked by F1</text>
+        </svg>
+      </div>
+      <figcaption><strong>Figure 3.</strong> Every flag's precision clears the base rate, so all seven carry
+      real signal. What separates them is the <em>gap</em>: the thallium flag is nearly balanced, while
+      resting blood pressure fires precisely but rarely — it is right 59 % of the time and still misses 72 %
+      of the cases.</figcaption>
+    </figure>
+
+    <div class="wide">
+      <table>
+        <caption>The full scoreboard, recomputed from
+        <code>results/patient_data_flag_validation_results.csv</code> (303 rows). Ground truth is a single
+        binary target, so every flag's ground-truth column carries the same value — the seven are competing
+        predictors of one outcome.</caption>
+        <thead><tr><th>Flag</th><th class="num">P</th><th class="num">R</th><th class="num">F1</th><th class="num">TP</th><th class="num">FP</th><th class="num">FN</th><th class="num">TN</th></tr></thead>
+        <tbody>
+          <tr><td class="key">abnormal_thallium_result_suspected</td><td class="num">0.748</td><td class="num">0.727</td><td class="num best">0.737</td><td class="num">101</td><td class="num">34</td><td class="num">38</td><td class="num">130</td></tr>
+          <tr><td class="key">multiple_vessels_involved_suspected</td><td class="num">0.748</td><td class="num">0.662</td><td class="num best">0.702</td><td class="num">92</td><td class="num">31</td><td class="num">47</td><td class="num">133</td></tr>
+          <tr><td class="key">significant_st_depression_suspected</td><td class="num">0.654</td><td class="num">0.719</td><td class="num">0.685</td><td class="num">100</td><td class="num">53</td><td class="num">39</td><td class="num">111</td></tr>
+          <tr><td class="key">reduced_exercise_capacity_suspected</td><td class="num">0.636</td><td class="num">0.705</td><td class="num">0.669</td><td class="num">98</td><td class="num">56</td><td class="num">41</td><td class="num">108</td></tr>
+          <tr><td class="key">exercise_induced_angina_present</td><td class="num best">0.768</td><td class="num">0.547</td><td class="num">0.639</td><td class="num">76</td><td class="num">23</td><td class="num">63</td><td class="num">141</td></tr>
+          <tr><td class="key">high_cholesterol_suspected</td><td class="num flat">0.526</td><td class="num">0.576</td><td class="num flat">0.550</td><td class="num">80</td><td class="num">72</td><td class="num">59</td><td class="num">92</td></tr>
+          <tr><td class="key">high_resting_bp_suspected</td><td class="num">0.591</td><td class="num flat">0.281</td><td class="num flat">0.380</td><td class="num">39</td><td class="num">27</td><td class="num">100</td><td class="num">137</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>How to read these numbers</h3>
+    <p>Precision here means: <em>of the patients this flag fired on, what fraction actually have heart
+    disease.</em> Because prevalence is 0.459, a precision of 0.46 would be worthless — you would do as well
+    flagging patients at random. That framing is what makes this modality's table interpretable in a way the
+    ECG one is not.</p>
+    <ul>
+      <li><strong>The two strongest flags are the two most directly ischaemic.</strong> A positive thallium
+      perfusion scan (F1 0.737) and any fluoroscopy-coloured vessel (F1 0.702) are both close measurements of
+      the disease itself, so they track the outcome well. That is a sanity check on the pipeline, not a
+      surprise.</li>
+      <li><strong>Exercise-induced angina is the most precise flag (0.768) and one of the least sensitive
+      (recall 0.547).</strong> It is a symptom, and plenty of disease is silent.</li>
+      <li><strong>Resting blood pressure is the weakest by a wide margin</strong> (F1 0.380), driven entirely
+      by recall — it is a risk factor, not a finding.</li>
+    </ul>
+
+    <p>The per-record CSV was added specifically so the UI's Validation page could recompute this table live
+    for the patient modality, exactly as it already did for ECG and MRI — the page had revealed that only
+    this modality lacked the file.</p>
+  </div>
+</div></div></section>
+
+<!-- ═══ 08 ═══════════════════════════════════════════════ -->
+<section class="stage" id="s8"><div class="wrap"><div class="stage-grid">
+  <div class="gutter"><span class="num">08</span><span class="tag">Down-<br>stream</span></div>
+  <div>
+    <h2>Where the contribution goes</h2>
+
+    <h3>Sep Agent</h3>
+    <p>The <code>patient</code> contribution joins ECG and MRI in
+    <code>generate_sep_agent_decision</code>. Its flags carry retrieval phrasings in
+    <code>_FLAG_QUERY_PHRASES</code> so the RAG layer receives a clinical query rather than a mangled
+    identifier — <code>multiple_vessels_involved_suspected</code> becomes <em>"coronary artery disease,
+    multi-vessel involvement"</em>, <code>significant_st_depression_suspected</code> becomes <em>"ST segment
+    depression, exercise-induced ischaemia"</em>.</p>
+
+    <h3>Knowledge graph — this modality's real leverage</h3>
+    <p>Five of the seven flags are nodes in <code>src/clinical_kg.json</code>, and four of them point at the
+    <strong>same diagnosis</strong>:</p>
+
+    <div class="wide">
+      <table>
+        <caption>Patient-agent nodes and their edges. The convergence is what makes this modality valuable in
+        the aggregation: four independent tabular findings all indicating coronary artery disease, which the
+        ECG MI pathway also reaches — from a completely different kind of evidence.</caption>
+        <thead><tr><th>Node</th><th>Relation</th><th>Target</th></tr></thead>
+        <tbody>
+          <tr><td class="key">abnormal_thallium_result_suspected</td><td class="key">indicates</td><td class="key">coronary_artery_disease</td></tr>
+          <tr><td class="key">multiple_vessels_involved_suspected</td><td class="key">indicates</td><td class="key">coronary_artery_disease</td></tr>
+          <tr><td class="key">significant_st_depression_suspected</td><td class="key">indicates</td><td class="key">coronary_artery_disease</td></tr>
+          <tr><td class="key">exercise_induced_angina_present</td><td class="key">indicates</td><td class="key">coronary_artery_disease</td></tr>
+          <tr><td class="key">high_resting_bp_suspected</td><td class="key">supports</td><td class="key">hypertensive_heart_disease</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>With <code>use_kg=True</code>, <code>convergent_diagnoses</code> reports a diagnosis supported by
+    findings from <strong>at least two different modality agents</strong>. Coronary artery disease is the
+    clearest example in the whole project: the ECG side reaches it through the MI superclass — via the
+    deterministic inferior-Q flag, the learned signal embedding, or the ECG-image classifier — while the
+    patient agent reaches it through four CAD/ischaemia flags. Hypertensive heart disease can converge across
+    all three modalities at once. The convergence is computed deterministically by the graph and stored in
+    <code>decision.trace["kg_convergent_diagnoses"]</code>, so the small local model only narrates a
+    pre-computed fact.</p>
+
+    <h3>Case report</h3>
+    <p>In the exported PDF the patient agent gets its own findings section with its demographic line, and its
+    flags are part of the union shown at the top. It also participated in the three-modality end-to-end test
+    (<code>src/sep_agent_3modality_test.py</code>, real LLM calls) that confirmed the shared
+    <code>AgentContribution</code> schema scales to N modalities with no change to
+    <code>sep_agent.py</code>.</p>
+
+    <h3>File map</h3>
+    <div class="wide">
+      <table>
+        <thead><tr><th>Path</th><th class="num">Lines</th><th>Role</th></tr></thead>
+        <tbody>
+          <tr><td class="key">src/patient_data_agent.py</td><td class="num">459</td><td>The agent — features, flags, summary, prompt, contribution</td></tr>
+          <tr><td class="key">src/patient_data_flag_validation.py</td><td class="num">338</td><td>Sweeps + scoreboard + per-record CSV, no LLM</td></tr>
+          <tr><td class="key">views/2_Patient_data.py</td><td class="num">189</td><td>The 13-field form, prompt lab, case store</td></tr>
+          <tr><td class="key">uci_heart_disease/processed_cleveland.csv</td><td class="num">303</td><td>The local source of truth (+ <code>variables_metadata.csv</code>)</td></tr>
+          <tr><td class="key">results/patient_data_flag_validation_report.md</td><td class="num">—</td><td>The written scoreboard + interpretation</td></tr>
+          <tr><td class="key">results/patient_data_flag_validation_results.csv</td><td class="num">303</td><td>Per-record predicted / ground-truth, drives the UI Validation page</td></tr>
+          <tr><td class="key">results/patient_data_agent.md</td><td class="num">—</td><td>The module's own write-up</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Reproducing everything on this page is one command:
+    <code>python src/patient_data_flag_validation.py</code> — it prints the baseline scoreboard and all five
+    sweeps, then writes the report and the per-record CSV. It runs on 303 rows instantly, with no LLM in the
+    loop.</p>
+  </div>
+</div></div></section>
+
+<!-- ═══ 09 ═══════════════════════════════════════════════ -->
+<section class="stage" id="s9"><div class="wrap"><div class="stage-grid">
+  <div class="gutter"><span class="num">09</span><span class="tag">Limit-<br>ations</span></div>
+  <div>
+    <h2>Standing limitations</h2>
+
+    <div class="wide">
+      <table>
+        <thead><tr><th>Limitation</th><th>What it costs</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>303 patients, one hospital, one era.</strong> Cleveland is small and old.</td>
+            <td>Every threshold on this page is calibrated to <em>this</em> sample. The two recalibrations are defensible because they moved toward better-validated physiology (Tanaka) or a clear F1 plateau, not because 303 patients settle anything.</td>
+          </tr>
+          <tr>
+            <td><strong>Two flags are weak and stay weak.</strong></td>
+            <td>Resting BP (F1 0.380) and cholesterol (F1 0.550) barely clear the base rate at any threshold. They are kept for clinical meaning, and the weakness is published rather than hidden.</td>
+          </tr>
+          <tr>
+            <td><strong>Several fields presuppose tests a patient may not have had.</strong></td>
+            <td><code>thal</code>, <code>ca</code>, <code>oldpeak</code>, <code>slope</code> and <code>thalach</code> all come from an exercise test or fluoroscopy. On a partially filled form the strongest flags are exactly the ones that go silent — and the agent correctly skips them rather than guessing.</td>
+          </tr>
+          <tr>
+            <td><strong>No severity, only presence.</strong></td>
+            <td>The 0–4 <code>num</code> scale is collapsed to a binary. Nothing here distinguishes mild from severe disease.</td>
+          </tr>
+          <tr>
+            <td><strong>The flags are correlated, and the union treats them as independent.</strong></td>
+            <td>Four flags all indicating coronary artery disease is not four independent pieces of evidence. The knowledge graph makes the convergence explicit, but nothing weights or discounts it.</td>
+          </tr>
+          <tr>
+            <td><strong>No text reference report exists for this modality.</strong></td>
+            <td>Only ECG has cardiologist reference reports, so there is no BLEU / ROUGE / cosine table here. This modality's accuracy claim <em>is</em> its flag validation — which is arguably the more honest measurement anyway.</td>
+          </tr>
+          <tr>
+            <td><strong><code>patient_info</code> is carried but unused.</strong></td>
+            <td>Kept for interface symmetry with ECG and MRI. Harmless, but it is dead surface area on four functions.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div></div></section>
+
+</main>
+
+<footer class="colophon">
+  <div class="wrap">
+    <p>Cardiac multi-agent pipeline · structured patient-data modality. Every figure on this page was
+    recomputed from <code>uci_heart_disease/processed_cleveland.csv</code> and
+    <code>results/patient_data_flag_validation_results.csv</code> by re-running the sweeps in
+    <code>src/patient_data_flag_validation.py</code> — none are quoted from memory. Chart palette validated
+    for colour-vision deficiency (worst adjacent ΔE 9.2 light / 9.4 dark).</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.strip a'));
+  var map = {};
+  links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
+  var sections = Array.prototype.slice.call(document.querySelectorAll('.stage'));
+  if (!('IntersectionObserver' in window) || !sections.length) { return; }
+
+  var current = null;
+  function setCurrent(id) {
+    if (id === current) { return; }
+    current = id;
+    links.forEach(function (a) { a.classList.remove('is-current'); });
+    if (map[id]) { map[id].classList.add('is-current'); }
+  }
+  setCurrent('s1');
+
+  var visible = {};
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { visible[e.target.id] = e.isIntersecting; });
+    for (var i = 0; i < sections.length; i++) {
+      if (visible[sections[i].id]) { setCurrent(sections[i].id); return; }
+    }
+  }, { rootMargin: '-15% 0px -70% 0px', threshold: 0 });
+
+  sections.forEach(function (s) { io.observe(s); });
+})();
+</script>

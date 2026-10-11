@@ -1,0 +1,123 @@
+{
+  "09823_lr": {
+    "ecg_id": 9823,
+    "reference": "sinusrytm vÄnster el-axel vÄnstersidigt skÄnkelblock ÖvervÄg wpw syndrome type b",
+    "signal_text": "The ECG analysis shows a regular rhythm with a mean heart rate of 64 bpm and a mean QRS duration of 143.6 ms. The analysis also indicates a suspected wide QRS. The ECG trace duration is 10 seconds and there are 11 detected QRS complexes. The RR interval is regular with a mean of 937 ms and a standard deviation of 12.7 ms. The heart rate standard deviation is 0.9 bpm.",
+    "image_text": "The ECG shows sinus rhythm with normal ST, T, and QRS complexes and P waves. The ST segments, T waves, QRS complexes, and P waves are all within normal limits. The findings are not localized to a specific lead."
+  },
+  "02146_lr": {
+    "ecg_id": 2146,
+    "reference": "sinus rhythm first degree av block, pr interval 0.24 seconds. tracing otherwise normal.",
+    "signal_text": "The ECG analysis indicates a rhythm with a mean heart rate of 64.5 bpm, a duration of 10 seconds, 11 QRS complexes, an average QRS duration of 97.3ms, and a standard deviation of 40.5ms. The RR interval is 930ms with a standard deviation of 15.5ms, and the rhythm is not irregular or considered 'cv'.",
+    "image_text": "The ECG shows sinus rhythm with normal QRS complexes, P waves, and T waves. The P waves are upright in leads I, II, and aVF, and inverted in lead aVR, while the T waves are upright in leads I, II, and aVF, and inverted in lead aVR. The ECG findings are consistent with a normal sinus rhythm."
+  },
+  "15899_lr": {
+    "ecg_id": 15899,
+    "reference": "sinus rhythm location type normal incomplete right bundle branch block moderate amplitude criteria for left hypertrophy",
+    "signal_text": "The ECG analysis indicates a heart rate of 52.1 bpm with a standard deviation of 2.1 bpm. The ECG trace duration is 10 seconds, with 8 detected QRS complexes. The mean QRS duration is 73.8 ms with a standard deviation of 29.6 ms. The mean RR interval is 1152.9 ms with a standard deviation of 46.2 ms. Bradycardia is suspected.",
+    "image_text": "",
+    "image_error": "SepAgentParseError: Failed to obtain a valid Sep Agent decision after 2 attempts: Traceability entry cites unknown (agent_id, feature) pair ('ecg_image', 'pathology_CD_pattern_suspected'); expected one of [('ecg_image', 'sinus_rhythm')]"
+  },
+  "17909_lr": {
+    "ecg_id": 17909,
+    "reference": "sinus rhythm position type normal r-s # transition in v derivatives shifted to the right unspecific abnormal t",
+    "signal_text": "The ECG shows a heart rate of 58.1 bpm, with a mean RR interval of 1032.5 ms and a QRS duration of 78.9 ms. The heart rate is slightly reduced. The analysis did not determine if the rhythm is irregular or regular.",
+    "image_text": "The ECG shows a sinus rhythm with a normal QRS complex, P wave, and T wave. The P waves are upright in leads I, II, and aVF, and inverted in lead aVR. There are no abnormalities in the QRS complex, P wave, or T wave. The ECG findings are within normal limits."
+  },
+  "10180_lr": {
+    "ecg_id": 10180,
+    "reference": "sinus rhythm. voltages are high in chest leads suggesting lvh. non-specific t wave flattening in i, avl.",
+    "signal_text": "The ECG analysis shows a duration of 10 seconds, with 10 QRS complexes detected. The estimated mean heart rate is 62.7 bpm, and the standard deviation is 1.2 bpm. The mean RR interval is 957.8 ms with a standard deviation of 17.5 ms. The mean QRS duration is 59.0 ms, with a standard deviation of 5.4 ms.",
+    "image_text": "The ECG shows a sinus rhythm with normal QRS complexes, P waves, and T waves. The P waves are upright in leads I, II, aVF, and inverted in lead aVR, which is normal. The QRS and T waves are normal in morphology."
+  },
+  "03092_lr": {
+    "ecg_id": 3092,
+    "reference": "premature ventricular contraction(s). sinus rhythm. voltages are high in limb leads suggesting lvh. st segments are depressed in i, avl. this may be due to lv strain or ischaemia.",
+    "signal_text": "The ECG analysis shows a heart rate of 56.2 bpm with a standard deviation of 19.8 bpm. The RR interval is 1225.7 ms with a standard deviation of 456.1 ms, and the mean QRS duration is 57.5 ms with a standard deviation of 9.7 ms. The rhythm is suspected to be irregular. The duration of the ECG trace is 10 seconds and there are 8 QRS complexes.",
+    "image_text": "The ECG shows sinus rhythm with a consistent PR interval in multiple leads. There is evidence of right bundle branch block (RBBB) in leads V1 and V2. The ECG flags raise suspicion for conduction disturbances and potential heart block patterns."
+  },
+  "01745_lr": {
+    "ecg_id": 1745,
+    "reference": "sinus rhythm position type normal atrial overload left possibly normal",
+    "signal_text": "The ECG analysis shows a duration of 10 seconds, 12 QRS complexes, a mean heart rate of 75.5 bpm, a heart rate standard deviation of 33.8 bpm, a mean RR interval of 872.7 ms, a RR interval standard deviation of 178.1 ms, a mean QRS duration of 76.7 ms, a QRS duration standard deviation of 43.7 ms, and a suspected irregular rhythm. The RR coefficient of variation is 0.2.",
+    "image_text": "The ECG shows sinus rhythm with normal QRS complexes, P waves, and T waves. The P waves are upright in leads I, II, and aVF, and inverted in lead aVR. The ECG findings appear normal."
+  },
+  "08083_lr": {
+    "ecg_id": 8083,
+    "reference": "sinusrhythm location type normal moderate amplitude criteria for left hypertrophy",
+    "signal_text": "The ECG analysis shows a heart rate of 58.1 bpm, with a mean RR interval of 1034.4 ms and a standard deviation of 42.2 ms. The QRS duration is 81.0 ms with a standard deviation of 26.6 ms. The ECG trace duration is 10 seconds and there are 10 detected QRS complexes. Bradycardia is suspected.",
+    "image_text": "The ECG shows a normal sinus rhythm with normal QRS complexes, P waves, and T waves. The P waves are upright in leads I, II, and aVF, and inverted in lead aVR. The ECG does not appear to show any abnormalities."
+  },
+  "15400_lr": {
+    "ecg_id": 15400,
+    "reference": "sinus rhythm suspected p-sinistrocardiale location type normal qrs (t) abnormal inferior infarct probably old 4.46 unconfirmed report",
+    "signal_text": "The ECG analysis indicates a duration of 10 seconds, 10 QRS complexes, a mean heart rate of 60.3 bpm, and a mean RR interval of 997.8 ms. The QRS duration is 125.0 ms on average with a standard deviation of 23.3 ms. The rhythm is sinus rhythm and regular. The QRS duration is suspected to be wide.",
+    "image_text": "The ECG shows a sinus rhythm with regular P waves and a consistent PR interval in multiple leads. The ECG analysis flags a possible CD pattern and a normal pattern. The ECG analysis flags a possible CD pattern and a normal pattern."
+  },
+  "11664_lr": {
+    "ecg_id": 11664,
+    "reference": "sinus arrhythmia p-sinistrocardiale location type normal qrs (t) abnormal anteroseptal infarction age indeterminate t abnormal in anterior leads 4.46 unconfirmed report",
+    "signal_text": "The ECG analysis reveals a regular rhythm with a mean heart rate of 74.9 bpm and an RR interval of 819.2 ms. The QRS duration is 69.2 ms with a standard deviation of 32.9 ms. The ECG trace duration is 10 seconds and the number of detected QRS complexes is 13. The rhythm is regular.",
+    "image_text": "The ECG shows a sinus rhythm with normal QRS complexes, P waves, and T waves. The P waves are upright in leads I, II, and aVF, and inverted in lead aVR. The ECG flags 'pathology_HYP_pattern_suspected' and 'pathology_NORM_pattern_suspected' are raised."
+  },
+  "16905_lr": {
+    "ecg_id": 16905,
+    "reference": "atrial fibrillation. st segments are depressed in v4,5,6. t waves are low or flat in limb leads and v4,5,6. findings are likely to be due to ischaemic heart  disease and digitalis effect. possible old inferior myocardial infarction.",
+    "signal_text": "The ECG analysis shows a regular rhythm with a mean heart rate of 91.6 bpm and a mean QRS duration of 122 ms. The RR interval is regular with a mean of 663.6 ms. There is no irregular rhythm. A wide QRS is suspected.",
+    "image_text": "The ECG shows sinus rhythm with normal ST and T wave segments. There are flags raised for possible cardiac pathologies, including ST-T wave changes, myocardial infarction, and ST-segment T wave complex changes. The ECG findings are regular."
+  },
+  "03122_lr": {
+    "ecg_id": 3122,
+    "reference": "sinus rhythm. q waves in ii, iii, avf consistent with old inferior    myocardial infarction. st segments are depressed and t waves flat in v5,6. non-specific but consistent with myocardial ischaemia.",
+    "signal_text": "The ECG analysis shows a regular sinus rhythm with a mean heart rate of 77 bpm, an RR interval of 780 ms, a mean QRS duration of 113.3 ms, and a QRS duration standard deviation of 30.6 ms. The number of QRS complexes detected is 12, and the duration of the ECG trace is 10 seconds. The heart rate standard deviation is 2.7 bpm.",
+    "image_text": "The ECG shows sinus rhythm with normal QRS complexes, P waves, and T waves. The P waves are upright in leads I, II, and aVF, and inverted in lead aVR, while the T waves are upright in leads I, II, and aVF, and inverted in lead aVR. The ECG appears to show a normal sinus rhythm pattern, and the QRS, P, and T wave morphology are normal in all leads."
+  },
+  "05975_lr": {
+    "ecg_id": 5975,
+    "reference": "sinusrhythm position type normal normal ecg",
+    "signal_text": "The ECG analysis reveals a regular rhythm with a mean heart rate of 91.5 bpm and a mean RR interval of 656.0 ms. The QRS duration is 119.4 ms with a standard deviation of 65.4 ms. The number of QRS complexes detected is 16. The duration of the ECG trace is 10 seconds.",
+    "image_text": "The ECG shows sinus rhythm with a regular P wave and consistent PR interval in multiple leads. The ECG also shows sinus rhythm with a regular P wave and consistent PR interval in multiple leads. The ECG also shows sinus rhythm with a regular P wave and consistent PR interval in multiple leads. The ECG also shows sinus rhythm with a regular P wave and consistent PR interval in multiple leads. The ECG also shows sinus rhythm with a regular P wave and consistent PR interval in multiple leads. The ECG also shows sinus rhythm with a regular P wave and consistent PR interval in multiple leads. The ECG also shows sinus rhythm with a regular P wave and consistent PR interval in multiple leads. The ECG also shows sinus rhythm with a regular P wave and consistent PR interval in multiple leads. The ECG also shows sinus rhythm with a regular P wave and consistent PR interval in multiple leads. The ECG also shows sinus rhythm with a regular P wave and consistent PR interval in multiple leads. The ECG also shows sinus rhythm with a regular P wave and consistent PR interval in multiple leads. The ECG also shows sinus rhythm with a regular P wave and consistent PR interval in multiple leads."
+  },
+  "15548_lr": {
+    "ecg_id": 15548,
+    "reference": "sinus bradycardia position type normal normal ekg",
+    "signal_text": "The ECG shows a heart rate of 57.5 bpm with a standard deviation of 1.6 bpm, indicating bradycardia. The RR interval is 1045 ms with a standard deviation of 28.3 ms. The ECG rhythm is regular and normal. The duration of the ECG trace is 10 seconds, and there are 9 QRS complexes detected. The mean QRS duration is 44.4 ms with a standard deviation of 6.8 ms.",
+    "image_text": "The ECG shows a sinus rhythm with normal QRS complexes and normal P and T waves. The ECG findings are consistent with a normal sinus rhythm, normal QRS morphology, normal P waves, and normal T waves. The ECG findings are consistent with a normal sinus rhythm, normal QRS morphology, normal P waves, and normal T waves. The ECG findings are consistent with a normal sinus rhythm, normal QRS morphology, normal P waves, and normal T waves. The ECG findings are consistent with a normal sinus rhythm, normal QRS morphology, normal P waves, and normal T waves."
+  },
+  "02596_lr": {
+    "ecg_id": 2596,
+    "reference": "sinus rhythm position type normal left posterior hemiblock",
+    "signal_text": "The ECG analysis indicates a regular rhythm with a mean heart rate of 60.5 bpm, a mean QRS duration of 136 ms, and a standard deviation of 53 ms. The ECG duration is 10 seconds, with 10 QRS complexes detected, and the RR interval has a mean of 993.3 ms and a standard deviation of 42.4 ms. A wide QRS complex is suspected.",
+    "image_text": "The ECG shows a sinus rhythm with normal QRS complexes, P waves, and T waves. There are no abnormalities detected in the ECG findings. The ECG findings are consistent with a normal sinus rhythm."
+  },
+  "19256_lr": {
+    "ecg_id": 19256,
+    "reference": "sinus bradycardia position type normal normal ekg",
+    "signal_text": "The ECG shows an irregular rhythm with a heart rate of 55.5 bpm, which is bradycardic. The mean QRS duration is 123.3ms, which is slightly prolonged. The heart rate variability is also irregular.",
+    "image_text": "The ECG shows sinus rhythm with normal QRS complexes, P waves, and T waves. The P waves are upright in leads I, II, and aVF, and inverted in lead aVR, while the T waves are upright in leads I, II, and aVF, and inverted in lead aVR. The findings are consistent with a normal sinus rhythm and normal cardiac conduction."
+  },
+  "03508_lr": {
+    "ecg_id": 3508,
+    "reference": "sinus rhythm and junctional rhythm. non-specific t wave flattening in i, avl, v5,6. slightly prolonged qt, this may be due to a drug    effect or an electrolyte disturbance.",
+    "signal_text": "The ECG analysis shows an irregular rhythm with a heart rate of approximately 68.5 bpm. The QRS duration is around 70 ms, with a standard deviation of 30.8 ms. The RR interval has a mean of 880.9 ms and a standard deviation of 72.7 ms. The number of QRS complexes is 12, and the duration of the ECG trace is 10 seconds.",
+    "image_text": "The ECG shows a sinus rhythm with normal QRS complexes and normal P waves. The T waves are also normal. The ECG findings are consistent with a normal pattern."
+  },
+  "08533_lr": {
+    "ecg_id": 8533,
+    "reference": "sinus rhythm location type normal path. repolarization probably normal",
+    "signal_text": "The ECG analysis reveals a duration of 10 seconds, with 15 QRS complexes detected. The estimated mean heart rate is 90.4 bpm, with a standard deviation of 7.5 bpm. The mean RR interval is 667.9 ms, and the standard deviation is 50.5 ms. The mean QRS duration is 114.0 ms, with a standard deviation of 45.3 ms.",
+    "image_text": "The ECG shows a regular sinus rhythm with a normal heart rate, normal QRS complexes, normal P waves, and normal T waves. The rhythm is regular, with consistent R-R intervals across all leads. The P waves are upright in leads I, II, and aVF and inverted in lead aVR, while the T waves are upright in leads I, II, and aVF and inverted in lead aVR. The ECG findings are within normal limits."
+  },
+  "08450_lr": {
+    "ecg_id": 8450,
+    "reference": "sinus rhythm. low limb lead voltage. st segments are depressed in i, ii, v4,5,6. t waves are low or flat in limb leads and v3-6. this may be due to lv strain or ischaemia. suggest exclude hypokalaemia.",
+    "signal_text": "The ECG analysis indicates a duration of 10 seconds, with 12 QRS complexes detected, and a mean heart rate of 72.9 bpm, with a standard deviation of 3.5 bpm. The mean RR interval is 824.5 ms, with a standard deviation of 37.3 ms. The mean QRS duration is 98.3 ms, with a standard deviation of 53 ms.",
+    "image_text": "The ECG shows sinus rhythm with a normal QRS complex and P waves. The T waves are also normal. There are flags raised for potential pathology, including a CD pattern and STT pattern, but the ECG findings are otherwise unremarkable."
+  },
+  "10054_lr": {
+    "ecg_id": 10054,
+    "reference": "atrial fibrillation. st segments are depressed in i, ,avl, v4,5,6. t waves are inverted in i, ii, avl, v6 and low in v4,5. findings are likely to be due to ischaemic heart  disease and digitalis effect.",
+    "signal_text": "The ECG analysis reveals a duration of 10 seconds, with 14 QRS complexes detected. The estimated mean heart rate is 87.1 bpm, with a standard deviation of 11.9 bpm. The mean RR interval is 702.3 ms, and the standard deviation is 98.9 ms. The mean QRS duration is 78.6 ms, and the standard deviation is 23.6 ms.",
+    "image_text": "The ECG shows a sinus rhythm with a consistent PR interval in multiple leads. The ECG is unremarkable."
+  }
+}

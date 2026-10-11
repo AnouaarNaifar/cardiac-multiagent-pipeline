@@ -1,0 +1,127 @@
+{
+  "agent_id": "ecg",
+  "record_id": "02202_lr",
+  "findings": [
+    {
+      "feature": "duration_s",
+      "value": 10.0,
+      "rationale": "The analyzed ECG trace duration is 10 seconds.",
+      "confidence": 1.0,
+      "evidence_ref": "duration_s",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "qrs_count",
+      "value": 14,
+      "rationale": "The number of detected QRS complexes is 14.",
+      "confidence": 1.0,
+      "evidence_ref": "qrs_count",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "heart_rate_mean_bpm",
+      "value": 84.3,
+      "rationale": "The estimated mean heart rate is 84.3 bpm.",
+      "confidence": 1.0,
+      "evidence_ref": "heart_rate_mean_bpm",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "heart_rate_std_bpm",
+      "value": 13.3,
+      "rationale": "The standard deviation of the heart rate is 13.3 bpm.",
+      "confidence": 1.0,
+      "evidence_ref": "heart_rate_std_bpm",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "rr_mean_ms",
+      "value": 730.8,
+      "rationale": "The mean RR interval is 730.8 ms.",
+      "confidence": 1.0,
+      "evidence_ref": "rr_mean_ms",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "rr_std_ms",
+      "value": 122.1,
+      "rationale": "The standard deviation of the RR interval is 122.1 ms.",
+      "confidence": 1.0,
+      "evidence_ref": "rr_std_ms",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "qrs_duration_mean_ms",
+      "value": 92.9,
+      "rationale": "The mean QRS duration is 92.9 ms.",
+      "confidence": 1.0,
+      "evidence_ref": "qrs_duration_mean_ms",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "qrs_duration_std_ms",
+      "value": 49.5,
+      "rationale": "The standard deviation of the QRS duration is 49.5 ms.",
+      "confidence": 1.0,
+      "evidence_ref": "qrs_duration_std_ms",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "rhythm_irregularity_flag",
+      "value": true,
+      "rationale": "Rhythm irregularity is suspected.",
+      "confidence": 1.0,
+      "evidence_ref": "rhythm_irregularity_flag",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "rhythm_cv",
+      "value": 0.17,
+      "rationale": "The RR coefficient of variation is 0.17.",
+      "confidence": 1.0,
+      "evidence_ref": "rhythm_cv",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "embedding_MI_probability",
+      "value": 0.96,
+      "rationale": "The learned embedding model estimates a probability of 0.96 for myocardial infarction.",
+      "confidence": 1.0,
+      "evidence_ref": "embedding_MI_probability",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "embedding_STTC_probability",
+      "value": 0.28,
+      "rationale": "The learned embedding model estimates a probability of 0.28 for ST/T change.",
+      "confidence": 1.0,
+      "evidence_ref": "embedding_STTC_probability",
+      "evidence_type": "numeric_feature"
+    }
+  ],
+  "flags_for_review": [
+    "embedding_MI_pattern_suspected",
+    "irregular_rhythm_suspected"
+  ],
+  "trace": {
+    "features_used": {
+      "duration_s": 10.0,
+      "qrs_count": 14,
+      "heart_rate_mean_bpm": 84.29845471154779,
+      "heart_rate_std_bpm": 13.336925664592005,
+      "rr_mean_ms": 730.7692307692307,
+      "rr_std_ms": 122.12613520212733,
+      "qrs_duration_mean_ms": 92.85714285714286,
+      "qrs_duration_std_ms": 49.487165930539355,
+      "rhythm_irregularity_flag": true,
+      "rhythm_cv": 0.16711997448712163,
+      "embedding_CD_probability": 0.06394799053668976,
+      "embedding_HYP_probability": 0.06791675090789795,
+      "embedding_MI_probability": 0.9615357518196106,
+      "embedding_NORM_probability": 0.0019077727338299155,
+      "embedding_STTC_probability": 0.28029558062553406
+    },
+    "model": "ollama:medgemma:4b",
+    "attempts": 1
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "B1_no_directive": {
+    "attempts": 1,
+    "summary": "The patient is a 63-year-old male with a history of typical angina chest pain and a resting ECG showing probable left ventricular hypertrophy. The patient's heart rate is 63.9 bpm with a standard deviation of 1.4 bpm, and the QRS duration is 59.3 ms with a standard deviation of 46.2 ms.  The left ventricular ejection fraction is 23.7%, which suggests reduced systolic function in the left ventricle. The patient's cholesterol level is 233 mg/dl, and fasting blood sugar is elevated.",
+    "prose_weaves_criterion": false,
+    "n_knowledge_cites": 7,
+    "knowledge_citations": [
+      {
+        "feature": "knowledge_0",
+        "statement": "Heart failure with reduced ejection fraction (HFrEF) has LVEF ≤40%"
+      },
+      {
+        "feature": "knowledge_1",
+        "statement": "Heart failure with mildly reduced ejection fraction (HFmrEF) has LVEF is 41–49%"
+      },
+      {
+        "feature": "knowledge_2",
+        "statement": "Heart failure with preserved ejection fraction (HFpEF) has LVEF ≥50%"
+      },
+      {
+        "feature": "knowledge_3",
+        "statement": "Severe and persistent symptoms are defined as NYHA class III or IV."
+      },
+      {
+        "feature": "knowledge_3",
+        "statement": "Severe cardiac dysfunction may include LVEF ≤30%"
+      },
+      {
+        "feature": "knowledge_3",
+        "statement": "Severe recurrent events include pulmonary or systemic congestion requiring high-dose intravenous diuretics, low-output episodes requiring inotropes or vasoactive drugs, or malignant arrhythmias causing more than one unplanned visit or hospitalization in the previous 12 months."
+      },
+      {
+        "feature": "knowledge_3",
+        "statement": "Severely impaired exercise capacity includes inability to exercise, a 6-minute walk test distance <300 m, peak VO₂ <12 mL/kg/min, or peak VO₂ <50% of predicted when the limitation is considered cardiac in origin."
+      }
+    ]
+  },
+  "B2_integrate": {
+    "attempts": 1,
+    "summary": "The patient presents with a history of typical angina chest pain, resting blood pressure of 145 mmHg, elevated cholesterol (233 mg/dl), and fasting blood sugar >120 mg/dl. Resting ECG shows probable left ventricular hypertrophy, with an estimated mean heart rate of 63.9 bpm and LVEF of 23.7%. MRI reveals end-diastolic and end-systolic volumes for the left and right ventricles. The patient is 63 years old male.",
+    "prose_weaves_criterion": false,
+    "n_knowledge_cites": 0,
+    "knowledge_citations": []
+  }
+}

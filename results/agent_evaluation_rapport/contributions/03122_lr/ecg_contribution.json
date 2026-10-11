@@ -1,0 +1,103 @@
+{
+  "agent_id": "ecg",
+  "record_id": "03122_lr",
+  "findings": [
+    {
+      "feature": "duration_s",
+      "value": 10.0,
+      "rationale": "The analyzed ECG trace duration is 10 seconds.",
+      "confidence": 1.0,
+      "evidence_ref": "duration_s",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "qrs_count",
+      "value": 12,
+      "rationale": "The number of detected QRS complexes is 12.",
+      "confidence": 1.0,
+      "evidence_ref": "qrs_count",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "heart_rate_mean_bpm",
+      "value": 77.0,
+      "rationale": "The estimated mean heart rate is 77 bpm.",
+      "confidence": 1.0,
+      "evidence_ref": "heart_rate_mean_bpm",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "heart_rate_std_bpm",
+      "value": 2.7,
+      "rationale": "The standard deviation of the heart rate is 2.7 bpm.",
+      "confidence": 1.0,
+      "evidence_ref": "heart_rate_std_bpm",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "rr_mean_ms",
+      "value": 780.0,
+      "rationale": "The mean RR interval is 780 ms.",
+      "confidence": 1.0,
+      "evidence_ref": "rr_mean_ms",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "rr_std_ms",
+      "value": 27.0,
+      "rationale": "The standard deviation of the RR interval is 27 ms.",
+      "confidence": 1.0,
+      "evidence_ref": "rr_std_ms",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "qrs_duration_mean_ms",
+      "value": 113.3,
+      "rationale": "The mean QRS duration is 113.3 ms.",
+      "confidence": 1.0,
+      "evidence_ref": "qrs_duration_mean_ms",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "qrs_duration_std_ms",
+      "value": 30.6,
+      "rationale": "The standard deviation of the QRS duration is 30.6 ms.",
+      "confidence": 1.0,
+      "evidence_ref": "qrs_duration_std_ms",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "rhythm_irregularity_flag",
+      "value": "0",
+      "rationale": "The ECG rhythm is regular, indicated by the absence of irregularity.",
+      "confidence": 1.0,
+      "evidence_ref": "rhythm_irregularity_flag",
+      "evidence_type": "numeric_feature"
+    },
+    {
+      "feature": "rhythm_cv",
+      "value": "sinus",
+      "rationale": "The ECG rhythm is sinus rhythm.",
+      "confidence": 1.0,
+      "evidence_ref": "rhythm_cv",
+      "evidence_type": "numeric_feature"
+    }
+  ],
+  "flags_for_review": [],
+  "trace": {
+    "features_used": {
+      "duration_s": 10.0,
+      "qrs_count": 12,
+      "heart_rate_mean_bpm": 77.01660317838927,
+      "heart_rate_std_bpm": 2.7067130695467827,
+      "rr_mean_ms": 780.0,
+      "rr_std_ms": 26.96799449852969,
+      "qrs_duration_mean_ms": 113.33333333333333,
+      "qrs_duration_std_ms": 30.641293851417057,
+      "rhythm_irregularity_flag": false,
+      "rhythm_cv": 0.03457435192119191
+    },
+    "model": "ollama:medgemma:4b",
+    "attempts": 1
+  }
+}

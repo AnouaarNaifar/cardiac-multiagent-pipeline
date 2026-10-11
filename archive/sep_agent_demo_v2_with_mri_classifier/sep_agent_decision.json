@@ -1,0 +1,49 @@
+{
+  "record_id": "demo_case_ecg00001hr_mriPatient101_with_classifier",
+  "contributing_agents": [
+    "ecg",
+    "mri"
+  ],
+  "summary": "The ECG shows a heart rate of approximately 64 bpm with a mean RR interval of 939 ms and a QRS duration of around 60 ms. The MRI indicates low left ventricular ejection fraction at 29.9% and a high probability (96.5%) of dilated cardiomyopathy, along with signs suggestive of heart failure.",
+  "flags_for_review": [
+    "DCM",
+    "EF_low",
+    "low_lv_ejection_fraction_suspected",
+    "pathology_DCM_pattern_suspected"
+  ],
+  "traceability": [
+    {
+      "statement": "The ECG reveals a mean heart rate of approximately 64 bpm",
+      "agent_id": "ecg",
+      "feature": "heart_rate_mean_bpm"
+    },
+    {
+      "statement": "The RR interval is around 939 ms",
+      "agent_id": "ecg",
+      "feature": "rr_mean_ms"
+    },
+    {
+      "statement": "The QRS duration is approximately 60 ms",
+      "agent_id": "ecg",
+      "feature": "qrs_duration_mean_ms"
+    },
+    {
+      "statement": "MRI shows a low left ventricular ejection fraction at 29.9%",
+      "agent_id": "mri",
+      "feature": "lv_ejection_fraction_pct"
+    },
+    {
+      "statement": "The MRI indicates a dilated cardiomyopathy with a high probability of 96.5%.",
+      "agent_id": "mri",
+      "feature": "pathology_DCM_probability"
+    }
+  ],
+  "trace": {
+    "model": "ollama:medgemma:4b",
+    "attempts": 1,
+    "source_record_ids": {
+      "ecg": "00001_hr",
+      "mri": "patient101"
+    }
+  }
+}

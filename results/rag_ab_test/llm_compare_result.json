@@ -1,0 +1,32 @@
+{
+  "medgemma:4b": {
+    "ok": true,
+    "attempts": 1,
+    "summary": "The patient is male with typical angina chest pain and a resting ECG showing probable left ventricular hypertrophy, along with a fasting blood sugar greater than 120 mg/dL. The LV ejection fraction is low (23.7%), the heart rate is slightly below normal at 64 bpm, and the QRS duration is short. The patient's cholesterol level is also elevated.",
+    "cites_knowledge": true,
+    "n_knowledge_cites": 4,
+    "summary_has_criterion_term": false,
+    "knowledge_citations": [
+      {
+        "feature": "knowledge_1",
+        "statement": "Heart failure (reduced EF): The ventricle isn't pumping out enough blood per beat. HFrEF (reduced ejection fraction) directly detectable via EF; HFpEF (preserved EF) needs volumes/filling pattern."
+      },
+      {
+        "feature": "knowledge_1",
+        "statement": "Wall motion abnormalities: Segments can be hypokinetic (weakly), akinetic (not at all), or dyskinetic (wrong direction). Sign of localized damage."
+      },
+      {
+        "feature": "knowledge_1",
+        "statement": "Dyssynchrony: One wall contracts late relative to others → mechanically inefficient pump."
+      },
+      {
+        "feature": "knowledge_2",
+        "statement": "A myocardial infarction (heart attack) with ST segment elevation. • ECG pattern: ST elevation ≥1 mm in ≥2 contiguous leads + reciprocal depression"
+      }
+    ]
+  },
+  "qwen3:4b": {
+    "ok": false,
+    "error": "Failed to obtain a valid Sep Agent decision after 2 attempts: Response is not valid JSON: Expecting value: line 1 column 1 (char 0)"
+  }
+}

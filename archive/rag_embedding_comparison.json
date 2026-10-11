@@ -1,0 +1,82 @@
+{
+  "low left ventricular ejection fraction dilated cardiomyopathy": {
+    "general_header": "4.2 Structural abnormalities (from Cine MRI + short axis stack)",
+    "general_source": "summer_internship_notes.pdf",
+    "general_score": 0.5652019381523132,
+    "clinical_header": "2.1 Cine MRI",
+    "clinical_source": "summer_internship_notes.pdf",
+    "clinical_score": 0.5897102952003479
+  },
+  "wide QRS complex bundle branch block": {
+    "general_header": "5.3 Bundle Branch Blocks (LBBB / RBBB)",
+    "general_source": "summer_internship_notes.pdf",
+    "general_score": 0.42803505063056946,
+    "clinical_header": "5.3 Bundle Branch Blocks (LBBB / RBBB)",
+    "clinical_source": "summer_internship_notes.pdf",
+    "clinical_score": 0.7427560091018677
+  },
+  "Sokolow-Lyon criterion hypertrophy voltage": {
+    "general_header": "5.4 Left Ventricular Hypertrophy (LVH)",
+    "general_source": "summer_internship_notes.pdf",
+    "general_score": 0.5239419341087341,
+    "clinical_header": "5.4 Left Ventricular Hypertrophy (LVH)",
+    "clinical_source": "summer_internship_notes.pdf",
+    "clinical_score": 0.5884994864463806
+  },
+  "PTB-XL diagnostic superclasses NORM MI STTC CD HYP": {
+    "general_header": "(document start)",
+    "general_source": "ptbxl_wagner2020.pdf",
+    "general_score": 0.530141294002533,
+    "clinical_header": "(document start)",
+    "clinical_source": "ptbxl_wagner2020.pdf",
+    "clinical_score": 0.5255347490310669
+  },
+  "ACDC dilated cardiomyopathy hypertrophic cardiomyopathy classification": {
+    "general_header": "4.2 Structural abnormalities (from Cine MRI + short axis stack)",
+    "general_source": "summer_internship_notes.pdf",
+    "general_score": 0.6007322072982788,
+    "clinical_header": "4.2 Structural abnormalities (from Cine MRI + short axis stack)",
+    "clinical_source": "summer_internship_notes.pdf",
+    "clinical_score": 0.5656500458717346
+  },
+  "ECG preprocessing baseline wander wavelet denoising": {
+    "general_header": "2. The few multimodal approaches that exist often treat",
+    "general_source": "alqudah_alfraihat2026_multimodal.pdf",
+    "general_score": 0.6705623865127563,
+    "clinical_header": "4.4 Inflammatory / infiltrative disease (from T1/T2 mapping)",
+    "clinical_source": "summer_internship_notes.pdf",
+    "clinical_score": 0.7241434454917908
+  },
+  "reduced pumping function of the heart chamber": {
+    "general_header": "1.2 Why MRI for the heart specifically ?",
+    "general_source": "summer_internship_notes.pdf",
+    "general_score": 0.49353742599487305,
+    "clinical_header": "2.1 Cine MRI",
+    "clinical_source": "summer_internship_notes.pdf",
+    "clinical_score": 0.5570626854896545
+  },
+  "irregular heartbeat coming from upper chambers": {
+    "general_header": "5.1 Atrial Fibrillation (AF)",
+    "general_source": "summer_internship_notes.pdf",
+    "general_score": 0.46965551376342773,
+    "clinical_header": "3.1 The Waves",
+    "clinical_source": "summer_internship_notes.pdf",
+    "clinical_score": 0.5627498030662537
+  },
+  "heart attack scar tissue detection": {
+    "general_header": "4.3 Tissue/scar abnormalities (from LGE)",
+    "general_source": "summer_internship_notes.pdf",
+    "general_score": 0.582313597202301,
+    "clinical_header": "2.2 LGE (Late Gadolinium Enhancement)",
+    "clinical_source": "summer_internship_notes.pdf",
+    "clinical_score": 0.6541706323623657
+  },
+  "thickened heart muscle wall abnormal": {
+    "general_header": "4.2 Structural abnormalities (from Cine MRI + short axis stack)",
+    "general_source": "summer_internship_notes.pdf",
+    "general_score": 0.6118608117103577,
+    "clinical_header": "4.2 Structural abnormalities (from Cine MRI + short axis stack)",
+    "clinical_source": "summer_internship_notes.pdf",
+    "clinical_score": 0.6269141435623169
+  }
+}

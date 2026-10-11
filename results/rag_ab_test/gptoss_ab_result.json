@@ -1,0 +1,39 @@
+{
+  "A_norag": {
+    "use_rag": false,
+    "integrate": false,
+    "attempts": 1,
+    "summary": "A 63-year-old male presents with typical angina, hypertension (BP 145 mmHg), hypercholesterolemia (233 mg/dl) and elevated fasting blood sugar. Resting ECG indicates probable left ventricular hypertrophy and a 10‑second tracing shows a mean heart rate of 63.9 bpm. Stress testing reveals a fixed thallium defect with marked ST depression of 2.3 mm and a downsloping slope, without exercise‑induced angina. Cardiac MRI demonstrates a severely reduced left ventricular ejection fraction (~24%) with preserved right ventricular function and an increased left ventricular end‑diastolic volume (295.5 ml).",
+    "prose_weaves_criterion": false,
+    "n_knowledge_cites": 0,
+    "knowledge_citations": []
+  },
+  "B_rag": {
+    "use_rag": true,
+    "integrate": false,
+    "attempts": 1,
+    "summary": "The 63-year-old male presents with typical angina, a resting blood pressure of 145 mmHg, cholesterol of 233 mg/dL and fasting hyperglycemia. Resting ECG shows probable left ventricular hypertrophy while a 10‑second tracing yields a mean heart rate of 63.9 bpm and 11 QRS complexes. MRI demonstrates a markedly reduced left ventricular ejection fraction of 23.7 % consistent with HFrEF (LV EF ≤40% per ESC guideline). Additional MRI findings include left ventricular end‑diastolic volume 295.5 mL, end‑systolic volume 225.6 mL and a preserved right ventricular ejection fraction of 57.4 %. Stress testing reveals a fixed thallium defect, a 2.3 mm downsloping ST depression, and no exercise‑induced angina.",
+    "prose_weaves_criterion": true,
+    "n_knowledge_cites": 1,
+    "knowledge_citations": [
+      {
+        "feature": "knowledge_0",
+        "statement": "HFrEF (LV EF ≤40% per ESC guideline)"
+      }
+    ]
+  },
+  "C_rag_integrate": {
+    "use_rag": true,
+    "integrate": true,
+    "attempts": 1,
+    "summary": "A 63‑year‑old male presents with typical angina, resting blood pressure 145 mmHg, cholesterol 233 mg/dL, elevated fasting glucose, and probable left‑ventricular hypertrophy on ECG. Exercise testing revealed a maximum heart rate of 150 bpm, no exercise‑induced angina, but marked ST‑segment depression of 2.3 mm with a downsloping slope and a fixed defect on thallium imaging. Cardiac MRI shows a left‑ventricular ejection fraction of 23.7 %, below the ≤40 % threshold defining HFrEF, with LV end‑diastolic volume 295.5 mL and end‑systolic volume 225.6 mL, while right‑ventricular ejection fraction is 57.4 %. A 10‑second ECG trace demonstrates a mean heart rate of 63.9 bpm, regular RR intervals (mean 938.8 ms) and narrow QRS complexes (mean duration 59.3 ms).",
+    "prose_weaves_criterion": true,
+    "n_knowledge_cites": 1,
+    "knowledge_citations": [
+      {
+        "feature": "knowledge_0",
+        "statement": "LV ejection fraction 23.7 % below the ≤40 % HFrEF threshold, LVEDV 295.5 mL, LVESV 225.6 mL; RV ejection fraction 57.4 %"
+      }
+    ]
+  }
+}
