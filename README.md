@@ -33,6 +33,19 @@ Optional: a free **Groq** cloud backend (stronger text model) is available in th
 
 [Watch the demonstration on Google Drive](https://drive.google.com/drive/folders/1fAKs6oEQSrwpqugkgb95aIiW7SnMmt6Z)
 
+## Dataset sources
+
+The project uses the following public datasets and reference sources:
+
+- ECG signal: [PTB-XL v1.0.3](https://physionet.org/content/ptb-xl/1.0.3/) - place the extracted files under `kaggle/`.
+- RTLP ECG report translations: [danikiyasseh/RTLP](https://github.com/danikiyasseh/RTLP) - place the clone under `RTLP/`.
+- ECG images: [edcci/GenECG on Hugging Face](https://huggingface.co/datasets/edcci/GenECG) - fetched on demand into `genecg_downloaded/`.
+- Cardiac MRI: [ACDC Challenge](https://www.creatis.insa-lyon.fr/Challenge/acdc/databases.html) - place the extracted database under `ACDC/`.
+- Clinical data: [Heart Disease - UCI Machine Learning Repository](https://archive.ics.uci.edu/dataset/45/heart+disease) - place `variables_metadata.csv` and `processed_cleveland.csv` under `uci_heart_disease/`.
+
+A prepared copy of the internship data and supporting files is also available in the
+[internship Google Drive folder](https://drive.google.com/drive/folders/1_8J-Q8s-iFkImaqIm9rTzmzthVImxTcD).
+
 ## Docker deployment
 
 The Docker image packages the application and its Python environment. Ollama runs natively on the host
@@ -48,8 +61,9 @@ machine so it can use the host GPU; it is not started inside the container.
   ```
 
   For the ECG image branch, also download `qwen2.5vl:7b`.
-3. Download the public datasets from the [internship Google Drive folder](https://drive.google.com/drive/folders/1_8J-Q8s-iFkImaqIm9rTzmzthVImxTcD)
-  and place them in the project with these paths:
+  
+3. Download the public datasets from the [dataset sources](#dataset-sources) and place them in the project
+  with these paths:
 
   - PTB-XL under `kaggle/`
   - ACDC under `ACDC/`
