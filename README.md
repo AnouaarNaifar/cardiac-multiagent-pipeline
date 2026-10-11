@@ -12,7 +12,7 @@ computed finding.
 
 ---
 
-## Quickstart
+## Quickstart (native)
 
 ```bash
 # 1. Python deps
@@ -28,6 +28,57 @@ streamlit run Home.py        # → http://localhost:8501
 
 Optional: a free **Groq** cloud backend (stronger text model) is available in the UI if you set
 `GROQ_API_KEY` - the prompt then leaves the machine (fine for this public data).
+
+## Docker deployment
+
+The Docker image packages the application and its Python environment. Ollama runs natively on the host
+machine so it can use the host GPU; it is not started inside the container.
+
+### Prerequisites
+
+1. Install and start Docker Desktop.
+2. Install Ollama, start it, and download the default model:
+
+  ```bash
+  ollama pull medgemma:4b
+  ```
+
+  For the ECG image branch, also download `qwen2.5vl:7b`.
+3. Download the public datasets from the [internship Google Drive folder](https://drive.google.com/drive/folders/1_8J-Q8s-iFkImaqIm9rTzmzthVImxTcD)
+  and place them in the project with these paths:
+
+  - PTB-XL under `kaggle/`
+  - ACDC under `ACDC/`
+  - RTLP under `RTLP/` (needed for report evaluation)
+
+  The datasets are mounted read-only into the container and are not included in the Docker image.
+
+### Run the published image
+
+```bash
+docker pull anou21/cardiac-pipeline:latest
+```
+
+In `docker-compose.yml`, replace `image: cardiac-pipeline:local` with
+`image: anou21/cardiac-pipeline:latest` and remove the `build: .` line from the `app` service. Then run:
+
+```bash
+docker compose up -d
+```
+
+The compose file connects the container to the Ollama server on the host through `host.docker.internal`.
+Then open [http://localhost:8501](http://localhost:8501).
+
+To build the image locally instead of pulling it:
+
+```bash
+docker compose build
+docker compose up -d
+```
+
+The image is published at [Docker Hub](https://hub.docker.com/r/anou21/cardiac-pipeline/tags). For
+troubleshooting and deployment details, see [DEPLOY.md](DEPLOY.md) and
+[DOCKERHUB_README.md](DOCKERHUB_README.md).
 
 ## Using the app
 
