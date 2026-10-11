@@ -43,8 +43,6 @@ The project uses the following public datasets and reference sources:
 - Cardiac MRI: [ACDC Challenge](https://www.creatis.insa-lyon.fr/Challenge/acdc/databases.html) - place the extracted database under `ACDC/`.
 - Clinical data: [Heart Disease - UCI Machine Learning Repository](https://archive.ics.uci.edu/dataset/45/heart+disease) - place `variables_metadata.csv` and `processed_cleveland.csv` under `uci_heart_disease/`.
 
-A prepared copy of the internship data and supporting files is also available in the
-[internship Google Drive folder](https://drive.google.com/drive/folders/1_8J-Q8s-iFkImaqIm9rTzmzthVImxTcD).
 
 ## Docker deployment
 
