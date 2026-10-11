@@ -61,21 +61,26 @@ Form B values**, all verified by running the agents - the fastest way to see cro
 
 ## Scope note (detection / diagnosis / prognosis)
 
-- **Detection** - solid (validated deterministic flags per modality).
-- **Diagnosis** - decision *support* only, by design (structured findings + convergence, never a verdict).
-- **Prognosis** - **out of scope**, and documented as such: PTB-XL/ACDC/UCI are cross-sectional (no
-  follow-up/outcome data), so no prognostic model can be trained or validated here. See
-  `rag_sources/New/` notes and the results write-ups.
+- **Detection** — solid (validated deterministic flags per modality).
+- **Diagnosis** — decision *support* only, by design (structured findings + convergence, never a verdict).
+- **Prognosis**  — **out of scope**, and documented as such: PTB-XL/ACDC/UCI are cross-sectional (no
+  follow-up/outcome data), so no prognostic model can be trained or validated here. See the project notes
+  and local results write-ups for the detailed rationale.
 
 ## Layout
 
 ```
 src/         Python modules (agents, pipelines, Sep Agent, RAG, KG)
-Home.py      Streamlit entry (role router)  ·  pages/  UI pages  ·  ui_*.py  UI glue
+Home.py      Streamlit entry (role router)  ·  views/  UI pages  ·  ui_*.py  UI glue
+experiments/ reproducible experiment scripts
 notebooks/   exploratory + validation notebooks
-results/     generated outputs, validation reports, test cases
-kaggle/ ACDC/ uci_heart_disease/ RTLP/ rag_sources/   reference datasets (not regenerated)
+results/     local generated outputs; only synthetic_test_cases.md is versioned
+kaggle/ ACDC/ RTLP/   local reference datasets, ignored by Git
+uci_heart_disease/ rag_sources/   small local data and reference sources
 CLAUDE.md    full architecture / design rationale (developer reference)
 ```
+
+Large datasets, model weights, experiment outputs and archived runs are intentionally excluded from Git.
+Download or generate them locally before running workflows that require them.
 
 For the full design rationale, per-module detail and validation history, see **`CLAUDE.md`**.
