@@ -27,11 +27,11 @@ streamlit run Home.py        # → http://localhost:8501
 ```
 
 Optional: a free **Groq** cloud backend (stronger text model) is available in the UI if you set
-`GROQ_API_KEY` — the prompt then leaves the machine (fine for this public data).
+`GROQ_API_KEY` - the prompt then leaves the machine (fine for this public data).
 
 ## Using the app
 
-Log in with a **role** (demo passwords, a UX *mode* — not real security):
+Log in with a **role** (demo passwords, a UX *mode* - not real security):
 
 | Role | Password | Sees |
 |---|---|---|
@@ -45,25 +45,25 @@ case** → **Case aggregation** fuses them (opt-in RAG / CoT / knowledge-graph) 
 
 ### Ready-made test cases
 `results/synthetic_test_cases.md` lists **exact patients** to select on each page and the **field-by-field
-Form B values**, all verified by running the agents — the fastest way to see cross-modality convergence.
+Form B values**, all verified by running the agents - the fastest way to see cross-modality convergence.
 
 ## What's built
 
-- **ECG agent** — single-lead pipeline (Pan-Tompkins, wavelet denoise) + multi-lead voltage/territorial flags
+- **ECG agent** - single-lead pipeline (Pan-Tompkins, wavelet denoise) + multi-lead voltage/territorial flags
   (Sokolow-Lyon LVH, inferior-Q MI) + a learned 12-lead CNN embedding.
-- **MRI agent** — ACDC preprocessing + ejection-fraction flags; a full **raw-image pipeline** (YOLO + U-Net +
+- **MRI agent** - ACDC preprocessing + ejection-fraction flags; a full **raw-image pipeline** (YOLO + U-Net +
   pathology classifier) so an MRI with no expert mask still works.
-- **Patient-data agent** — 13-field UCI form → validated deterministic flags.
-- **Sep Agent** — cross-modality aggregation with traceability, an optional **RAG** knowledge base and a
+- **Patient-data agent** - 13-field UCI form → validated deterministic flags.
+- **Sep Agent** - cross-modality aggregation with traceability, an optional **RAG** knowledge base and a
   clinical **knowledge graph** (cross-modality convergent diagnoses).
-- **Streamlit UI** — upload + guardrails, prompt lab, live flag-validation, model documentation, role-based
+- **Streamlit UI** - upload + guardrails, prompt lab, live flag-validation, model documentation, role-based
   access, PDF export.
 
 ## Scope note (detection / diagnosis / prognosis)
 
-- **Detection** — solid (validated deterministic flags per modality).
-- **Diagnosis** — decision *support* only, by design (structured findings + convergence, never a verdict).
-- **Prognosis** — **out of scope**, and documented as such: PTB-XL/ACDC/UCI are cross-sectional (no
+- **Detection** - solid (validated deterministic flags per modality).
+- **Diagnosis** - decision *support* only, by design (structured findings + convergence, never a verdict).
+- **Prognosis** - **out of scope**, and documented as such: PTB-XL/ACDC/UCI are cross-sectional (no
   follow-up/outcome data), so no prognostic model can be trained or validated here. See
   `rag_sources/New/` notes and the results write-ups.
 
